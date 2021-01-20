@@ -1,0 +1,18 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.createLesson {
+  background-color: aqua;
+  max-width: 140rem;
+  height: 10rem;
+  margin: 0 auto;
+  display: block;
+}
+
+/*# sourceMappingURL=styles.css.map */
