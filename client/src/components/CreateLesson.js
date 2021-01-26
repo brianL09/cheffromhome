@@ -1,14 +1,5 @@
 import React from 'react';
-
-
-// import submitForm from '../apis/createLessonAPI';
-// import getRecipe from '../apis/getLessonAPI';
-import IngredientInput from './forms/IngredientInput';
-import PhotoInput from './forms/PhotoInput';
-
-import TextInput from './forms/TextInput';
-
-// import PhotoBar from './PhotoBar';
+import RenderForm from './forms/RenderForm';
 
 class CreateLesson extends React.Component{
 constructor(props){
@@ -16,14 +7,14 @@ constructor(props){
     
     this.state={
         paragraphNumber: {
-            abt_paragraphs: 1,
-            rcp_directions: 1,
-            rcp_tips: 1,
-            shp_meat: 1,
-            shp_vegetable: 1,
-            shp_dairy: 1,
-            shp_dry: 1,
-            beginner: 1,
+            about_paragraphs: 1,
+            recipe_directions: 1,
+            recipe_tips: 1,
+            shopping_meat: 1,
+            shopping_vegetable: 1,
+            shopping_dairy: 1,
+            shopping_dry: 1,
+            beginner_paragraphs: 1,
         },
         basicInfo:{
             title: null,
@@ -68,6 +59,7 @@ constructor(props){
 }
 
 onTextChange = (e, index,section, key, isIteratable) => {
+    console.log('index: ', index, "section: ", section, "key: ", key, "isIterate: ", isIteratable);
     //updates current input state section object/key
     e.preventDefault();
     if(isIteratable){
@@ -146,6 +138,7 @@ onPhotoInput = (file, section, key) => {
         //convert array buffer into base64 String to be used in displaying uploaded image
         let base64String = btoa(String.fromCharCode(...new Uint8Array(e.target.result)));
         if(key === "photos"){
+            console.log('if');
             this.setState({
                 [section]:{
                     [key]: [...this.state[section][key], base64String]
@@ -167,102 +160,14 @@ onPhotoInput = (file, section, key) => {
     reader.readAsArrayBuffer(file); 
 }
 
-renderForm = (section) => {
-    let inputs = [];
-
-    for(let key in this.state[section]){
-        
-        let createTextElement = (paragraphCount) => <TextInput
-        section={section}
-        key={`${section}${key}`}
-        keyName={key}
-        isIteratable={paragraphCount}
-        onTextChange={this.onTextChange}
-        addNewInput={this.addNewInput}
-        paragraphCount={this.state.paragraphNumber[paragraphCount]}  
-        />;
-
-
-        switch(key){
-            case "paragraphs":      inputs.push(createTextElement(`abt_paragraphs`));                             
-                                    break;
-            case "directions":      inputs.push(createTextElement("rcp_directions"));
-                                    break;
-            case "tips":            inputs.push(createTextElement("rcp_tips"));
-                                    break;                             
-            case "vegetable":       inputs.push(createTextElement("shp_vegetable")); 
-                                    break;                             
-            case "dairy":           inputs.push(createTextElement("shp_dairy")); 
-                                    break;
-            case "dry":             inputs.push(createTextElement("shp_dry")); 
-                                    break;
-            case "meat":            inputs.push(createTextElement("shp_meat"));
-                                    break;
-            case "begParagraphs":   inputs.push(createTextElement("beg_paragraphs")); 
-                                    break;
-            case "ingredients":     inputs.push(<IngredientInput 
-                                                    key={`${section}-${key}`} 
-                                                    onIngredientChange={this.onIngredientChange} 
-                                                    addNewInput={this.addNewInput}
-                                                    ingredients={this.state.recipe.ingredients}/>); 
-                                    break;
-            case "photo":           inputs.push(<PhotoInput 
-                                                    key={`${section}-${key}`} 
-                                                    onPhotoInput={this.onPhotoInput}
-                                                    addNewInput={this.addNewInput}
-                                                    section={section} 
-                                                    keyName={key}/>
-                                                    );
-                                    break;                                           
-            case "photos":          inputs.push(<PhotoInput
-                                                    key={`${section}-${key}`}
-                                                    onPhotoInput={this.onPhotoInput} 
-                                                    section={section} 
-                                                    keyName={key}/>);
-                                    break;
-            case "thumbnail":       inputs.push(<PhotoInput 
-                                                    key={`${section}-${key}`} 
-                                                    onPhotoInput={this.onPhotoInput} 
-                                                    section={section} 
-                                                    keyName={key}/>);
-                                    break;                                                             
-            default:                inputs.push(createTextElement());
-                                    break;
-        }  
-    }
-
-    return inputs;
-}
-
-
     render(){
         return(
             <div className="createLesson">
-                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={this.onTest}>POST</div>
+                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => RenderForm(this.state)}>POST</div>
                 <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={this.onTestGet}>GET</div>
                 <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => console.log(this.state)}>Show State</div>
-                <form className="lesson__form">
-                    <section>
-                        <h1>Basic Info</h1>
-                        {this.renderForm('basicInfo')}
-                    </section>
-                    <section>
-                        <h1>About</h1>
-                        {this.renderForm('about')}
-                        <img style={{width: "10rem", height: "10rem"}} src={`data:image/png;base64, ${this.state.photoTest}`} alt="not loaded"/>
-                    </section>
-                    <section>
-                        <h1>Recipe</h1>
-                        {this.renderForm('recipe')}
-                    </section>
-                    <section>
-                        <h1>Beginner</h1>
-                        {this.renderForm('beginner')}
-                    </section>
-                    <section>
-                        <h1>Shopping List</h1>
-                        {this.renderForm('shopping')}
-                    </section>
+                <form className="form form__create">
+                    <RenderForm state={this.state} onTextChange={this.onTextChange} onIngredientChange={this.onIngredientChange} onPhotoInput={this.onPhotoInput} addNewInput={this.addNewInput}/>
                 </form>
             </div>
         )

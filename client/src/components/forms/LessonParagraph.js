@@ -6,7 +6,7 @@ const LessonParagraphInput = ({onTextChange, index,section,keyName, isIteratable
             return (
             <React.Fragment>
                 <p>{keyName}</p>
-                <textarea type="text" onChange={(e) => onTextChange(e, index, section, keyName, isIteratable)}/>
+                <textarea className="test__text-area" type="text" onChange={(e) => onTextChange(e, index, section, keyName, isIteratable)}/>
             </React.Fragment>
             );
         } else {

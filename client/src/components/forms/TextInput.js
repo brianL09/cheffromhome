@@ -35,9 +35,8 @@ const TextInput = ({section, keyName, isIteratable, onTextChange, paragraphCount
     }
     // console.log(section,keyName, isIteratable, paragraphCount)
     return(
-        <div>
+        <div className="test">
             {renderTextInput()}
-            TEXT INPUT {paragraphCount}
         </div>
     )
 }

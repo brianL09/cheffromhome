@@ -8,11 +8,96 @@ html {
 }
 
 .createLesson {
-  background-color: aqua;
-  max-width: 140rem;
-  height: 10rem;
-  margin: 0 auto;
-  display: block;
+  max-width: 160rem;
+  margin: 1rem auto;
+  padding: 0 0 2rem 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 5px solid hotpink;
+  background: linear-gradient(150deg, #845ec2 30%, #0089ba 85%, #008e9b 100%);
+}
+.createLesson::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.lesson__form {
+  padding: 2rem;
+  border: 0.3rem solid red;
+}
+
+.form__side-bar {
+  width: 20rem;
+  background-color: indigo;
+  flex-grow: 2;
+}
+
+input:not([type=submit]):not([type=file]) {
+  color: purple;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.input__photo > label {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border: 1px dashed #0081cf;
+}
+.input__photo > label:hover {
+  background-color: hotpink;
+}
+
+.form__icon {
+  color: blue;
+  border: 1px solid red;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  border: 0.5rem solid silver;
+  border-radius: 2.5rem;
+  box-shadow: 1.2rem 1.2rem 1.5rem 1.5rem rgba(0, 0, 0, 0.4);
+  margin: 0 auto 10rem auto;
+  padding: 2rem 4rem;
+  background: linear-gradient(to right top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4));
+  max-width: 90rem;
+  z-index: 3;
+}
+.form__header {
+  color: yellow;
+  border: 1px solid green;
+  padding: 1.5rem;
+  display: inline-block;
+}
+.form__header--primary {
+  font-size: 3.5rem;
+}
+
+.test {
+  border: 1px solid black;
+}
+.test__text-area {
+  font-size: 4rem;
+  width: 100%;
+}
+
+@supports (backdrop-filter: blur()) {
+  .form {
+    backdrop-filter: blur(1.5rem);
+  }
+}
+@supports not (backdrop-filter: blur()) {
+  .form {
+    background: linear-gradient(to right top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
