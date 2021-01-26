@@ -1,0 +1,33 @@
+input:not([type=submit]):not([type=file]) {
+    color: purple;
+}
+
+input[type=file]{
+    display: none;
+}
+
+.input{
+
+    &__photo{
+
+        & > label{
+            display: inline-block;
+            cursor: pointer;
+            font-size: 2rem;
+            padding: 1rem 2rem;
+            border: 1px dashed $color-secondary-2;
+
+            &:hover{
+                background-color: hotpink;
+            }
+        }
+    }
+}
+
+//TEXTAREA STYLING
+
+.form__icon{
+    color: blue;
+    // width: 3rem;
+    border: 1px solid red;
+}

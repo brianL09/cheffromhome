@@ -1,0 +1,48 @@
+.form{
+    position: relative;
+    display: flex;
+    border: .5rem solid silver;
+    border-radius: 2.5rem;
+    box-shadow: 1.2rem 1.2rem 1.5rem 1.5rem rgba(0,0,0, .4);
+    margin: 0 auto 10rem auto;
+    padding: 2rem 4rem;
+    background: linear-gradient(to right top, rgba($color-white, 0.6), rgba($color-white, .4));
+    // backdrop-filter: blur(1.5rem);
+    max-width: 90rem;
+    z-index: 3;
+
+    &__header{
+        color: yellow;
+        border: 1px solid green;
+        padding: 1.5rem;
+        display: inline-block;
+
+        &--primary{
+            font-size: 3.5rem;
+            
+        }
+    }
+}
+
+.test{
+    border: 1px solid black;
+    // padding: 10rem;
+    // font-size: 10rem;
+
+    &__text-area{
+        font-size: 4rem;
+        width: 100%;
+    }
+}
+
+@supports (backdrop-filter: blur()){
+    .form{
+        backdrop-filter: blur(1.5rem);
+    }
+}
+
+@supports not (backdrop-filter: blur()){
+    .form{
+        background: linear-gradient(to right top, rgba($color-white, 0.9), rgba($color-white, .6));
+    }
+}
