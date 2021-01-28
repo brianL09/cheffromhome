@@ -1,12 +1,14 @@
 .createLesson{
     max-width: 160rem;
-    margin: 1rem auto;
+    margin: 0 auto;
     padding: 0 0 2rem 0;
     width: 100%;
+    min-height: 100vh;
     height: 100%;
     position: relative;
-    border: 5px solid hotpink;
+    // border: 5px solid hotpink;
     background: linear-gradient(150deg, rgba($color-primary, 1) 30%, rgba($color-secondary-3, 1) 85%, rgba($color-tertiary-1, 1) 100%);
+
     &::before{
         content: "";
         // background-image: url("../images/form_background.png");
@@ -24,5 +26,11 @@
     &__form{
         padding: 2rem;
         border: .3rem solid red;
+    }
+}
+
+@supports(backdrop-filter: blur()){
+    .createLesson{
+        background-image: url("../../images/ChesterNew.jpg");
     }
 }

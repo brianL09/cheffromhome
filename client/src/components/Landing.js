@@ -2,7 +2,6 @@ import Nav from './Nav';
 // import axios from 'axios';
 import submitForm from '../apis/createLessonAPI';
 import SvgIcon from './icons/SvgIcon';
-import sprite from '../SVG/sprite.svg';
 
 const Landing = () => {
     const submit = async () => {

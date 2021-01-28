@@ -59,7 +59,6 @@ constructor(props){
 }
 
 onTextChange = (e, index,section, key, isIteratable) => {
-    console.log('index: ', index, "section: ", section, "key: ", key, "isIterate: ", isIteratable);
     //updates current input state section object/key
     e.preventDefault();
     if(isIteratable){
@@ -166,7 +165,7 @@ onPhotoInput = (file, section, key) => {
                 <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => RenderForm(this.state)}>POST</div>
                 <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={this.onTestGet}>GET</div>
                 <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => console.log(this.state)}>Show State</div>
-                <form className="form form__create">
+                <form className="form">
                     <RenderForm state={this.state} onTextChange={this.onTextChange} onIngredientChange={this.onIngredientChange} onPhotoInput={this.onPhotoInput} addNewInput={this.addNewInput}/>
                 </form>
             </div>

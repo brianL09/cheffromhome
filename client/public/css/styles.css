@@ -7,14 +7,22 @@ html {
   font-size: 62.5%;
 }
 
+.u-margin-bottom-small {
+  margin-bottom: 1rem;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 2rem;
+}
+
 .createLesson {
   max-width: 160rem;
-  margin: 1rem auto;
+  margin: 0 auto;
   padding: 0 0 2rem 0;
   width: 100%;
+  min-height: 100vh;
   height: 100%;
   position: relative;
-  border: 5px solid hotpink;
   background: linear-gradient(150deg, #845ec2 30%, #0089ba 85%, #008e9b 100%);
 }
 .createLesson::before {
@@ -29,6 +37,11 @@ html {
   border: 0.3rem solid red;
 }
 
+@supports (backdrop-filter: blur()) {
+  .createLesson {
+    background-image: url("../../images/ChesterNew.jpg");
+  }
+}
 .form__side-bar {
   width: 20rem;
   background-color: indigo;
@@ -37,6 +50,9 @@ html {
 
 input:not([type=submit]):not([type=file]) {
   color: purple;
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
 }
 
 input[type=file] {
@@ -47,11 +63,25 @@ input[type=file] {
   display: inline-block;
   cursor: pointer;
   font-size: 2rem;
+  background: chartreuse;
   padding: 1rem 2rem;
-  border: 1px dashed #0081cf;
+  margin-bottom: 2.5rem;
 }
 .input__photo > label:hover {
   background-color: hotpink;
+}
+.input__text {
+  width: 100%;
+  padding: 0.2rem 0;
+}
+.input__container--text {
+  width: 60%;
+  margin: 2rem 0;
+}
+
+textarea {
+  color: green;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .form__icon {
@@ -72,21 +102,46 @@ input[type=file] {
   z-index: 3;
 }
 .form__header {
-  color: yellow;
-  border: 1px solid green;
-  padding: 1.5rem;
-  display: inline-block;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
 }
 .form__header--primary {
   font-size: 3.5rem;
+  padding: 2rem 0;
 }
-
-.test {
-  border: 1px solid black;
+.form__heading--secondary {
+  font-size: 1.8rem;
 }
-.test__text-area {
-  font-size: 4rem;
+.form__section {
+  border: 0.3rem solid purple;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  padding: 2rem;
+}
+.form__control {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+.form__control--button {
+  padding: 1rem 2rem;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+.form__control--back {
+  background-color: #845ec2;
+}
+.form__control--back:hover {
+  background-color: #C23931;
+}
+.form__control--forward {
+  background-color: #845ec2;
+}
+.form__control--forward:hover {
+  background-color: #4CAF50;
 }
 
 @supports (backdrop-filter: blur()) {

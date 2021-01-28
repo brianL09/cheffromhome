@@ -1,5 +1,8 @@
 input:not([type=submit]):not([type=file]) {
     color: purple;
+    font-family: $font-text-primary;
+    font-weight: 500;
+    font-size: 2rem;
 }
 
 input[type=file]{
@@ -9,22 +12,47 @@ input[type=file]{
 .input{
 
     &__photo{
+        // display: inline-block;
+        // align-self:stretch;
+        // margin-left: 50%;
+        // position: relative;
+        // left: 42%;
+        // transform: translate(-50%);
+        // align-self: baseline;
 
         & > label{
             display: inline-block;
             cursor: pointer;
             font-size: 2rem;
+            background: chartreuse;
             padding: 1rem 2rem;
-            border: 1px dashed $color-secondary-2;
+            margin-bottom: 2.5rem;
 
             &:hover{
                 background-color: hotpink;
             }
         }
     }
+
+    &__text{
+        width: 100%;
+        padding: .2rem 0;
+    }
+
+    &__container{
+
+        &--text{
+            width: 60%;
+            margin: 2rem 0;
+        }
+    }
 }
 
 //TEXTAREA STYLING
+textarea{
+    color: green;
+    font-family: $font-heading-primary;
+}
 
 .form__icon{
     color: blue;

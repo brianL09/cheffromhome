@@ -1,26 +1,36 @@
 import IngredientInput from './IngredientInput';
 import PhotoInput from './PhotoInput';
 import TextInput from './TextInput';
+import React, { useState, useEffect } from 'react';
 
 const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addNewInput}) => {
-    const renderFields = () => {
-        let sections = [];
+    const [section, setSection] = useState([""]);
+    const [sectionIndex, setIndex] = useState(0);
 
+    useEffect(() => {
+        let sections = [];
         for(let section in state){
             if(section !== "paragraphNumber"){
                 sections = [...sections, section];
             }
         }
-        return sections.map(section => 
-            <section key={section}>
-                {renderSections(section)}
-            </section>
-        );
+        setSection(sections);
+    }, [sectionIndex]);
+
+    const changeSection = (moveForward) => {
+        if(sectionIndex >= section.length - 1 && moveForward){
+            return setIndex(0);
+        } else if(sectionIndex <= 0 && !moveForward){
+            return setIndex(5);
+        } else {
+            moveForward ? setIndex(prevState => prevState + 1) : setIndex(prevState => prevState - 1);
+        }
     }
 
     const renderSections = (section) => {
         let inputs = [];
-        inputs.push(<div key={section} className="form__header"><h1 className="form__header--primary">{section.toUpperCase()}</h1></div>);
+
+        inputs.push(<div key={section} className="form__header u-margin-bottom-medium"><h1 className="form__header--primary">{section === "basicInfo" ? "BASIC INFO" : section.toUpperCase()}</h1></div>);
         for(let key in state[section]){
             var paraKey = `${section}_${key}`;
             // text input field function
@@ -62,8 +72,12 @@ const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addN
     }
     
     return(
-        <div>
-            {renderFields(state)}
+        <div className="form__section">
+            {renderSections(section[sectionIndex])}
+            <div className="form__control">
+                <h1 className="form__control--button form__control--back" style={{display: "inline-block"}} onClick={() => changeSection()}>Back</h1>
+                <h1 className="form__control--button form__control--forward" style={{display: "inline-block", marginLeft: "2rem"}} onClick={() => changeSection(true)}>Forward</h1>
+            </div>
         </div>
     )
 }

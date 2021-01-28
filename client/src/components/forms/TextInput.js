@@ -1,4 +1,6 @@
+import React from 'react';
 import LessonParagraph from './LessonParagraph';
+
 const TextInput = ({section, keyName, isIteratable, onTextChange, paragraphCount, addNewInput}) => {
     const renderTextInput = () => {
         let inputs = [];
@@ -33,11 +35,11 @@ const TextInput = ({section, keyName, isIteratable, onTextChange, paragraphCount
 
         return inputs;
     }
-    // console.log(section,keyName, isIteratable, paragraphCount)
+
     return(
-        <div className="test">
+        <React.Fragment>
             {renderTextInput()}
-        </div>
+        </React.Fragment>
     )
 }
 export default TextInput;
