@@ -1,8 +1,18 @@
 input:not([type=submit]):not([type=file]) {
-    color: purple;
-    font-family: $font-text-primary;
-    font-weight: 500;
+    color: $color-grey-2;
+    font-family: $font-heading-primary;
+    font-weight: 600;
     font-size: 2rem;
+    padding: .5rem 1.8rem;
+    border: none;
+    border-bottom: 2px solid transparent;
+}
+
+input:not([type=submit]):not([type=file]):focus {
+    outline: none;
+    // outline: 2px solid rgba($color-primary, .8);
+    // border-bottom: 4px solid rgba($color-primary, .8);
+    border-bottom: 2px solid rgba($color-button-decline, 1);
 }
 
 input[type=file]{
@@ -12,39 +22,108 @@ input[type=file]{
 .input{
 
     &__photo{
-        // display: inline-block;
-        // align-self:stretch;
-        // margin-left: 50%;
-        // position: relative;
-        // left: 42%;
-        // transform: translate(-50%);
-        // align-self: baseline;
 
         & > label{
             display: inline-block;
             cursor: pointer;
+            position:relative;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 2rem;
-            background: chartreuse;
-            padding: 1rem 2rem;
+            background: linear-gradient(to right top, rgba($color-primary, 1), rgba($color-secondary-1, 1));
             margin-bottom: 2.5rem;
+            border-radius: 100%;
+            padding: 2rem;
+            transition: all 2s;
 
             &:hover{
-                background-color: hotpink;
+                background: linear-gradient(to left bottom, rgba($color-button-accept, 1) ,rgba($color-button-decline, 1));
             }
         }
     }
 
     &__text{
-        width: 100%;
-        padding: .2rem 0;
+        display: block;
+        margin: 0 auto .5rem auto;
+        min-width: 35rem;
+        border-radius: 3px;
+    }
+
+    &__ingredient{ 
+        position: relative;
+        background-color: lighten($color-grey-1, 30%);
+        border: 2px solid lighten($color-grey-1, 25%);;
+        border-radius: 4px;
+        width: 80%;
+        padding: 2rem 4rem;
+        margin-bottom: 3rem;
+
+        &--container{
+            display: flex;
+            justify-content: center;
+
+            & > input{
+                border: none;
+                border-right: 1px solid $color-grey-1;
+                margin-bottom: .5rem;
+            }
+        }
+
+        &--ingName{
+            display: inline-block;
+            // min-width: 
+            max-width: 35%;
+            text-align: center;
+            border-radius: 3px 0 0 3px !important;
+            border: none;
+            // background: green;
+        }
+
+        &--quantity{
+            display: inline-block;
+            max-width: 12%;
+            text-align: center;
+            border-radius: 0 !important;
+            // background-color: chartreuse;
+        }
+
+        &--unit{
+            display: inline-block;
+            max-width: 15%;
+            text-align: center;
+            // background: $color-button-accept;
+        }
+
+        &--type{
+            display: inline-block;
+            max-width: 25%;
+            text-align: center;
+            border-radius: 0 3px 3px 0;
+            // background: rgba($color-button-decline, 1);
+        }
+
+
     }
 
     &__container{
+        &--header{
+            color: $color-grey-2;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+        }
 
         &--text{
-            width: 60%;
-            margin: 2rem 0;
+            position:relative;
+            margin-bottom: 4rem;
         }
+    }
+}
+
+.images{
+    &__input{
+        max-width: 100% !important;
+        // display: block !important;
     }
 }
 
@@ -52,6 +131,17 @@ input[type=file]{
 textarea{
     color: green;
     font-family: $font-heading-primary;
+    width: 80%;
+    min-width: 30rem;
+    min-height: 20rem;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    resize: vertical;
+}
+
+textarea:focus{
+    border: 2px solid $color-primary;
 }
 
 .form__icon{

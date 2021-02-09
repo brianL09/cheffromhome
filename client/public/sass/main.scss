@@ -3,11 +3,10 @@
 //BASE 
 @import "base/base";
 @import "base/utilities";
-
 //COMPONENTS
-@import "components/createLesson";
-@import "components/form-side-bar";
 @import "components/form-inputs";
-
+@import "components/icons";
 //LAYOUTS
+@import "layouts/createLesson";
 @import "layouts/forms";
+@import "layouts/images";

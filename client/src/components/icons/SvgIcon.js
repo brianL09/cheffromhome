@@ -1,12 +1,13 @@
+import React from 'react';
 import sprite from "../../SVG/sprite.svg";
 
-const SvgIcon = (props) => {
+const SvgIcon = ({size, icon, fill, centered, fillOpacity, stroke, strokeWidth}) => {
     return (
-        <div>
-            <svg style={{height: props.size, width: props.size}}>
-                <use href={`${sprite}${props.icon}`}/>
+        <React.Fragment>
+            <svg className={`${(centered ? "u-absolute-center" : null)} ${icon.slice(1)}`} style={{height: size, width: size, fill: fill, fillOpacity: fillOpacity, stroke: stroke, strokeWidth: strokeWidth}}>
+                <use href={`${sprite}${icon}`}/>
             </svg>
-        </div>
+        </React.Fragment>
     )
 }
 

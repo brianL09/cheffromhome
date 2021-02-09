@@ -4,7 +4,8 @@ const recipeReducer = ( recipe=[{title: "Brownie"}], action) => {
     if(action.type === "FETCH_RECIPES"){
         return [{title: 'Brownie'}];
     }
-    return ['test'];
+    
+    return recipe;
 }
 
 export default combineReducers({

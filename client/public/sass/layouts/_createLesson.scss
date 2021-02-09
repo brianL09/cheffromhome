@@ -1,20 +1,15 @@
 .createLesson{
-    max-width: 160rem;
+    max-width: 180rem;
     margin: 0 auto;
     padding: 0 0 2rem 0;
     width: 100%;
     min-height: 100vh;
     height: 100%;
     position: relative;
-    // border: 5px solid hotpink;
-    background: linear-gradient(150deg, rgba($color-primary, 1) 30%, rgba($color-secondary-3, 1) 85%, rgba($color-tertiary-1, 1) 100%);
+    background: linear-gradient(150deg, rgba($color-primary, 1) 30%, rgba($color-secondary-3, 1) 75%, rgba(#008e9b, 1) 100%);
 
     &::before{
         content: "";
-        // background-image: url("../images/form_background.png");
-        // background-size: cover;
-        // background-repeat: no-repeat;
-        // position: absolute;
         width: 100%;
         height: 100%;
         z-index: -1;
