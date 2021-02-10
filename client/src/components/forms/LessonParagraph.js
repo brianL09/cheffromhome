@@ -11,7 +11,7 @@ const LessonParagraphInput = ({onTextChange, index,section,keyName, isIteratable
         } else {
             return (
                 <React.Fragment>
-                    <input className="input__text" type="text" value={value} onChange={(e) => onTextChange(e, index, section, keyName, isIteratable)}/>
+                    <input className={`input__text input__text--${keyName}`} type="text" value={value} onChange={(e) => onTextChange(e, index, section, keyName, isIteratable)}/>
                 </React.Fragment>
             )
         }

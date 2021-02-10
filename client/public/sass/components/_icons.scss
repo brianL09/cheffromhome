@@ -3,9 +3,10 @@
         position: absolute;
         // background: linear-gradient(to right top, rgba($color-primary, 1), rgba($color-secondary-1, 1));
         background-color: rgba($color-button-accept, 1);
-        padding: 1.78rem;
-        // border: 1px solid red;
+        padding: 1.6rem;
+        border: 2px solid transparent;
         cursor: pointer;
+        transition: all .2s;
 
         &--paragraph{
             cursor: pointer;
@@ -15,9 +16,9 @@
         }
 
         &--shopping{
-            bottom: 4.99rem;
-            left: 15.78rem;
-            border-radius: 10px 0 0 10px;
+            bottom: 3.5rem;
+            left: 17rem;
+            border-radius: 4px 0 0 4px;
         }
 
         &--recipe{
@@ -27,8 +28,18 @@
         }
 
         &:hover{
-            background: $color-primary;
+            // background: linear-gradient(to right top, rgba($color-primary, 1), rgba($color-secondary-1, 1));
+            background: white;
+            border: 2px solid rgba($color-button-accept, 1);
         }
-
+        &:hover > svg{
+            fill: $color-button-accept !important;
+            // stroke: $color-button-decline !important;
+            // stroke-width: .2rem;
+        }
     }
+}
+
+.icon__add{
+    fill: green;
 }

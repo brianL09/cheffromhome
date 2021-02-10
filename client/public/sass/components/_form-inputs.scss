@@ -43,10 +43,13 @@ input[type=file]{
     }
 
     &__text{
-        display: block;
         margin: 0 auto .5rem auto;
-        min-width: 35rem;
         border-radius: 3px;
+
+        &--yield{
+            max-width: 7rem !important;
+            text-align: center;
+        }
     }
 
     &__ingredient{ 
@@ -71,12 +74,10 @@ input[type=file]{
 
         &--ingName{
             display: inline-block;
-            // min-width: 
             max-width: 35%;
             text-align: center;
             border-radius: 3px 0 0 3px !important;
             border: none;
-            // background: green;
         }
 
         &--quantity{

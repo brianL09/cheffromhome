@@ -20,8 +20,7 @@ const TextInput = ({section, keyName, isIteratable, onTextChange, paragraphCount
             inputs.push(<div
                          key={`${section}-${keyName}`}
                          onClick={() => addNewInput(isIteratable)}
-                         className={section === "shopping" ? "icon__new icon__new--shopping" : "icon__new icon__new--paragraph" }
-                         >
+                         className={section === "shopping" ? "icon__new icon__new--shopping" : "icon__new icon__new--paragraph" }>
                             <SvgIcon icon={"#icon-add"} fill={"white"} stroke={"silver"} size={"1.5em"} centered={true}/>
                         </div>);
         } else {

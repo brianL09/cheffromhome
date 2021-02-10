@@ -59,10 +59,12 @@ input[type=file] {
   background: linear-gradient(to left bottom, #4caf50, #c23931);
 }
 .input__text {
-  display: block;
   margin: 0 auto 0.5rem auto;
-  min-width: 35rem;
   border-radius: 3px;
+}
+.input__text--yield {
+  max-width: 7rem !important;
+  text-align: center;
 }
 .input__ingredient {
   position: relative;
@@ -145,8 +147,10 @@ textarea:focus {
 .icon__new {
   position: absolute;
   background-color: #4caf50;
-  padding: 1.78rem;
+  padding: 1.6rem;
+  border: 2px solid transparent;
   cursor: pointer;
+  transition: all 0.2s;
 }
 .icon__new--paragraph {
   cursor: pointer;
@@ -155,9 +159,9 @@ textarea:focus {
   border-radius: 4px 0 0 4px;
 }
 .icon__new--shopping {
-  bottom: 4.99rem;
-  left: 15.78rem;
-  border-radius: 10px 0 0 10px;
+  bottom: 3.5rem;
+  left: 17rem;
+  border-radius: 4px 0 0 4px;
 }
 .icon__new--recipe {
   bottom: 2.49rem;
@@ -165,7 +169,15 @@ textarea:focus {
   border-radius: 4px 0 0 4px;
 }
 .icon__new:hover {
-  background: #845ec2;
+  background: white;
+  border: 2px solid #4caf50;
+}
+.icon__new:hover > svg {
+  fill: #4CAF50 !important;
+}
+
+.icon__add {
+  fill: green;
 }
 
 .createLesson {
