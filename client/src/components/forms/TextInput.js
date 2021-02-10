@@ -1,5 +1,8 @@
+import React from 'react';
 import LessonParagraph from './LessonParagraph';
-const TextInput = ({section, keyName, isIteratable, onTextChange, paragraphCount, addNewInput}) => {
+import SvgIcon from '../icons/SvgIcon';
+
+const TextInput = ({section, keyName, isIteratable, onTextChange, paragraphCount, addNewInput, value}) => {
     const renderTextInput = () => {
         let inputs = [];
         if(isIteratable){
@@ -11,14 +14,15 @@ const TextInput = ({section, keyName, isIteratable, onTextChange, paragraphCount
                                 keyName={keyName}
                                 onTextChange={onTextChange}
                                 isIteratable={true}
+                                value={value[keyName][i] || ''}
                 />);
             }
-            inputs.push(<h1
+            inputs.push(<div
                          key={`${section}-${keyName}`}
                          onClick={() => addNewInput(isIteratable)}
-                         >
-                            Add New {section} {keyName}
-                        </h1>);
+                         className={section === "shopping" ? "icon__new icon__new--shopping" : "icon__new icon__new--paragraph" }>
+                            <SvgIcon icon={"#icon-add"} fill={"white"} stroke={"silver"} size={"1.5em"} centered={true}/>
+                        </div>);
         } else {
             inputs.push(
                 <LessonParagraph
@@ -27,15 +31,16 @@ const TextInput = ({section, keyName, isIteratable, onTextChange, paragraphCount
                     keyName={keyName}
                     onTextChange={onTextChange}
                     isIteratable={false}
+                    value={value[keyName]}
                 />
             )
         }
-
-        return inputs;
+        return (<div>{inputs}</div>);
     }
-    // console.log(section,keyName, isIteratable, paragraphCount)
+
     return(
-        <div className="test">
+        <div className="input__container--text form__section--text">
+            <h2 className="input__container--header">{keyName.charAt(0).toUpperCase() + keyName.slice(1)}</h2>
             {renderTextInput()}
         </div>
     )

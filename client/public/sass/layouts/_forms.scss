@@ -1,37 +1,88 @@
 .form{
     position: relative;
-    display: flex;
     border: .5rem solid silver;
     border-radius: 2.5rem;
     box-shadow: 1.2rem 1.2rem 1.5rem 1.5rem rgba(0,0,0, .4);
     margin: 0 auto 10rem auto;
-    padding: 2rem 4rem;
     background: linear-gradient(to right top, rgba($color-white, 0.6), rgba($color-white, .4));
-    // backdrop-filter: blur(1.5rem);
     max-width: 90rem;
     z-index: 3;
 
     &__header{
-        color: yellow;
-        border: 1px solid green;
-        padding: 1.5rem;
-        display: inline-block;
+        font-family: $font-heading-primary;
+        flex-basis: 100%;
+        // border: 1px solid red;
+        text-align: center;
 
         &--primary{
-            font-size: 3.5rem;
-            
+            font-size: 4.5rem;
+            padding: 2rem 0;
+            font-weight: 400;
+        }
+
+        &--secondary{
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            font-family: $font-heading-primary;
         }
     }
-}
 
-.test{
-    border: 1px solid black;
-    // padding: 10rem;
-    // font-size: 10rem;
+    &__heading{
+        &--secondary{
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+    }
 
-    &__text-area{
-        font-size: 4rem;
+    &__section{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
         width: 100%;
+        padding: 2rem;
+
+        &--text{
+            flex: 0 0 90%;
+            text-align: center;
+            padding: 3rem 0;
+            background: #D0D0D0;
+            border: .2rem solid #C3C3C3;
+
+            border-radius: 3px;
+        }
+
+        &--photo{
+            // border: .2rem solid rgba($color-tertiary-1, 1);
+        }
+    }
+
+    &__control{
+
+        &--button{
+            width: 4rem;
+            height: 4rem;
+
+            border-radius: 50%;
+            color: $color-white;
+            cursor: pointer;
+            background: linear-gradient(to right top, rgba($color-primary, 1), rgba($color-secondary-1, 1));
+            position: absolute;
+            top: 2rem;
+        }
+
+        &--back{
+            left: 2rem;
+            &:hover{
+                background-color: $color-button-decline;
+            }
+        }
+        &--forward{
+            right: 2rem;
+            &:hover{
+                background-color: $color-button-accept;
+            }
+        }
     }
 }
 

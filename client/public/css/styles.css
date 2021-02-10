@@ -1,21 +1,194 @@
 *, *::after, *::before {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   font-size: 62.5%;
 }
 
+.u-margin-bottom-small {
+  margin-bottom: 1rem;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 6rem;
+}
+
+.u-absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input:not([type=submit]):not([type=file]) {
+  color: #303030;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 0.5rem 1.8rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+
+input:not([type=submit]):not([type=file]):focus {
+  outline: none;
+  border-bottom: 2px solid #c23931;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.input__photo > label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  background: linear-gradient(to right top, #845ec2, #2c73d2);
+  margin-bottom: 2.5rem;
+  border-radius: 100%;
+  padding: 2rem;
+  transition: all 2s;
+}
+.input__photo > label:hover {
+  background: linear-gradient(to left bottom, #4caf50, #c23931);
+}
+.input__text {
+  margin: 0 auto 0.5rem auto;
+  border-radius: 3px;
+}
+.input__text--yield {
+  max-width: 7rem !important;
+  text-align: center;
+}
+.input__ingredient {
+  position: relative;
+  background-color: #d0d0d0;
+  border: 2px solid #c3c3c3;
+  border-radius: 4px;
+  width: 80%;
+  padding: 2rem 4rem;
+  margin-bottom: 3rem;
+}
+.input__ingredient--container {
+  display: flex;
+  justify-content: center;
+}
+.input__ingredient--container > input {
+  border: none;
+  border-right: 1px solid #838383;
+  margin-bottom: 0.5rem;
+}
+.input__ingredient--ingName {
+  display: inline-block;
+  max-width: 35%;
+  text-align: center;
+  border-radius: 3px 0 0 3px !important;
+  border: none;
+}
+.input__ingredient--quantity {
+  display: inline-block;
+  max-width: 12%;
+  text-align: center;
+  border-radius: 0 !important;
+}
+.input__ingredient--unit {
+  display: inline-block;
+  max-width: 15%;
+  text-align: center;
+}
+.input__ingredient--type {
+  display: inline-block;
+  max-width: 25%;
+  text-align: center;
+  border-radius: 0 3px 3px 0;
+}
+.input__container--header {
+  color: #303030;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 3rem;
+}
+.input__container--text {
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.images__input {
+  max-width: 100% !important;
+}
+
+textarea {
+  color: green;
+  font-family: "Courier New", Courier, monospace;
+  width: 80%;
+  min-width: 30rem;
+  min-height: 20rem;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  resize: vertical;
+}
+
+textarea:focus {
+  border: 2px solid #845ec2;
+}
+
+.form__icon {
+  color: blue;
+  border: 1px solid red;
+}
+
+.icon__new {
+  position: absolute;
+  background-color: #4caf50;
+  padding: 1.6rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.icon__new--paragraph {
+  cursor: pointer;
+  bottom: 3.5rem;
+  left: 3.98rem;
+  border-radius: 4px 0 0 4px;
+}
+.icon__new--shopping {
+  bottom: 3.5rem;
+  left: 17rem;
+  border-radius: 4px 0 0 4px;
+}
+.icon__new--recipe {
+  bottom: 2.49rem;
+  left: 4.5rem;
+  border-radius: 4px 0 0 4px;
+}
+.icon__new:hover {
+  background: white;
+  border: 2px solid #4caf50;
+}
+.icon__new:hover > svg {
+  fill: #4CAF50 !important;
+}
+
+.icon__add {
+  fill: green;
+}
+
 .createLesson {
-  max-width: 160rem;
-  margin: 1rem auto;
+  max-width: 180rem;
+  margin: 0 auto;
   padding: 0 0 2rem 0;
   width: 100%;
+  min-height: 100vh;
   height: 100%;
   position: relative;
-  border: 5px solid hotpink;
-  background: linear-gradient(150deg, #845ec2 30%, #0089ba 85%, #008e9b 100%);
+  background: linear-gradient(150deg, #845ec2 30%, #0089ba 75%, #008e9b 100%);
 }
 .createLesson::before {
   content: "";
@@ -29,64 +202,77 @@ html {
   border: 0.3rem solid red;
 }
 
-.form__side-bar {
-  width: 20rem;
-  background-color: indigo;
-  flex-grow: 2;
+@supports (backdrop-filter: blur()) {
+  .createLesson {
+    background-image: url("../../images/ChesterNew.jpg");
+  }
 }
-
-input:not([type=submit]):not([type=file]) {
-  color: purple;
-}
-
-input[type=file] {
-  display: none;
-}
-
-.input__photo > label {
-  display: inline-block;
-  cursor: pointer;
-  font-size: 2rem;
-  padding: 1rem 2rem;
-  border: 1px dashed #0081cf;
-}
-.input__photo > label:hover {
-  background-color: hotpink;
-}
-
-.form__icon {
-  color: blue;
-  border: 1px solid red;
-}
-
 .form {
   position: relative;
-  display: flex;
   border: 0.5rem solid silver;
   border-radius: 2.5rem;
   box-shadow: 1.2rem 1.2rem 1.5rem 1.5rem rgba(0, 0, 0, 0.4);
   margin: 0 auto 10rem auto;
-  padding: 2rem 4rem;
   background: linear-gradient(to right top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4));
   max-width: 90rem;
   z-index: 3;
 }
 .form__header {
-  color: yellow;
-  border: 1px solid green;
-  padding: 1.5rem;
-  display: inline-block;
+  font-family: "Courier New", Courier, monospace;
+  flex-basis: 100%;
+  text-align: center;
 }
 .form__header--primary {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
+  padding: 2rem 0;
+  font-weight: 400;
 }
-
-.test {
-  border: 1px solid black;
+.form__header--secondary {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  font-family: "Courier New", Courier, monospace;
 }
-.test__text-area {
-  font-size: 4rem;
+.form__heading--secondary {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.form__section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   width: 100%;
+  padding: 2rem;
+}
+.form__section--text {
+  flex: 0 0 90%;
+  text-align: center;
+  padding: 3rem 0;
+  background: #D0D0D0;
+  border: 0.2rem solid #C3C3C3;
+  border-radius: 3px;
+}
+.form__control--button {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(to right top, #845ec2, #2c73d2);
+  position: absolute;
+  top: 2rem;
+}
+.form__control--back {
+  left: 2rem;
+}
+.form__control--back:hover {
+  background-color: #C23931;
+}
+.form__control--forward {
+  right: 2rem;
+}
+.form__control--forward:hover {
+  background-color: #4CAF50;
 }
 
 @supports (backdrop-filter: blur()) {
@@ -98,6 +284,39 @@ input[type=file] {
   .form {
     background: linear-gradient(to right top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
   }
+}
+.images-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 3rem;
+  background-color: #d0d0d0;
+}
+.images-form__image-box {
+  text-align: center;
+}
+.images-form__image-box:not(:last-of-type) {
+  margin-right: 2rem;
+}
+.images-form__container--input {
+  font-size: 1.8rem;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+.images-form__container--image {
+  border: 0.3rem solid #845ec2;
+  margin: 0 auto;
+  background: rgba(48, 48, 48, 0.4);
+  min-width: 20rem;
+  max-width: 20rem;
+  padding: 2rem;
+}
+.images-form__image {
+  width: 100%;
+  height: 100%;
+}
+.images-form__input {
+  width: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,6 @@
 import React from 'react';
 import RenderForm from './forms/RenderForm';
-
+import _ from 'lodash';
 class CreateLesson extends React.Component{
 constructor(props){
     super(props);
@@ -15,51 +15,62 @@ constructor(props){
             shopping_dairy: 1,
             shopping_dry: 1,
             beginner_paragraphs: 1,
+            beginner_photos: 0,
+            photo_photos: 0,
         },
         basicInfo:{
-            title: null,
+            title: "",
             cookTime: "",
-            thumbnail: "",
-            photo: "",
+            thumbnail: {
+                src: "",
+                alt: "",
+            },
+            photo: {
+                src: "",
+                alt: "",
+            },
         },
         about:{
             title: "",
             difficulty: 0,
-            photo: "",
             paragraphs:[],
+            photo: {src: "", alt: ""},
         },
         recipe:{
-            directions: [],
             yield: 0,
-            tips: [],
             ingredients: [
                 {
                     ingName: "",
-                    quantity: 0,
+                    quantity: "",
                     unit: "",
                     type: "",
                 }
-            ]
+            ],
+            directions: [],
+            tips: []
         },
         shopping:{
-            meat: [],
-            vegetable: [],
-            dairy: [],
-            dry: []
+            meat: [""],
+            vegetable: [""],
+            dairy: [""],
+            dry: [""]
         },      
         beginner:{
             paragraphs:[],
-            photos: []
+            photos: [
+                {src: "", alt: ""}
+            ],
         },
         photo:{
-            photos: [],
-            comments: [{}]
+            comments: [],
+            photos: [
+                {src: "", alt: ""}
+            ],
         }
     }
 }
 
 onTextChange = (e, index,section, key, isIteratable) => {
-    console.log('index: ', index, "section: ", section, "key: ", key, "isIterate: ", isIteratable);
     //updates current input state section object/key
     e.preventDefault();
     if(isIteratable){
@@ -96,7 +107,7 @@ addNewInput = (section) => {
         // add new instance of ingredient obj to state when adding to
         let ingObj = {
             ingName: "",
-            quantity: 0,
+            quantity: "",
             unit: "",
             type: ""
         }
@@ -131,42 +142,62 @@ onIngredientChange = (e, field, index) => {
     });        
 }
 
-onPhotoInput = (file, section, key) => {
+onPhotoInput = (e, section, key, index, attrb) => {
     var reader = new FileReader();
+    let copyState = _.cloneDeep(this.state[section]);
+    let photoObj = {src: "", alt: ""};
+    console.log('index: ', index);
 
-    const readSuccess = (e) => {
-        //convert array buffer into base64 String to be used in displaying uploaded image
-        let base64String = btoa(String.fromCharCode(...new Uint8Array(e.target.result)));
+    if(attrb === "alt"){
         if(key === "photos"){
-            console.log('if');
-            this.setState({
-                [section]:{
-                    [key]: [...this.state[section][key], base64String]
-                }
-            });
-        } else { 
-            console.log('else');
-            this.setState({
-                [section]: {
-                    ...this.state[section],
-                    [key]: base64String
-                }
-            });
+            copyState[key][index][attrb] = e.target.value;
+        } else {
+            copyState[key][attrb] = e.target.value;
         }
-    };
+        this.setState({
+            [section]: copyState
+        });
+    } else {
+        const readSuccess = (e) => {
+            //convert array buffer into base64 String to be used in displaying uploaded image
+            let base64String = btoa(String.fromCharCode(...new Uint8Array(e.target.result)));
 
-    reader.onload = readSuccess;
-    //get ArrayBuffer from file
-    reader.readAsArrayBuffer(file); 
+            if(key === "photos"){
+                // dynamically create photonumber keyname 
+                let photoNum = `${section}_${key}`;
+                copyState[key][index][attrb] = base64String;
+                copyState[key] = [...copyState[key], photoObj];
+
+                // set img src, and increment index states
+                this.setState({
+                    // ...this.state[section],
+                    paragraphNumber:{
+                        ...this.state.paragraphNumber,
+                        [photoNum]: this.state.paragraphNumber[photoNum] + 1
+                    },
+                    [section]: copyState
+                });
+            } else { 
+                copyState[key][attrb] = base64String;
+                this.setState({
+                    [section]: copyState
+                });
+            }
+        };
+    
+        reader.onload = readSuccess;
+        //get ArrayBuffer from file
+        reader.readAsArrayBuffer(e.target.files[0]); 
+    }
+
 }
 
     render(){
         return(
             <div className="createLesson">
-                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => RenderForm(this.state)}>POST</div>
                 <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={this.onTestGet}>GET</div>
-                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => console.log(this.state)}>Show State</div>
-                <form className="form form__create">
+                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => {console.log(this.state.paragraphNumber.photo_photos); console.log(this.state)}}>Show State</div>
+                <form className="form">
                     <RenderForm state={this.state} onTextChange={this.onTextChange} onIngredientChange={this.onIngredientChange} onPhotoInput={this.onPhotoInput} addNewInput={this.addNewInput}/>
                 </form>
             </div>

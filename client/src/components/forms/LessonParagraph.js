@@ -1,27 +1,25 @@
 import React from 'react';
-const LessonParagraphInput = ({onTextChange, index,section,keyName, isIteratable}) => {
+const LessonParagraphInput = ({onTextChange, index,section,keyName, isIteratable, value}) => {
     const renderInput = (keyName) => {
-        // console.log(keyName);
+        // console.log(value);
         if(keyName === 'paragraphs' || keyName === "directions" || keyName === "tips"){
             return (
             <React.Fragment>
-                <p>{keyName}</p>
-                <textarea className="test__text-area" type="text" onChange={(e) => onTextChange(e, index, section, keyName, isIteratable)}/>
+                <textarea className="input__text" type="text" value={value} onChange={(e) => onTextChange(e, index, section, keyName, isIteratable)}/>
             </React.Fragment>
             );
         } else {
             return (
                 <React.Fragment>
-                    <p>{keyName}</p>
-                    <input type="text" onChange={(e) => onTextChange(e, index, section, keyName, isIteratable)}/>
+                    <input className={`input__text input__text--${keyName}`} type="text" value={value} onChange={(e) => onTextChange(e, index, section, keyName, isIteratable)}/>
                 </React.Fragment>
             )
         }
     }
     return (
-        <div>
+        <React.Fragment>
             {renderInput(keyName)}
-        </div>
+        </React.Fragment>
     )
 }
 export default LessonParagraphInput;
