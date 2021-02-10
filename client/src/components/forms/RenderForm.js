@@ -17,7 +17,7 @@ const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addN
         }
         setSection(sections);
         //select specific section for dev
-        // setIndex(2);
+        setIndex(3);
     }, [sectionIndex, state]);
 
     const changeSection = (moveForward) => {

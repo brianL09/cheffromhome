@@ -3,32 +3,33 @@ const mongoose = require("mongoose");
 
 module.exports = (app) => {
     app.post("/create/new", async (req, res) => {
-        let response  = await Recipe.post
+        console.log('new route hit');
+        // let response  = await Recipe.post
 
-        const {
-            about,
-            basicInfo,
-            beginner,
-            photo,
-            recipe,
-            shopping
-        } = req.body;
+        // const {
+        //     about,
+        //     basicInfo,
+        //     beginner,
+        //     photo,
+        //     recipe,
+        //     shopping
+        // } = req.body;
     
-        const recipeObj = new Recipe({
-            title: basicInfo.title,
-            thumbnail: basicInfo.thumbnail,
-            photos: basicInfo.photos,
-            cookTime: basicInfo.cookTime,
-            about,
-            beginner,
-            photo,
-            recipe,
-            shopping
-        })
+        // const recipeObj = new Recipe({
+        //     title: basicInfo.title,
+        //     thumbnail: basicInfo.thumbnail,
+        //     photos: basicInfo.photos,
+        //     cookTime: basicInfo.cookTime,
+        //     about,
+        //     beginner,
+        //     photo,
+        //     recipe,
+        //     shopping
+        // })
     
-        recipeObj.save((err) => {
-            err;
-        });
+        // recipeObj.save((err) => {
+        //     err;
+        // });
     });
 
     app.get("/recipe/get", async (req, res) => {

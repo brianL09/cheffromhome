@@ -6,7 +6,6 @@ export const onPhotoInput = (file, section, key) => {
     const readSuccess = (e) => {
         //convert array buffer into base64 String to be used in displaying uploaded image
         base64String = btoa(String.fromCharCode(...new Uint8Array(e.target.result)));
-        console.log(base64String.slice(0, 10));
         test(base64String);
     };
 
@@ -17,5 +16,6 @@ export const onPhotoInput = (file, section, key) => {
 }
 
 const test = (f) => {
+    base64String = f;
     return f;
 }
