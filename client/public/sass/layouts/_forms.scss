@@ -3,8 +3,9 @@
     border: .5rem solid silver;
     border-radius: 2.5rem;
     box-shadow: 1.2rem 1.2rem 1.5rem 1.5rem rgba(0,0,0, .4);
-    margin: 0 auto 10rem auto;
-    background: linear-gradient(to right top, rgba($color-white, 0.6), rgba($color-white, .4));
+    margin: 0 auto;
+    // background: linear-gradient(to right top, rgba($color-white, 0.6), rgba($color-white, .4));
+    // background: red;
     max-width: 90rem;
     z-index: 3;
 
@@ -41,6 +42,7 @@
         justify-content: space-around;
         width: 100%;
         padding: 2rem;
+        background: rgba($color-tertiary-1, .4);
 
         &--text{
             flex: 0 0 90%;
@@ -56,44 +58,16 @@
             // border: .2rem solid rgba($color-tertiary-1, 1);
         }
     }
-
-    &__control{
-
-        &--button{
-            width: 4rem;
-            height: 4rem;
-
-            border-radius: 50%;
-            color: $color-white;
-            cursor: pointer;
-            background: linear-gradient(to right top, rgba($color-primary, 1), rgba($color-secondary-1, 1));
-            position: absolute;
-            top: 2rem;
-        }
-
-        &--back{
-            left: 2rem;
-            &:hover{
-                background-color: $color-button-decline;
-            }
-        }
-        &--forward{
-            right: 2rem;
-            &:hover{
-                background-color: $color-button-accept;
-            }
-        }
-    }
 }
 
-@supports (backdrop-filter: blur()){
-    .form{
-        backdrop-filter: blur(1.5rem);
-    }
-}
+// @supports (backdrop-filter: blur()){
+//     .form{
+//         backdrop-filter: blur(1.5rem);
+//     }
+// }
 
-@supports not (backdrop-filter: blur()){
-    .form{
-        background: linear-gradient(to right top, rgba($color-white, 0.9), rgba($color-white, .6));
-    }
-}
+// @supports not (backdrop-filter: blur()){
+//     .form{
+//         background: linear-gradient(to right top, rgba($color-white, 0.9), rgba($color-white, .6));
+//     }
+// }

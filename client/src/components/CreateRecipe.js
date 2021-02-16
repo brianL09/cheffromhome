@@ -1,8 +1,10 @@
 import React from 'react';
+import _ from 'lodash';
+
 import RenderForm from './forms/RenderForm';
 import createRecipe from '../apis/createRecipe';
+import Nav from './navigation/Nav';
 
-import _ from 'lodash';
 
 class CreateLesson extends React.Component{
 constructor(props){
@@ -198,8 +200,9 @@ onPhotoInput = (e, section, key, index, attrb) => {
     render(){
         return(
             <div className="createLesson">
-                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => createRecipe.post()}>GET</div>
-                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => {console.log(this.state.paragraphNumber.photo_photos); console.log(this.state)}}>Show State</div>
+                
+                {/* <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => createRecipe.post()}>GET</div>
+                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => {console.log(this.state.paragraphNumber.photo_photos); console.log(this.state)}}>Show State</div> */}
                 <form className="form">
                     <RenderForm state={this.state} onTextChange={this.onTextChange} onIngredientChange={this.onIngredientChange} onPhotoInput={this.onPhotoInput} addNewInput={this.addNewInput}/>
                 </form>

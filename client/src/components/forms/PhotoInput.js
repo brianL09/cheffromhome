@@ -7,7 +7,7 @@ const PhotoInput = ({onPhotoInput, section, keyName, photo, value, currentImg}) 
         <div className="input__photo form__section--photo" key={`${section}-${keyName}`}>
             {/* <input type="text" value={value[keyName].alt} onChange={(e) => onPhotoInput(e, section, keyName, 0, "alt")}/> */}
             {/* ADD NEW PHOTO */}
-            <label htmlFor={`${section}${keyName}`}><SvgIcon icon="#icon-photo-add" size="2em" fill={"white"} /></label>
+            <label className="icon__container--photo" htmlFor={`${section}${keyName}`}><SvgIcon icon="#icon-photo-add" size="2em" fill={"white"} /></label>
             {keyName === "photos" ? <input className="form__input" id={`${section}${keyName}`} key={Math.random() * 3000} type="file" onChange={e => onPhotoInput(e, section, keyName, currentImg, "src")}/> :
                                     <input className="form__input" id={`${section}${keyName}`} key={Math.random() * 3000} type="file" onChange={e => onPhotoInput(e, section, keyName, 0, "src")}/>}
             <ImageBox photo={photo} onPhotoInput={onPhotoInput} section={section} keyName={keyName}/>

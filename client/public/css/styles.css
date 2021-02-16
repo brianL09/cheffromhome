@@ -42,22 +42,6 @@ input[type=file] {
   display: none;
 }
 
-.input__photo > label {
-  display: inline-block;
-  cursor: pointer;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  background: linear-gradient(to right top, #845ec2, #2c73d2);
-  margin-bottom: 2.5rem;
-  border-radius: 100%;
-  padding: 2rem;
-  transition: all 2s;
-}
-.input__photo > label:hover {
-  background: linear-gradient(to left bottom, #4caf50, #c23931);
-}
 .input__text {
   margin: 0 auto 0.5rem auto;
   border-radius: 3px;
@@ -118,6 +102,10 @@ input[type=file] {
   position: relative;
   margin-bottom: 4rem;
 }
+.input__container--shopping {
+  display: flex;
+  flex-direction: column;
+}
 
 .images__input {
   max-width: 100% !important;
@@ -144,51 +132,143 @@ textarea:focus {
   border: 1px solid red;
 }
 
-.icon__new {
+.icon__container {
   position: absolute;
-  background-color: #4caf50;
-  padding: 1.6rem;
+  padding: 1.54rem;
+  cursor: pointer;
+}
+.icon__container--paragraph {
+  cursor: pointer;
+  bottom: 3.5rem;
+  left: 4.2rem;
   border: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s;
+  border-radius: 4px 0 0 4px;
+  background: linear-gradient(to right top, #845ec2 45%, #2c73d2);
+  transition: background-color 1.6s;
 }
-.icon__new--paragraph {
-  cursor: pointer;
+.icon__container--shopping {
+  background: linear-gradient(to right top, #845ec2 45%, #2c73d2);
+  background-color: #845ec2;
   bottom: 3.5rem;
-  left: 3.98rem;
+  left: 21rem;
+  border-radius: 4px 0 0 4px;
+  transition: all 1s ease;
+}
+.icon__container--recipe {
+  bottom: 2.51rem;
+  left: 4.9rem;
   border-radius: 4px 0 0 4px;
 }
-.icon__new--shopping {
-  bottom: 3.5rem;
-  left: 20.6rem;
-  border-radius: 4px 0 0 4px;
+.icon__container--recipe:hover, .icon__container--paragraph:hover, .icon__container--shopping:hover, .icon__container--photo-add:hover {
+  background-color: white;
+  border-left: 2px solid #845ec2;
+  border-top: 2px solid #845ec2;
+  border-bottom: 2px solid #845ec2;
+  border-radius: 50% 0 0 50%;
 }
-.icon__new--recipe {
-  bottom: 2.49rem;
-  left: 4.5rem;
-  border-radius: 4px 0 0 4px;
+.icon__container--recipe:hover > svg, .icon__container--paragraph:hover > svg, .icon__container--shopping:hover > svg, .icon__container--photo-add:hover > svg {
+  fill: #845ec2;
 }
-.icon__new:hover {
-  background: white;
-  border: 2px solid #4caf50;
+.icon__container--form-control {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(to right top, #845ec2 45%, #2c73d2);
+  position: absolute;
+  top: 2rem;
+  transition: all 0.2s ease-in;
+  box-shadow: 0 0.4rem 0.7rem 0rem rgba(48, 48, 48, 0.6);
 }
-.icon__new:hover > svg {
-  fill: #4CAF50 !important;
+.icon__container--form-control-left {
+  left: 2rem;
 }
-
+.icon__container--form-control-right {
+  right: 2rem;
+}
+.icon__container--form-control::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  background: linear-gradient(to right bottom, #845ec2 45%, #fae64d);
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+.icon__container--form-control:hover {
+  top: 1.9rem;
+  box-shadow: 0 0.6rem 0.7rem 0rem rgba(48, 48, 48, 0.6);
+}
+.icon__container--form-control:active {
+  top: 2.1rem;
+  box-shadow: 0 0.2rem 0.7rem 0rem rgba(48, 48, 48, 0.6);
+}
+.icon__container--form-control:hover::before {
+  opacity: 1;
+}
+.icon__container--form-control:active::before {
+  opacity: 0;
+}
+.icon__container--photo {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  background: linear-gradient(to right top, #845ec2 45%, #2c73d2);
+  margin-bottom: 2.5rem;
+  border-radius: 100%;
+  padding: 2rem;
+  box-shadow: 0 0.4rem 0.7rem 0rem rgba(48, 48, 48, 0.6);
+}
+.icon__container--photo::before {
+  content: "";
+  background: linear-gradient(to right bottom, #845ec2 45%, #fae64d);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.icon__container--photo:hover::before {
+  opacity: 1;
+}
+.icon__arrow-left, .icon__arrow-right, .icon__photo-add {
+  height: 2em;
+  width: 2em;
+  fill: white;
+  transition: fill 0.5s ease-out;
+}
 .icon__add {
-  fill: green;
+  fill: white;
+  height: 1.5em;
+  width: 1.5em;
+  transition: fill 0.8s ease-in;
+}
+.icon__home, .icon__recipe {
+  fill: #303030;
+  height: 2em;
+  width: 2em;
+  transition: 0.8s 0.2s;
 }
 
 .createLesson {
-  max-width: 180rem;
+  max-width: 95vw;
   margin: 0 auto;
-  padding: 0 0 2rem 0;
+  padding: 5rem 0;
   width: 100%;
-  min-height: 100vh;
   height: 100%;
   position: relative;
-  background: linear-gradient(150deg, #845ec2 30%, #0089ba 75%, #008e9b 100%);
+  background: #845ec2;
 }
 .createLesson::before {
   content: "";
@@ -212,8 +292,7 @@ textarea:focus {
   border: 0.5rem solid silver;
   border-radius: 2.5rem;
   box-shadow: 1.2rem 1.2rem 1.5rem 1.5rem rgba(0, 0, 0, 0.4);
-  margin: 0 auto 10rem auto;
-  background: linear-gradient(to right top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4));
+  margin: 0 auto;
   max-width: 90rem;
   z-index: 3;
 }
@@ -243,6 +322,7 @@ textarea:focus {
   justify-content: space-around;
   width: 100%;
   padding: 2rem;
+  background: rgba(250, 230, 77, 0.4);
 }
 .form__section--text {
   flex: 0 0 90%;
@@ -251,39 +331,6 @@ textarea:focus {
   background: #D0D0D0;
   border: 0.2rem solid #C3C3C3;
   border-radius: 3px;
-}
-.form__control--button {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
-  background: linear-gradient(to right top, #845ec2, #2c73d2);
-  position: absolute;
-  top: 2rem;
-}
-.form__control--back {
-  left: 2rem;
-}
-.form__control--back:hover {
-  background-color: #C23931;
-}
-.form__control--forward {
-  right: 2rem;
-}
-.form__control--forward:hover {
-  background-color: #4CAF50;
-}
-
-@supports (backdrop-filter: blur()) {
-  .form {
-    backdrop-filter: blur(1.5rem);
-  }
-}
-@supports not (backdrop-filter: blur()) {
-  .form {
-    background: linear-gradient(to right top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
-  }
 }
 .images-form {
   display: flex;
@@ -317,6 +364,43 @@ textarea:focus {
 }
 .images-form__input {
   width: 100%;
+}
+
+.navigation {
+  width: 100vw;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  background: #2c73d2;
+  border-bottom: 0.3rem solid #303030;
+}
+.navigation__link {
+  color: #845ec2;
+  font-size: 1.7rem;
+  text-decoration: none;
+  display: flex;
+  background: #FAE64D;
+  margin-right: 0.2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 30% 30% 0 0;
+}
+.navigation__link:hover {
+  background: #f9df1b;
+}
+.navigation__link:hover > .navigation__link--label {
+  opacity: 1;
+}
+.navigation__link:hover > .icon__container--navigation > svg {
+  fill: #845ec2;
+}
+.navigation__link--container {
+  display: flex;
+}
+.navigation__link--label {
+  opacity: 0;
+  padding: 0.375em 1rem;
+  transition: opacity 0.8s ease-in;
+  font-family: "Courier New", Courier, monospace;
 }
 
 /*# sourceMappingURL=styles.css.map */

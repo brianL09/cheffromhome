@@ -17,7 +17,7 @@ const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addN
         }
         setSection(sections);
         //select specific section for dev
-        setIndex(3);
+        // setIndex(3);
     }, [sectionIndex, state]);
 
     const changeSection = (moveForward) => {
@@ -56,15 +56,7 @@ const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addN
             value={state[section]}
             />
             // photo input field function
-            const createPhotoInput = (photoCount) => <PhotoInput
-            key={`${section}_${key}`}
-            onPhotoInput={onPhotoInput}
-            section={section}
-            keyName={key}
-            photo={state[section][key]}
-            value={state[section]}
-            currentImg={state.paragraphNumber[photoCount]}
-            />
+            const createPhotoInput = (photoCount) => <PhotoInput            key={`${section}_${key}`}            onPhotoInput={onPhotoInput}            section={section}            keyName={key}            photo={state[section][key]}            value={state[section]}            currentImg={state.paragraphNumber[photoCount]}            />
             
             if(key === "paragraphs" || key === "directions" || key === "tips" || key === "vegetable" || key === "dairy" || key === "meat" || key === "dry"){
                 inputs.push(createTextInput(paraKey));
@@ -83,8 +75,8 @@ const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addN
     return(
         <div className="form__section">
             <div className="form__control">
-                <h1 className="form__control--button  form__control--back" style={{display: "inline-block"}} onClick={() => changeSection()}><SvgIcon icon={"#icon-arrow-left"} size={"1em"} fill={"white"} centered={true}/></h1>
-                <h1 className="form__control--button form__control--forward" style={{display: "inline-block", marginLeft: "2rem"}} onClick={() => changeSection(true)}><SvgIcon icon={"#icon-arrow-right"} size={"1em"} fill={"white"} centered={true}/></h1>
+                <div className="icon__container icon__container--form-control icon__container--form-control-left"  onClick={() => changeSection()}><SvgIcon icon={"#icon-arrow-left"} centered={true}/></div>
+                <div className="icon__container icon__container--form-control icon__container--form-control-right" onClick={() => changeSection(true)}><SvgIcon icon={"#icon-arrow-right"} centered={true}/></div>
             </div>
             {renderSection(section[sectionIndex])}
         </div>

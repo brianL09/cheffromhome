@@ -40,7 +40,7 @@ const IngredientInput = ({onIngredientChange, addNewInput, ingredients}) => {
     return(
         <div className="input__ingredient">
             {renderInputs()}
-            <div className="icon__new icon__new--recipe" onClick={() => addNewInput('rcp_ingredients')}>
+            <div className="icon__container icon__container--recipe" onClick={() => addNewInput('rcp_ingredients')}>
                 <SvgIcon icon={"#icon-add"} fill={"white"} stroke={"silver"} size={"1.5em"} centered={true}/>
             </div>
         </div>
