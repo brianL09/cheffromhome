@@ -1,47 +1,56 @@
 const Recipe = require("../models/Recipe");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
+
+const mongoUtil = require('../utils/mongoUtil');
 
 module.exports = (app) => {
-    app.post("/create/new", async (req, res) => {
-        console.log('new route hit');
-        // let response  = await Recipe.post
-
-        // const {
-        //     about,
-        //     basicInfo,
-        //     beginner,
-        //     photo,
-        //     recipe,
-        //     shopping
-        // } = req.body;
+    mongoUtil.connect((err, client) => {
+        var db = mongoUtil.getDb();
+        var col1 = "recipes"
+        app.post("/create/new", async (req, res) => {
+            // console.log(db);
+            // let response  = await Recipe.post
     
-        // const recipeObj = new Recipe({
-        //     title: basicInfo.title,
-        //     thumbnail: basicInfo.thumbnail,
-        //     photos: basicInfo.photos,
-        //     cookTime: basicInfo.cookTime,
-        //     about,
-        //     beginner,
-        //     photo,
-        //     recipe,
-        //     shopping
-        // })
-    
-        // recipeObj.save((err) => {
-        //     err;
-        // });
-    });
+            // const {
+            //     about,
+            //     basicInfo,
+            //     beginner,
+            //     photo,
+            //     recipe,
+            //     shopping
+            // } = req.body;
+        
+            // const recipeObj = new Recipe({
+            //     title: basicInfo.title,
+            //     thumbnail: basicInfo.thumbnail,
+            //     photos: basicInfo.photos,
+            //     cookTime: basicInfo.cookTime,
+            //     about,
+            //     beginner,
+            //     photo,
+            //     recipe,
+            //     shopping
+            // })
+        
+            const recipeObj = new Recipe({
+                title: "brian",
+            });
 
-    app.get("/recipe/get", async (req, res) => {
-        let arr = [];
-        const response = await Recipe.find({}, {title: 1}).then(res => {
-            res.map(entry => {
-                entry.title.length > 0 ? arr.push(entry) : null
-            })
+            db.collection(col1).insertOne(recipeObj);
+            res.send('added');
         });
 
-        console.log(arr);
-        res.send(arr);
-    });
+        app.get("/recipe/get", async (req, res) => {
+            console.log('recipe get');
+            try {
+                //to get all data from db.collection.find you need to convert to array
+                let response = await db.collection(col1).find({}).toArray();
 
+                console.log(response[0]);
+            } catch(err){
+                console.log('error here:', err);
+            }
+        });
+
+    });
 }

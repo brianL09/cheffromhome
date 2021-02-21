@@ -1,0 +1,24 @@
+.drop-down{
+    position: relative;
+    z-index: 4;
+    &:hover > ul, ul ~ li{
+        visibility: visible;
+        opacity: 1;
+        background: $color-grey-2;
+    }
+    
+    &__drop-down{
+        min-width: 14.5rem;
+        position: absolute;
+        border-right: 2px solid $color-grey-1;
+        border-left: 2px solid $color-grey-1;
+        border-bottom: 2px solid $color-grey-1;
+        right: 0;
+        z-index: 4;
+        padding: .8rem 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .93s ease-in-out;
+        list-style: none;
+    }
+}

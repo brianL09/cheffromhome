@@ -7,30 +7,52 @@ const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5000;
 
+const mongoUtil = require('./utils/mongoUtil.js');
+
 app.use(cors());
 // allows for multiple base64 image strings to be added to the DB
 app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
+app.use(express.urlencoded({extended: true, limit: '50mb'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // mongoose.connect(key);
 
 const Recipe = require('./models/Recipe');
+const User = require('./models/User');
 
-try{
-    mongoose.connect(keys.mongoURI, {
-        useUnifiedTopology: true,
-        useNewUrlParser: true,
-    })
-    console.log("Welcome to the database Mr.Bond...");
-} catch(err){
-    console.log(err);
+// let mongoClient = await MongoClient.connect(keys.mongoURI,
+//     {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+//     },
+
+const isUser = (req, res, next) => {
+    console.log('logstuff fired');
+    next();
+    return true;
+    console.log(req.body.name);
 }
 
+const otherStuff = (req, res, next) => {
+    console.log('other stuff');
+    next();
+}
+
+require("./routes/authenticationRoutes")(app);
 require("./routes/recipeDbRoutes.js")(app);
 
-app.listen(PORT, () => {
-    console.log(`server is listening on PORT: ${PORT}`);
-})
+mongoUtil.connect((err, client) => {
+    //db must be defined inside connect method
+    var db = mongoUtil.getDb();
+
+    app.listen(PORT, () => {
+        console.log(`server is listening on PORT: ${PORT}`);
+    });   
+     
+    app.get("/test", isUser, otherStuff, (req, res) => {
+        let response = db.collection('users').find({});
+    });
+});
+
 
 

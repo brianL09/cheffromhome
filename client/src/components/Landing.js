@@ -15,10 +15,6 @@ class Landing extends React.Component {
     render(){
         return(
             <div style={{}}>
-                SVG
-                <SvgIcon icon={"#icon-close"} size="2em"></SvgIcon>
-                <SvgIcon icon={"#icon-photo-add"} size="3em"></SvgIcon>
-                <SvgIcon icon={"#icon-stopwatch"} size="1em"></SvgIcon>
                 <div onClick={() => this.props.fetchRecipes()}>SUBMIT</div>
                 {/* <Nav></Nav> */}
             </div>

@@ -1,46 +1,81 @@
 .navigation{
-    width: 100vw;
-    padding-top:2rem;
+    padding-top: 3.5rem;
     display: flex;
-    justify-content: space-between;
-    background: $color-secondary-1;
-    border-bottom: .3rem solid $color-grey-2;
-
+    justify-content: center;
+    background: $background-gradient-1;
+    &__container{
+        flex: 0 0 95vw;
+        // background: red;
+    }
+    
     &__link{
-        color: $color-primary;
-        font-size: 1.7rem;
+        color:$color-white;
+        cursor: pointer;
         text-decoration: none;
         display: flex;
-        background: $color-tertiary-1;
-        margin-right: .2rem;
-        padding: 1rem 1.5rem;
-        // clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-        border-radius: 30% 30% 0 0;
+        position: relative;
+        padding: .1rem .5rem;
+        
+        &--active {
+            fill: $color-tertiary-1;
+        }
+        
+        &::before{
+            content:"";
+            height: 2px;
+            background-color: $color-tertiary-1;
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            transition: all .4s ease-in-out;
+        }
 
-        &:hover{
+        &:hover::before{
             background: darken($color-tertiary-1, 10%);
+            width: 90%;
         }
 
         &:hover > &--label{
-            opacity: 1;
+            color: $color-tertiary-1;
         }
         &:hover > .icon__container--navigation > svg{
-            fill: $color-primary;
+            fill: $color-tertiary-1;
         }
 
         &--container{
             display: flex;
+            justify-content: flex-end;
+            list-style: none;
+
+
         }
 
         &--label{
-            opacity: 0;
+            opacity: 1;
             padding: .375em 1rem;
-            transition: opacity .8s ease-in;
-            font-family: $font-heading-primary;
+            transition: all .4s ease-in-out;
+            font-family: $font-text-primary;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            font-weight: 300;
         }
 
-        &__search{
-
-        }
+        
     }
+    
+    &__search{
+        background: slateblue;
+    }
+    &__logo{
+        width: 7rem;
+        height: 7rem;
+        background-image: url('./../images/cooking_logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 1rem;
+        position: absolute;
+        top: -.25rem;
+        left: 2vw;
+    }
+
 }

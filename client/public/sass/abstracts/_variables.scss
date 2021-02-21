@@ -23,8 +23,10 @@ $box-shadow-1: 0 .4rem .7rem 0rem rgba($color-grey-2, .6);
 //sizes
 $icon-size-small: 1.5em;
 $icon-size-medium: 2em;
+$icon-size-large: 2.5em;
 //transitions
 $icon-transition-15: all .1s ease-in;
 //backgrounds
 $icon-gradient-1: linear-gradient(to right top, rgba($color-primary, 1) 45%, rgba($color-secondary-1, 1));
 $icon-gradient-2: linear-gradient(to right bottom, rgba($color-primary, 1) 45%, rgba($color-tertiary-1, 1));
+$background-gradient-1: linear-gradient(to right top, rgba($color-primary, 1) 30%, rgba($color-secondary-1, 1));

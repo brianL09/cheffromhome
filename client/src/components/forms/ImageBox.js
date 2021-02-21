@@ -15,9 +15,9 @@ const ImageBox = ({photo, onPhotoInput, section, keyName}) => {
         } else {
             photo.map((img, index)=> {
                 return result.push(
-                    <div className="images-form__image-box" key={img.src.slice(0,9), index}>
+                    <div className="images-form__image-box" key={img.src.slice(0,9) + index}>
                         <div className="images-form__container--input">
-                            {img.alt.length > 0 ? <h2 className="form__header--secondary"></h2> : <h2 className="form__header--secondary">Briefly describe the image</h2>} 
+                            {img.alt.length > 0 ? <h2 className="form__header--secondary">""</h2> : <h2 className="form__header--secondary">Briefly describe the image</h2>} 
                             <input type="text" className="images-form__input" onChange={(e) => onPhotoInput(e,section,keyName, index, "alt")}/>
                         </div>
                         <div className="images-form__container--image">

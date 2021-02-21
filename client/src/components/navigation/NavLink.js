@@ -2,16 +2,17 @@ import {NavLink as Link} from 'react-router-dom';
 import React from 'react';
 import SvgIcon from '../icons/SvgIcon';
 
-const NavLink = ({target, label, icon}) => {
+const NavLink = ({target, label, icon, dropdown}) => {
+
     return (
-        <React.Fragment>
-            <Link className="navigation__link" to={target}>
+        <li >
+            <Link className={`navigation__link`} exact activeClassName="navigation__link--active" to={target}>
                 <div className="icon__container--navigation">
-                    <SvgIcon icon={`#icon-${icon}`}></SvgIcon>
+                    <SvgIcon icon={`#icon-${icon}`} path={target}></SvgIcon>
                 </div>
                 <h3 className="navigation__link--label">{label}</h3>
             </Link>
-        </React.Fragment>
+        </li>
     )
 }
 

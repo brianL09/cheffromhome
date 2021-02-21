@@ -134,22 +134,22 @@ textarea:focus {
 
 .icon__container {
   position: absolute;
-  padding: 1.54rem;
+  padding: 1.6rem;
   cursor: pointer;
 }
 .icon__container--paragraph {
   cursor: pointer;
   bottom: 3.5rem;
-  left: 4.2rem;
+  left: 4rem;
   border: 2px solid transparent;
   border-radius: 4px 0 0 4px;
   background: linear-gradient(to right top, #845ec2 45%, #2c73d2);
-  transition: background-color 1.6s;
+  transition: all 1s ease;
 }
 .icon__container--shopping {
   background: linear-gradient(to right top, #845ec2 45%, #2c73d2);
   background-color: #845ec2;
-  bottom: 3.5rem;
+  border: 2px solid transparent;
   left: 21rem;
   border-radius: 4px 0 0 4px;
   transition: all 1s ease;
@@ -157,17 +157,19 @@ textarea:focus {
 .icon__container--recipe {
   bottom: 2.51rem;
   left: 4.9rem;
+  border: 2px solid transparent;
   border-radius: 4px 0 0 4px;
+  background: linear-gradient(to right top, #845ec2 45%, #2c73d2);
+  transition: all 1s ease;
 }
 .icon__container--recipe:hover, .icon__container--paragraph:hover, .icon__container--shopping:hover, .icon__container--photo-add:hover {
-  background-color: white;
   border-left: 2px solid #845ec2;
   border-top: 2px solid #845ec2;
   border-bottom: 2px solid #845ec2;
   border-radius: 50% 0 0 50%;
 }
 .icon__container--recipe:hover > svg, .icon__container--paragraph:hover > svg, .icon__container--shopping:hover > svg, .icon__container--photo-add:hover > svg {
-  fill: #845ec2;
+  fill: #4CAF50;
 }
 .icon__container--form-control {
   width: 4rem;
@@ -254,21 +256,164 @@ textarea:focus {
   width: 1.5em;
   transition: fill 0.8s ease-in;
 }
-.icon__home, .icon__recipe {
-  fill: #303030;
+.icon__home, .icon__recipe, .icon__create, .icon__about, .icon__user, .icon__user_add, .icon__logout {
+  fill: #838383;
   height: 2em;
   width: 2em;
-  transition: 0.8s 0.2s;
+  transition: 0.5s ease-out;
+}
+.icon__close {
+  fill: #FAE64D;
+  height: 2.5em;
+  width: 2.5em;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  transition: all 0.5s ease-in;
+  cursor: pointer;
+}
+.icon__close:hover {
+  fill: #C23931;
+}
+
+.drop-down {
+  position: relative;
+  z-index: 4;
+}
+.drop-down:hover > ul, .drop-down ul ~ li {
+  visibility: visible;
+  opacity: 1;
+  background: #303030;
+}
+.drop-down__drop-down {
+  min-width: 14.5rem;
+  position: absolute;
+  border-right: 2px solid #838383;
+  border-left: 2px solid #838383;
+  border-bottom: 2px solid #838383;
+  right: 0;
+  z-index: 4;
+  padding: 0.8rem 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.93s ease-in-out;
+  list-style: none;
+}
+
+.modal {
+  position: fixed;
+  font-family: "Proza Libre", sans-serif;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  background: rgba(48, 48, 48, 0.6);
+  z-index: 50;
+  display: block;
+}
+.modal__container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  background: #303030;
+  border: 2px solid #FAE64D;
+  border-radius: 3px;
+  z-index: 100;
+}
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+}
+.modal__form--heading {
+  text-align: center;
+  margin-bottom: 5.5rem;
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 200;
+  color: white;
+}
+.modal__form--heading-secondary {
+  text-transform: capitalize;
+}
+.modal__form--label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0.5rem 1.8rem;
+  width: 10rem;
+  position: absolute;
+  left: 0;
+  transition: all 0.5s ease-in;
+}
+.modal__form--input {
+  margin: 0 auto 2.5rem auto;
+  width: 50%;
+  position: relative;
+}
+.modal__form--input > input {
+  font-family: "Proza Libre", sans-serif !important;
+  padding: 0.5rem 1.8rem;
+  width: 100%;
+  font-size: 1.3rem !important;
+  border-radius: 3px;
+  margin: 0 auto;
+}
+.modal__form--input > input:focus ~ label {
+  transform: translateY(2.8rem);
+  color: #FAE64D;
+}
+.modal__button {
+  text-align: center;
+  flex: 1;
+  margin: 1rem 0;
+  color: white;
+}
+.modal__button--submit {
+  text-align: center;
+  background: #4CAF50;
+  padding: 0.75rem 1.5rem;
+  max-width: 10rem;
+  border: 2px solid #3d8b40;
+  border-radius: 3px;
+  color: white;
+  margin: 1.5rem auto 3rem auto;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.5s ease-in-out;
+}
+.modal__button--submit:hover {
+  background: #845ec2;
+  border: 2px solid #6a41ac;
+  color: #FAE64D;
+}
+.modal__button--toggle {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: #FAE64D;
+  border-bottom: 1px solid transparent;
+  transition: all 0.5s ease-in-out;
+  text-align: center;
+  display: inline-block;
+}
+.modal__button--toggle:hover {
+  border-bottom: 1px solid white;
+  color: white;
 }
 
 .createLesson {
   max-width: 95vw;
   margin: 0 auto;
   padding: 5rem 0;
-  width: 100%;
-  height: 100%;
   position: relative;
-  background: #845ec2;
+  background: #303030;
 }
 .createLesson::before {
   content: "";
@@ -322,7 +467,8 @@ textarea:focus {
   justify-content: space-around;
   width: 100%;
   padding: 2rem;
-  background: rgba(250, 230, 77, 0.4);
+  background: white;
+  border-radius: 2.3rem;
 }
 .form__section--text {
   flex: 0 0 90%;
@@ -367,40 +513,71 @@ textarea:focus {
 }
 
 .navigation {
-  width: 100vw;
-  padding-top: 2rem;
+  padding-top: 3.5rem;
   display: flex;
-  justify-content: space-between;
-  background: #2c73d2;
-  border-bottom: 0.3rem solid #303030;
+  justify-content: center;
+  background: linear-gradient(to right top, #845ec2 30%, #2c73d2);
+}
+.navigation__container {
+  flex: 0 0 95vw;
 }
 .navigation__link {
-  color: #845ec2;
-  font-size: 1.7rem;
+  color: white;
+  cursor: pointer;
   text-decoration: none;
   display: flex;
-  background: #FAE64D;
-  margin-right: 0.2rem;
-  padding: 1rem 1.5rem;
-  border-radius: 30% 30% 0 0;
+  position: relative;
+  padding: 0.1rem 0.5rem;
 }
-.navigation__link:hover {
+.navigation__link--active {
+  fill: #FAE64D;
+}
+.navigation__link::before {
+  content: "";
+  height: 2px;
+  background-color: #FAE64D;
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  transition: all 0.4s ease-in-out;
+}
+.navigation__link:hover::before {
   background: #f9df1b;
+  width: 90%;
 }
 .navigation__link:hover > .navigation__link--label {
-  opacity: 1;
+  color: #FAE64D;
 }
 .navigation__link:hover > .icon__container--navigation > svg {
-  fill: #845ec2;
+  fill: #FAE64D;
 }
 .navigation__link--container {
   display: flex;
+  justify-content: flex-end;
+  list-style: none;
 }
 .navigation__link--label {
-  opacity: 0;
+  opacity: 1;
   padding: 0.375em 1rem;
-  transition: opacity 0.8s ease-in;
-  font-family: "Courier New", Courier, monospace;
+  transition: all 0.4s ease-in-out;
+  font-family: "Proza Libre", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+.navigation__search {
+  background: slateblue;
+}
+.navigation__logo {
+  width: 7rem;
+  height: 7rem;
+  background-image: url("./../images/cooking_logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  position: absolute;
+  top: -0.25rem;
+  left: 2vw;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -13,6 +13,7 @@ input:not([type=submit]):not([type=file]):focus {
     border-bottom: 2px solid rgba($color-button-decline, 1);
 }
 
+
 input[type=file]{
     display: none;
 }

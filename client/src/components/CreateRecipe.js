@@ -2,8 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 
 import RenderForm from './forms/RenderForm';
-import createRecipe from '../apis/createRecipe';
-import Nav from './navigation/Nav';
+// import createRecipe from '../apis/createRecipe';
 
 
 class CreateLesson extends React.Component{

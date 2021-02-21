@@ -1,7 +1,7 @@
 .icon{
     &__container{
         position: absolute;
-        padding: 1.54rem;
+        padding: 1.6rem;
         // border: 2px solid transparent;
         cursor: pointer;
         // transition: all .2s;
@@ -9,17 +9,18 @@
         &--paragraph{
             cursor: pointer;
             bottom: 3.5rem;
-            left: 4.2rem;
+            left: 4rem;
             border: 2px solid transparent;
             border-radius: 4px 0 0 4px;
             background: $icon-gradient-1;
-            transition: background-color 1.6s;
+            transition: all 1s ease;
         }
 
         &--shopping{
             background: $icon-gradient-1;
             background-color: $color-primary;
-            bottom: 3.5rem;
+            border: 2px solid transparent;
+            // bottom: 3.5rem;
             left: 21rem;
             border-radius: 4px 0 0 4px;
             // transition: border-radius 1.1s ease-in;
@@ -29,18 +30,21 @@
         &--recipe{
             bottom: 2.51rem;
             left: 4.9rem;
+            border: 2px solid transparent;
             border-radius: 4px 0 0 4px;
+            background: $icon-gradient-1;
+            transition: all 1s ease;
         }
     
         &--recipe:hover, &--paragraph:hover, &--shopping:hover, &--photo-add:hover{
-            background-color: $color-white;
+            // background: $color-white;
             border-left: 2px solid $color-primary;
             border-top: 2px solid $color-primary;
             border-bottom: 2px solid $color-primary;
             border-radius: 50% 0 0 50%;
 
             & > svg {
-                fill: $color-primary;
+                fill: $color-button-accept;
             }
         }
 
@@ -146,14 +150,29 @@
         transition: fill .8s ease-in;
     }
 
-    &__home, &__recipe{
-        fill:$color-grey-2;
+    //NAVIGATION ICONS
+    &__home, &__recipe, &__create, &__about, &__user, &__user_add, &__logout{
+        fill:rgba($color-grey-1, 1);
         height: $icon-size-medium;
         width: $icon-size-medium;
-        transition: .8s .2s;
+        transition: .5s ease-out;
         // position: absolute;
         // top: 50%;
         // right: -1.8rem;
         // transform: translateY(-50%);
+    }
+
+    &__close{
+        fill: $color-tertiary-1; 
+        height: $icon-size-large;
+        width: $icon-size-large;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        transition: all .5s ease-in;
+        cursor: pointer;
+        &:hover{
+            fill: $color-button-decline;
+        }
     }
 }

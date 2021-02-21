@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import IngredientInput from './IngredientInput';
-import PhotoInput from './PhotoInput';
 import TextInput from './TextInput';
+import PhotoInput from './PhotoInput';
 import SvgIcon from '../icons/SvgIcon';
 
 const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addNewInput}) => {
@@ -10,14 +10,12 @@ const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addN
 
     useEffect(() => {
         let sections = [];
-        for(let section in state){
-            if(section !== "paragraphNumber"){
-                sections = [...sections, section];
+        for(let key in state){
+            if(key !== "paragraphNumber"){
+                sections = [...sections, key];
             }
         }
         setSection(sections);
-        //select specific section for dev
-        // setIndex(3);
     }, [sectionIndex, state]);
 
     const changeSection = (moveForward) => {
@@ -26,13 +24,13 @@ const RenderForm = ({state, onTextChange, onIngredientChange, onPhotoInput, addN
         } else if(sectionIndex <= 0 && !moveForward){
             return setIndex(section.length - 1);
         } else {
-            moveForward ? setIndex(prevState => prevState + 1) : setIndex(prevState => prevState - 1);
+            moveForward ? setIndex(prevState => prevState += 1) : setIndex(prevState => prevState -= 1);
         }
     }
 
     const renderSection = (section) => {
         let inputs = [];
-        // console.log(state.paragraphNumber);
+
         inputs.push(<div key={section} className="form__header u-margin-bottom-medium"><h1 className="form__header--primary">{section === "basicInfo" ? "BASIC INFO" : section.toUpperCase()}</h1></div>);
         for(let key in state[section]){
             var paraKey = `${section}_${key}`;
