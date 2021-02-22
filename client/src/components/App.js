@@ -1,10 +1,11 @@
 // import logo from './logo.svg';
 import React from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
+import { connect } from 'react-redux';
 import Landing from './Landing';
 import CreateRecipe from './CreateRecipe';
-import RunTests from  './RunTests';
 import Nav from './navigation/Nav';
+import * as actions from '../actions';
 
 class App extends React.Component{
   render(){
@@ -13,11 +14,11 @@ class App extends React.Component{
         <Nav />
         <Route exact path="/" component={Landing}></Route>
         <Route exact path="/create" component={CreateRecipe}></Route>
-        <Route exact path="/test" component={RunTests}></Route>
+        <Route exact path="/test" component={Landing}></Route>
       </Router>
     )
   }
 }
 
 
-export default App;
+export default connect(null, actions)(App);

@@ -4,13 +4,11 @@ const IngredientInput = ({onIngredientChange, addNewInput, ingredients}) => {
     console.log('hello ing');
     const createFieldInput = (ingredient, index) => {
         let input = [];
-        // let placeholders = ["Onions", "50", "g", "Vegetable"];
         let placeholders = ["Ingredient", "Qty", "Unit", "Food Type"]
         
         let i = 0;
         
         for(let key in ingredient){
-            console.log(ingredient[key]);
             input.push(<input 
                 key={`${key}${index}`}
                 type="text"
@@ -21,13 +19,11 @@ const IngredientInput = ({onIngredientChange, addNewInput, ingredients}) => {
             />)
             i++;
         }
-
         return input;
     }
 
     const renderInputs = () => {
         let output = [];
-        console.log('render ing');
         // for each ingredient in list
         for(let i = 0; i < ingredients.length; i++){
         //wrap the return input field from createFieldInput in a containing div

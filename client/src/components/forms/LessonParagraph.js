@@ -1,7 +1,6 @@
 import React from 'react';
 const LessonParagraphInput = ({onTextChange, index,section,keyName, isIteratable, value}) => {
     const renderInput = (keyName) => {
-        // console.log(value);
         if(keyName === 'paragraphs' || keyName === "directions" || keyName === "tips"){
             return (
             <React.Fragment>

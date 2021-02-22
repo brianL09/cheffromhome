@@ -17,10 +17,11 @@ module.exports = (app) => {
             } else {
                 try{
                     const hashedPassword  = await bcrypt.hash(req.body.password, 10);
-                    const newUser = {name: req.body.name, email: req.body.email, password: hashedPassword}
-                
+                    const newUser = {name: req.body.name, email: req.body.email, password: hashedPassword, recipes: [{title: "hello"}]};
+                    const trimmedUser = {...newUser}
                     db.collection(col2).insertOne(newUser);
-                    res.send();
+                    delete trimmedUser.password;
+                    res.send(trimmedUser);
                 } catch(err) {
                     throw err;
                 }
@@ -30,17 +31,19 @@ module.exports = (app) => {
         app.post("/authentication/login", async (req, res) => {
             //find user
             let user = await db.collection(col2).findOne({email: req.body.email});
-            console.log(user);
             //compare input pw vs saved pw
             if(user){
-                const decrypt = await bcrypt.compare(req.body.password, user.password);
-                console.log('user');
-                res.send(user);
+                const validPassword = await bcrypt.compare(req.body.password, user.password);
+                delete user.password;
+                validPassword ? res.send(user) : res.send("Incorrect password"); 
             } else {
-                console.log('no match');
-                // res.status(401);
-                res.send();
+                res.send("Sorry. We don't have a record of your email");
             }
+        });
+
+        app.get("/authentication/clear", async (req, res) => {
+            db.collection(col2).remove();
+            res.send();
         });
 
     });

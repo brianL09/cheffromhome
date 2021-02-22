@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
+import recipeReducer from './recipeReducer';
+import authReducer from './authReducer';
 
-const recipeReducer = ( recipe=[{title: "Brownie"}], action) => {
-    if(action.type === "FETCH_RECIPES"){
-        return [{title: 'Brownie'}];
-    }
-    
-    return recipe;
-}
+
+
 
 export default combineReducers({
-    recipe: recipeReducer
+    recipe: recipeReducer,
+    auth: authReducer
 });

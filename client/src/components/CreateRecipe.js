@@ -150,7 +150,6 @@ onPhotoInput = (e, section, key, index, attrb) => {
     var reader = new FileReader();
     let copyState = _.cloneDeep(this.state[section]);
     let photoObj = {src: "", alt: ""};
-    console.log('index: ', index);
     
     if(attrb === "alt"){
         if(key === "photos"){
@@ -199,9 +198,6 @@ onPhotoInput = (e, section, key, index, attrb) => {
     render(){
         return(
             <div className="createLesson">
-                
-                {/* <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => createRecipe.post()}>GET</div>
-                <div style={{fontSize: "3rem", border: ".1rem solid black", display: "inline-block"}} onClick={() => {console.log(this.state.paragraphNumber.photo_photos); console.log(this.state)}}>Show State</div> */}
                 <form className="form">
                     <RenderForm state={this.state} onTextChange={this.onTextChange} onIngredientChange={this.onIngredientChange} onPhotoInput={this.onPhotoInput} addNewInput={this.addNewInput}/>
                 </form>

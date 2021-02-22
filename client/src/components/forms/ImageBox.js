@@ -25,8 +25,7 @@ const ImageBox = ({photo, onPhotoInput, section, keyName}) => {
                         </div>
                     </div>
                 )
-            })
-
+            });
             //prevent empty img object from rendering (from passed down state)
             result.splice(-1);
         }
