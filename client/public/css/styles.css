@@ -23,6 +23,14 @@ html {
   transform: translate(-50%, -50%);
 }
 
+.button__submit {
+  padding: 1rem;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  background: #845ec2;
+}
+
 input:not([type=submit]):not([type=file]) {
   color: #303030;
   font-family: "Courier New", Courier, monospace;
@@ -68,7 +76,7 @@ input[type=file] {
   border-right: 1px solid #838383;
   margin-bottom: 0.5rem;
 }
-.input__ingredient--ingName {
+.input__ingredient--name {
   display: inline-block;
   max-width: 35%;
   text-align: center;
@@ -311,6 +319,7 @@ textarea:focus {
   background: rgba(48, 48, 48, 0.6);
   z-index: 50;
   display: block;
+  color: #303030;
 }
 .modal__container {
   position: absolute;
@@ -321,6 +330,7 @@ textarea:focus {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30%;
+  min-width: 45rem;
   background: #303030;
   border: 2px solid #FAE64D;
   border-radius: 3px;
@@ -346,11 +356,15 @@ textarea:focus {
 .modal__form--label {
   font-size: 1.3rem;
   font-weight: 600;
-  padding: 0.5rem 1.8rem;
+  padding: 0.6rem 1.8rem;
   width: 10rem;
   position: absolute;
   left: 0;
   transition: all 0.5s ease-in;
+}
+.modal__form--label-active {
+  transform: translateY(2.8rem);
+  color: #FAE64D;
 }
 .modal__form--input {
   margin: 0 auto 2.5rem auto;
@@ -365,9 +379,11 @@ textarea:focus {
   border-radius: 3px;
   margin: 0 auto;
 }
+.modal__form--input > input:focus {
+  border-bottom: 0.4rem solid #FAE64D !important;
+}
 .modal__form--input > input:focus ~ label {
-  transform: translateY(2.8rem);
-  color: #FAE64D;
+  color: rgba(48, 48, 48, 0.6);
 }
 .modal__button {
   text-align: center;
@@ -406,6 +422,15 @@ textarea:focus {
 .modal__button--toggle:hover {
   border-bottom: 1px solid white;
   color: white;
+}
+
+.error {
+  background: white;
+  width: 80%;
+  margin: 2rem auto 0 auto;
+  padding: 2rem 0;
+  color: #C23931;
+  text-transform: none;
 }
 
 .createLesson {

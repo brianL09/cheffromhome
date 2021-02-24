@@ -2,7 +2,8 @@
 // import axios from 'axios';
 import React from 'react';
 import { connect } from "react-redux";
-// import submitForm from '../apis/createLessonAPI';
+// import  {auth} from '../apis/authentication';
+import {api} from '../apis';
 // import SvgIcon from './icons/SvgIcon';
 import * as actions from '../actions/index.js';
 
@@ -14,7 +15,8 @@ class Landing extends React.Component {
     }
     render(){
         return(
-            <div onClick={this.props.signOut}>
+            <div onClick={() => api.auth.get(`/user/`)}>
+            
                 fff
                 {/* <div onClick={() => this.props.fetchRecipes()}>SUBMIT</div> */}
                 {/* <Nav></Nav> */}

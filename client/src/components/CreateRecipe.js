@@ -2,8 +2,8 @@ import React from 'react';
 import _ from 'lodash';
 
 import RenderForm from './forms/RenderForm';
-// import createRecipe from '../apis/createRecipe';
-
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class CreateLesson extends React.Component{
 constructor(props){
@@ -44,7 +44,7 @@ constructor(props){
             yield: 0,
             ingredients: [
                 {
-                    ingName: "",
+                    name: "",
                     quantity: "",
                     unit: "",
                     type: "",
@@ -110,7 +110,7 @@ addNewInput = (section) => {
     if(section === "rcp_ingredients"){
         // add new instance of ingredient obj to state when adding to
         let ingObj = {
-            ingName: "",
+            name: "",
             quantity: "",
             unit: "",
             type: ""
@@ -199,11 +199,17 @@ onPhotoInput = (e, section, key, index, attrb) => {
         return(
             <div className="createLesson">
                 <form className="form">
+                    <div className="button__submit" onClick={() => this.props.submitRecipe(this.state, this.props.user)}>
+                        Review and Submit
+                    </div>
                     <RenderForm state={this.state} onTextChange={this.onTextChange} onIngredientChange={this.onIngredientChange} onPhotoInput={this.onPhotoInput} addNewInput={this.addNewInput}/>
                 </form>
             </div>
         )
     }
 }
-
-export default CreateLesson;
+function mapStateToProps(state){
+    // console.log(state);
+    return {user: state.auth.user};
+}
+export default connect(mapStateToProps, actions)(CreateLesson);

@@ -4,10 +4,12 @@
 @import "base/base";
 @import "base/utilities";
 //COMPONENTS
+@import "components/buttons";
 @import "components/inputs";
 @import "components/icons";
 @import "components/drop-down";
 @import "components/modal";
+@import "components/errors";
 
 //LAYOUTS
 @import "layouts/createLesson";

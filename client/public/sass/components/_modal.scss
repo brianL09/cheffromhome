@@ -9,7 +9,8 @@
     background: rgba($color-grey-2, .6);
     z-index: 50;
     display: block;
-    
+    color: $color-grey-2;
+
     &__container{
         position: absolute;
         display: flex;
@@ -19,6 +20,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 30%;
+        min-width: 45rem;
         // height: 30%;
         background: $color-grey-2;
         border: 2px solid $color-tertiary-1;
@@ -51,11 +53,16 @@
             // display: none;
             font-size: 1.3rem;
             font-weight: 600;
-            padding:0.5rem 1.8rem;
+            padding:0.6rem 1.8rem;
             width: 10rem;
             position: absolute;
             left: 0;
             transition: all .5s ease-in;
+
+            &-active{
+                transform: translateY(2.8rem);
+                color: $color-tertiary-1;
+            }
         }
         &--input{
             // background: red;
@@ -72,9 +79,14 @@
                 // background: red !important;
                 margin: 0 auto;
 
+                &:focus{
+                    border-bottom: .4rem solid $color-tertiary-1 !important;
+                }
+
                 &:focus ~ label{
-                    transform: translateY(2.8rem);
-                    color: $color-tertiary-1;
+                    color: rgba($color-grey-2, .6);
+                    // transform: translateY(2.8rem);
+                    // color: $color-tertiary-1;
                     // left: 0;
                     // display: inline-block;
                 }
