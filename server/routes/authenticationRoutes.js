@@ -27,6 +27,7 @@ module.exports = (app) => {
                     res.send(newUser);
                 } catch(err) {
                     throw err;
+                    res.send();
                 }
             }
         });

@@ -16,10 +16,7 @@ module.exports = (app) => {
                 shopping,
                 photo,
             } = req.body.recipe;
-
             const author = { author: req.body.author.author, userid: req.body.author.userid};
-            let posted = new Date();
-            console.log(author);
 
             const recipeObj = new Recipe({
                 basicInfo,
@@ -28,13 +25,12 @@ module.exports = (app) => {
                 photo,
                 recipe,
                 author,
-                posted: posted.toUTCString()
+                posted: new Date().toUTCString()
             });
 
-            console.log(recipeObj);
-
             db.collection(recipesCollection).insertOne(recipeObj);
-            db.collection(userCollection).update({_id: ObjectId(author.userid)}, {$push: {recipes: recipeObj}})
+            db.collection(userCollection).update({_id: ObjectId(author.userid)}, {$push: {recipes: recipeObj}});
+            res.send();
         });
 
         app.get("/recipe/get", async (req, res) => {
