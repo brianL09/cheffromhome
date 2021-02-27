@@ -1,0 +1,9 @@
+.button{
+    &__submit{
+        padding: 1rem;
+        position: absolute;
+        top: 2rem;
+        left: 0;
+        background: $color-primary;
+    }
+}

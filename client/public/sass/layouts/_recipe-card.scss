@@ -1,0 +1,28 @@
+.recipe-card{
+background: white;
+border: 3px solid blue;
+display: flex;
+flex: 0 1 55rem;
+
+margin-right: 5rem;
+margin-bottom: 2rem;
+
+@include respond("tab-port"){
+    // width: 2rem !important;
+    border: 3px solid red;
+    flex: 1 2 100%;
+}
+
+& > h3 {
+    background: white;
+    flex: 1;
+}
+    &__image{
+        width: 12rem;
+        padding:0.5rem 1rem;
+        background: green;
+        &--image{
+            width: 100%;
+        }
+    }
+}

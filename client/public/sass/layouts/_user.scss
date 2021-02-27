@@ -1,0 +1,43 @@
+.user{
+    background: chartreuse;
+    display: flex;
+
+    &__settings{
+        flex: 1;
+        min-width: 35rem;
+        word-wrap: break-word;
+        background: grey;
+    }
+
+    &__navigation{
+        background: red;
+        flex: 0 1 25rem;
+        // min-width: 25rem;
+
+        @include respond("tab-port"){
+            background: blue;
+            flex: 0 1 0;
+            width: 0;
+        }
+    }
+
+    &__content{
+        padding: 2rem 5rem 0 5rem;
+        background: chartreuse;
+
+        @include respond("phone"){
+            padding: 0 1.5rem;
+        }
+        &--recipes{
+            display: flex;
+            flex: 0 1 100%;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+        }
+    }
+
+    &__setting{
+        margin-bottom: 2rem;
+    }
+}
