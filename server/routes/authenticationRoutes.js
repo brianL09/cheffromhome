@@ -6,7 +6,7 @@ const ObjectId = require('mongodb').ObjectID;
 
 module.exports = (app) => {
     mongoUtil.connect((err, client) => {
-        if(err) throw err;
+        if(err) console.log("BRIAN HI");
         var db = mongoUtil.getDb();
         var userCollection = "users";
 

@@ -42,6 +42,7 @@ require("./routes/authenticationRoutes")(app);
 require("./routes/recipeDbRoutes.js")(app);
 
 mongoUtil.connect((err, client) => {
+    console.log("BRIAN HI")
     //db must be defined inside connect method
     var db = mongoUtil.getDb();
 
