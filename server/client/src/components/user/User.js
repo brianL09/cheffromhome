@@ -47,7 +47,7 @@ class User extends React.Component{
                                     </div>
                                     <div className="user__settings">
                                         <div className="heading">
-                                            <h1 className="heading__primary u-center-text">User Settings {this.props.user.username}</h1>
+                                            <h1 className="heading__primary u-center-text">User Settings for: {this.props.user.username}</h1>
                                             <h2 className="heading__secondary u-center-text">Change your settings. Edit and Delete your recipes</h2>
                                         </div>
                                         <div className="user__setting">

@@ -27,22 +27,6 @@ html {
   text-align: center;
 }
 
-.heading {
-  background: white;
-  font-family: "Proza Libre", sans-serif;
-}
-.heading__secondary {
-  font-weight: 600;
-  font-size: 2.2rem;
-}
-.heading__tertiary {
-  font-size: 1.8rem;
-  font-weight: 300;
-}
-.heading__tertiary > span {
-  font-weight: 500;
-}
-
 .button__submit {
   padding: 1rem;
   position: absolute;

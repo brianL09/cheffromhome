@@ -11,6 +11,7 @@ module.exports = (app) => {
         var userCollection = "users";
 
         app.post("/authentication/register", async (req, res) => {
+            console.log('register route');
             // Search DB for email match to see if user exsists
             let user = await db.collection(userCollection).findOne({email: req.body.email});
         
