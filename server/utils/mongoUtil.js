@@ -8,7 +8,7 @@ module.exports = {
         MongoClient.connect(keys.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
             if(err){console.log("BRIAN HERddE:", keys)}
             _db = client.db('recipe');
-            return callback(err);
+            return callback(client, err);
         });
     },
     getDb: function(){
