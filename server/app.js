@@ -41,18 +41,21 @@ const otherStuff = (req, res, next) => {
 require("./routes/authenticationRoutes")(app);
 require("./routes/recipeDbRoutes.js")(app);
 
-mongoUtil.connect((err, client) => {
-    //db must be defined inside connect method
-    var db = mongoUtil.getDb();
+if (process.env.NODE_ENV === "production") {
+    // Express will serve up production assets
+    // like our main.js file, or main.css file
+    app.use(express.static("client/build"));
+    console.log('in production');
+    const path = require("path");
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+  }
 
     app.listen(PORT, () => {
         console.log(`server is listening on PORT: ${PORT}`);
     });   
      
-    app.get("/test", isUser, otherStuff, (req, res) => {
-        let response = db.collection('users').find({});
-    });
-});
 
 
 
