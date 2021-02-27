@@ -5,3 +5,4 @@ export const SIGN_IN = "SIGN_IN";
 export const SIGN_IN_FAILURE = "SIGN_IN_FAILURE";
 export const SIGN_OUT = "SIGN_OUT"
 export const SUBMIT_RECIPE = "SUBMIT_RECIPE";
+export const SUBMIT_FAILURE = "SUBMIT_FAILURE";

@@ -1,7 +1,9 @@
 // const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
 const mongoUtil = require('../utils/mongoUtil');
+const ObjectId = require('mongodb').ObjectID;
+
+
 module.exports = (app) => {
     mongoUtil.connect((err, client) => {
         if(err) throw err;
@@ -27,7 +29,6 @@ module.exports = (app) => {
                     res.send(newUser);
                 } catch(err) {
                     throw err;
-                    res.send();
                 }
             }
         });
@@ -46,7 +47,7 @@ module.exports = (app) => {
         });
 
         app.get("/authentication/user/:id", async (req, res) => {
-            const response = await db.collection(userCollection).findOne({}, {_id: req.params.id});
+            const response = await db.collection(userCollection).findOne({_id: ObjectId(req.params.id)});
             res.send(response);
         });
 

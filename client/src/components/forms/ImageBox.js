@@ -9,7 +9,7 @@ const ImageBox = ({photo, onPhotoInput, section, keyName}) => {
                                 <input className="images-form__input" type="text" onChange={(e) => onPhotoInput(e, section, keyName, 0, "alt")}/>
                             </div>
                             <div className="images-form__container--image">
-                                <img className="images-form__image" alt="wowie" src={`data:image/png;base64, ${photo.src}`}/>
+                                <img className="images-form__image" alt="wowie" src={photo.src}/>
                             </div>
                         </div>);
         } else {
@@ -21,7 +21,7 @@ const ImageBox = ({photo, onPhotoInput, section, keyName}) => {
                             <input type="text" className="images-form__input" onChange={(e) => onPhotoInput(e,section,keyName, index, "alt")}/>
                         </div>
                         <div className="images-form__container--image">
-                            <img className="images-form__image" src={`data:image/png;base64, ${img.src}`} alt={img.src || ''}/>
+                            <img className="images-form__image" src={img.src} alt={img.src || ''}/>
                         </div>
                     </div>
                 )

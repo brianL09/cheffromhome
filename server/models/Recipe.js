@@ -8,6 +8,18 @@ const ingredients = new Schema({
     type: String
 });
 
+const photo = new Schema({
+    src: String,
+    alt: String
+});
+
+const comment = new Schema({
+    username: String,
+    userid: String,
+    posted: String,
+    edited: {type: String, default: "n/a"}
+});
+
 const recipeSchema = new Schema({
     author: {
         author: String,
@@ -18,15 +30,14 @@ const recipeSchema = new Schema({
     basicInfo: {
         title: String,
         cookTime: String,
-        thumbnail: String,
-        photos: Array,
+        thumbnail: photo,
+        photos: [photo],
     },
     about: {
         title:String,
         difficulty: String,
-        mainphoto: String,
+        photo: photo,
         paragraphs: Array,
-        //add photo array
     },
     recipe: {
         directions:Array,
@@ -42,8 +53,11 @@ const recipeSchema = new Schema({
     },
     beginner:{
         paragraphs: Array,
-        photos: Array,
+        photos: [photo],
     },
+    comments:{
+        comments : [comment],
+    }
 });
 
 module.exports = mongoose.model('Recipe', recipeSchema, "recipes");

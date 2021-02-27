@@ -98,6 +98,14 @@ input[type=file]{
             display: flex;
             flex-direction: column;
         }
+
+        &--password{
+            width: 100%;
+
+            & > input {
+                width: 100%;
+            }
+        }
     }
 }
 

@@ -3,7 +3,8 @@ import React from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Landing from './Landing';
-import CreateRecipe from './CreateRecipe';
+import CreateRecipe from './recipes/CreateRecipe';
+import User from './user/User';
 import Nav from './navigation/Nav';
 import * as actions from '../actions';
 
@@ -13,7 +14,9 @@ class App extends React.Component{
       <Router>
         <Nav />
         <Route exact path="/" component={Landing}></Route>
-        <Route exact path="/create" component={CreateRecipe}></Route>
+        <Route exact path="/create/new" component={CreateRecipe}></Route>
+        <Route exact path="/user/settings" component={User}></Route>
+        <Route exact path="/recipe/edit/:id" component={CreateRecipe}></Route>
         <Route exact path="/test" component={Landing}></Route>
       </Router>
     )

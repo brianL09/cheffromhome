@@ -132,6 +132,23 @@
                 opacity: 1;
             }
         }
+
+        &--password{
+            // background: yellow;
+            padding: 0 0.2rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0.5rem;
+
+            &-dark > svg{
+                fill: $color-primary;
+            }
+
+            &-light > svg{
+                fill: lighten($color-primary, 25%);
+            }
+        }
     }
 
     //SVG ICON STYLES
@@ -174,5 +191,11 @@
         &:hover{
             fill: $color-button-decline;
         }
+    }
+
+    &__password{
+        // fill: red;
+        height: $icon-size-medium;
+        width: $icon-size-medium;
     }
 }

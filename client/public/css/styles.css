@@ -23,6 +23,26 @@ html {
   transform: translate(-50%, -50%);
 }
 
+.u-center-text {
+  text-align: center;
+}
+
+.heading {
+  background: white;
+  font-family: "Proza Libre", sans-serif;
+}
+.heading__secondary {
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+.heading__tertiary {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+.heading__tertiary > span {
+  font-weight: 500;
+}
+
 .button__submit {
   padding: 1rem;
   position: absolute;
@@ -113,6 +133,12 @@ input[type=file] {
 .input__container--shopping {
   display: flex;
   flex-direction: column;
+}
+.input__container--password {
+  width: 100%;
+}
+.input__container--password > input {
+  width: 100%;
 }
 
 .images__input {
@@ -252,6 +278,19 @@ textarea:focus {
 .icon__container--photo:hover::before {
   opacity: 1;
 }
+.icon__container--password {
+  padding: 0 0.2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.5rem;
+}
+.icon__container--password-dark > svg {
+  fill: #845ec2;
+}
+.icon__container--password-light > svg {
+  fill: #cbbae5;
+}
 .icon__arrow-left, .icon__arrow-right, .icon__photo-add {
   height: 2em;
   width: 2em;
@@ -282,6 +321,10 @@ textarea:focus {
 }
 .icon__close:hover {
   fill: #C23931;
+}
+.icon__password {
+  height: 2em;
+  width: 2em;
 }
 
 .drop-down {
@@ -329,8 +372,8 @@ textarea:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30%;
-  min-width: 45rem;
+  width: 50rem;
+  min-width: 40rem;
   background: #303030;
   border: 2px solid #FAE64D;
   border-radius: 3px;
@@ -603,6 +646,73 @@ textarea:focus {
   position: absolute;
   top: -0.25rem;
   left: 2vw;
+}
+
+.user {
+  background: chartreuse;
+  display: flex;
+}
+.user__settings {
+  flex: 1;
+  min-width: 35rem;
+  word-wrap: break-word;
+  background: grey;
+}
+.user__navigation {
+  background: red;
+  flex: 0 1 25rem;
+}
+@media (max-width: 56.5em) {
+  .user__navigation {
+    background: blue;
+    flex: 0 1 0;
+    width: 0;
+  }
+}
+.user__content {
+  padding: 2rem 5rem 0 5rem;
+  background: chartreuse;
+}
+@media (max-width: 37.5em) {
+  .user__content {
+    padding: 0 1.5rem;
+  }
+}
+.user__content--recipes {
+  display: flex;
+  flex: 0 1 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.user__setting {
+  margin-bottom: 2rem;
+}
+
+.recipe-card {
+  background: white;
+  border: 3px solid blue;
+  display: flex;
+  flex: 0 1 55rem;
+  margin-right: 5rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 56.5em) {
+  .recipe-card {
+    border: 3px solid red;
+    flex: 1 2 100%;
+  }
+}
+.recipe-card > h3 {
+  background: white;
+  flex: 1;
+}
+.recipe-card__image {
+  width: 12rem;
+  padding: 0.5rem 1rem;
+  background: green;
+}
+.recipe-card__image--image {
+  width: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */

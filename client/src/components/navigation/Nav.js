@@ -5,43 +5,27 @@ import LogOut from '../authentication/LogOut';
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import * as actions from '../../actions';
+import {Cookie} from '../../utils/cookie';
 
 class Nav extends React.Component{
     state = {
-        loggedIn: this.props.auth.isSignedIn,
-        // user: {userid:}
+        user:  undefined,
     }
 
     componentDidMount(){
-        // checks if a user cookie exists and updates the store
-        if(this.handleCookie("_id")){
-            this.props.fetchUser(this.handleCookie("_id"))
+        // checks if a user cookie exists and signs them in
+        if(Cookie.find("_id")){
+            this.props.fetchUser(Cookie.find("_id"));
         }
     }
     
     componentDidUpdate(){
         // causes re render on redux state change
-        if(this.props.auth.isSignedIn !== this.state.loggedIn ){
-            this.setState({loggedIn: this.props.auth.isSignedIn});
+        if(this.props.auth.user !== this.state.user){
+            this.setState({user: this.props.auth.user});
         }
-        
     }
 
-    handleCookie = (cookieName, exact) => { 
-        let result = document.cookie
-                .split("; ")
-                .find(row => { 
-                    if(exact && row === cookieName){
-                        return true;
-                    } else {
-                        return row.startsWith(`${cookieName}=`);
-                    }
-                }
-            );
-        if (result) return result.split("=")[1];
-        return undefined;
-    }
-    
     render(){
         return(
             <header className="navigation">
@@ -49,15 +33,15 @@ class Nav extends React.Component{
                 <nav className="navigation__container">
                     <ul className="navigation__link--container">
                         <NavLink target="/" label="Home" icon="home"></NavLink>
-                        <NavLink target="/test" label="About" icon="about"></NavLink>
-                        { this.props.auth.isSignedIn ? <div className="drop-down">
-                            <NavLink activeLink={true} target="/create" label={`${this.handleCookie("username")}`} icon="user" dropdown={true}/>
+                        <NavLink target="/recipe/123" label="About" icon="about"></NavLink>
+                        { this.props.auth.user ? <div className="drop-down">
+                            <NavLink activeLink={true} target="/create" label={this.props.auth.user.username} icon="user" dropdown={true}/>
                             <ul className="drop-down__drop-down">
                                 <NavLink target="/create" label="Create Recipe" icon="create"/>
-                                <NavLink target="/edit" label="Edit Recipes" icon="recipe"/>
+                                <NavLink target="/user/settings" label="Settings" icon="recipe"/>
                                 <LogOut loggedIn={this.props.isSignedIn} click={this.props.signOut}/>
                             </ul>
-                        </div> : <LogInPopup signIn={this.props.signIn} register={this.props.register} name={this.handleCookie("username")} error={this.props.auth.message} click={this.toggleUserStatus}/>}
+                        </div> : <LogInPopup signIn={this.props.signIn} register={this.props.register} name={Cookie.find("username")} error={this.props.auth.message} click={this.toggleUserStatus}/>}
                     </ul>
                 </nav>
             </header>

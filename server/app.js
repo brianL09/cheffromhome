@@ -12,7 +12,7 @@ const mongoUtil = require('./utils/mongoUtil.js');
 app.use(cors());
 // allows for multiple base64 image strings to be added to the DB
 app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({extended: true, limit: '50mb'}));
+app.use(express.urlencoded({extended: true, limit: '250mb'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // mongoose.connect(key);
