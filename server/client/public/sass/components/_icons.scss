@@ -149,6 +149,14 @@
                 fill: lighten($color-primary, 25%);
             }
         }
+
+        &--edit{
+            background: green;
+            display: inline-block;
+            cursor: pointer;
+            // margin-left: 1.5rem;
+            padding: .5rem;
+        }
     }
 
     //SVG ICON STYLES
@@ -197,5 +205,11 @@
         // fill: red;
         height: $icon-size-medium;
         width: $icon-size-medium;
+    }
+
+    &__edit{
+        fill: blue;
+        height: $icon-size-large;
+        width: $icon-size-large;
     }
 }

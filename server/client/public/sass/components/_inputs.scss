@@ -30,6 +30,11 @@ input[type=file]{
         }
     }
 
+    &__edit{
+        padding-bottom: 2rem;
+        display: flex;
+    }
+
     &__ingredient{ 
         position: relative;
         background-color: lighten($color-grey-1, 30%);

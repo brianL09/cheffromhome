@@ -62,6 +62,10 @@ input[type=file] {
   max-width: 7rem !important;
   text-align: center;
 }
+.input__edit {
+  padding-bottom: 2rem;
+  display: flex;
+}
 .input__ingredient {
   position: relative;
   background-color: #d0d0d0;
@@ -275,6 +279,12 @@ textarea:focus {
 .icon__container--password-light > svg {
   fill: #cbbae5;
 }
+.icon__container--edit {
+  background: green;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.5rem;
+}
 .icon__arrow-left, .icon__arrow-right, .icon__photo-add {
   height: 2em;
   width: 2em;
@@ -309,6 +319,11 @@ textarea:focus {
 .icon__password {
   height: 2em;
   width: 2em;
+}
+.icon__edit {
+  fill: blue;
+  height: 2.5em;
+  width: 2.5em;
 }
 
 .drop-down {
@@ -642,6 +657,17 @@ textarea:focus {
   word-wrap: break-word;
   background: grey;
 }
+.user__settings--edit {
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-family: "Proza Libre", sans-serif;
+  background: #845ec2;
+  padding: 1rem;
+}
+.user__settings--edit > span {
+  text-transform: uppercase;
+  font-weight: 600;
+}
 .user__navigation {
   background: red;
   flex: 0 1 25rem;
@@ -655,7 +681,7 @@ textarea:focus {
 }
 .user__content {
   padding: 2rem 5rem 0 5rem;
-  background: chartreuse;
+  background: yellow;
 }
 @media (max-width: 37.5em) {
   .user__content {
@@ -668,7 +694,7 @@ textarea:focus {
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.user__setting {
+.user__setting:not(:last-of-type) {
   margin-bottom: 2rem;
 }
 
