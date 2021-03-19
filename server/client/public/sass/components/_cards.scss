@@ -1,0 +1,116 @@
+.card{
+
+    @include respond("phone"){
+        min-width: 30rem;
+        min-height: 45rem;
+    }
+
+    position: relative;
+    
+    &__recipe{
+        display: flex;
+        width: 30rem;
+        height: 45rem;
+        flex-direction: column;
+        font-family: $font-text-primary;
+        justify-content: flex-end;
+        margin-bottom: 4rem;
+        margin-right: 4rem;
+        border: 3px solid $color-primary;
+        border-radius: 3px;
+
+        @include respond(tab-land){
+            background: purple;
+            margin: 0 1rem 4rem 1rem;
+        }
+        &::after{
+            content:"";
+            width: 100%;
+            height: 33%;
+            background: $background-gradient-1;
+            border-bottom: 4px solid red;
+            position: absolute;
+            top: 0;
+        }
+        
+        &--heading{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background: $color-white;
+            & > h1 {
+                padding: 0 0.5rem;
+                background: $color-tertiary-1;
+                flex: 1 0 100%;
+            }
+
+            & > h4{
+                padding: 0 0.5rem;
+                background: white;
+                margin-right: 2rem;
+                padding: 0.5rem 0;
+            }
+        }
+
+        &--image{
+            width: 15rem;
+            height: 15rem;
+            border-radius: 50%;
+            border: 2px solid $color-white;
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            z-index: 2;
+            & > img {
+                width: 100%;
+                height: 100%;
+        
+            }
+        }
+
+        &--content{
+            flex: 0 0 55%;
+            & > p {
+                padding: 0 .5rem;
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    &__link{
+        &--full{
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+    }
+}
+
+.search{
+    &__results{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: $color-grey-1;
+        border: 2px solid teal;
+        width: 95%;
+        margin: 0 auto;
+        padding: 2rem 15%;
+
+        @media(max-width: 100rem){
+            background: pink;
+            padding: 2rem 10rem;
+            align-items: center;
+        }
+
+        @include respond("tab-phone"){
+            padding: 2rem;
+        }
+    }
+}

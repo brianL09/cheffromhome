@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import EditInput from '../forms/EditInput';
+import RecipeCard from '../recipes/RecipeCard';
 
 class User extends React.Component{
     constructor(props){
@@ -20,49 +21,43 @@ class User extends React.Component{
             this.setState({ username: user.username,
                             email: user.email,
                             _id: user._id,
-                            password: user.password
             });
         } 
     }
 
+    getUser = async (id) => {
+        let fetchedUser = await this.props.fetchUser(id);
+        return fetchedUser;
+    }
+
     componentDidMount(){
         let { user } = this.props;
-        if(user){
+        console.log('mounted: ', user);
+        if(user){          
             this.setState({
                 username: user.username,
                 email: user.email,
                 _id: user._id,
-                password: user.password
             });
         }
     }
-
-    
-
-    
+     
     renderContent(section){
         let result = [];
         let { user } = this.props;
         if(section){
             for(let i = 0; i < user[section].length; i++){
-                result.push(<div className="recipe-card" key={i}>
-                                <div className="recipe-card__image">
-                                    <img className="recipe-card__image--image" alt={user[section][i].basicInfo.thumbnail.alt} src={user[section][i].basicInfo.thumbnail.src}/>
-                                </div>
-                                <div className="recipe-card__content">
-                                    <h3 className="heading__secondary">{user[section][i].basicInfo.title}</h3>
-                                    <h4 className="heading__tertiary">{user[section][i].about.paragraphs[0]}</h4>
-                                </div>
-                            </div>);
+                result.push(<RecipeCard key={i} data={user[section][i]}/>);
             }
         } else {
             for(let key in user){
-                if(typeof user[key] === "string" && key !== "_id"){
-                    result.push(<EditInput value={this.state[key]} section={key} onChange={this.onInputChange} key={key}>
-                                    <h3 className="heading__tertiary user__settings--edit"><span>{key}</span>: {this.state[key]}</h3>
+                if(typeof user[key] === "string" && key !== "_id" && key !== "password"){
+                    result.push(<EditInput value={this.state[key]} id={user._id} section={key} onChange={this.onInputChange} key={key}>
+                                    <h3 className="heading__secondary user__settings--edit"><span>{key}</span>: {this.state[key]}</h3>
                                 </EditInput>);
                 }
             }
+            result.push(<EditInput id={this.state._id} password={true}  setPassword={this.setPassword} key="editPassword"><h3 className="heading__secondary user__settings--edit">Edit Password</h3></EditInput>)
         }
         return result;
     }
@@ -75,44 +70,49 @@ class User extends React.Component{
             [section]: e.target.value
         });
     }
+
+    setPassword = (password) => {
+        this.setState({
+            ...this.state,
+            password: password
+        })
+    }
+
     render(){
         return(
             <React.Fragment>
-            {this.state.username ?  <div className="user">
-                                    <div className="user__navigation" onClick={() => console.log(this.state)}>
-                                        <div className="heading">
-                                            <h1 className="heading__primary">User Options Nav</h1>
-                                            {this.state.email}
-                                        </div>
-                                    </div>
-                                    <div className="user__settings">
-                                        <div className="heading">
-                                            <h1 className="heading__primary u-center-text">User Settings for: {this.props.user.username}</h1>
-                                            <h2 className="heading__secondary u-center-text">Change your settings. Edit and Delete your recipes</h2>
-                                        </div>
-                                        <div className="user__setting">
-                                            <div className="heading">
-                                                <h1 className="heading u-center-text">Basic Info</h1>
-                                            </div>
-                                            <div className="user__content">
-                                                {this.renderContent()}
-                                            </div>
-                                        </div>
-                                        <div className="user__setting">
-                                            <div className="heading">
-                                                <h1 className="heading__primary u-center-text">Recipes</h1>
-                                            </div>
-                                            <div className="user__content user__content--recipes">
-                                                {this.renderContent("recipes")}
-                                                {this.renderContent("recipes")}
-                                                {this.renderContent("recipes")}
-                                                {this.renderContent("recipes")}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> : 
-                                <div><h1 className="heading__primary">You must be logged in to change your settings.</h1></div>
-                            }
+            {this.state.username ?
+                <div className="user">
+                    <div className="user__settings">
+                        <div className="heading">
+                            <h1 onClick={() => console.log(this.state)} className="heading__primary u-center-text">Welcome {this.state.username}</h1>
+                            <h2 className="heading__tertiary u-center-text">View and modify your settings and recipes.</h2>
+                        </div>
+                        <div className="user__setting">
+                            <div className="heading">
+                                <h1 className="heading__secondary u-margin-bottom-medium u-center-text">Basic Info</h1>
+                            </div>
+                            <div className="user__content">
+                                {this.renderContent()}
+                            </div>
+                        </div>
+                        <div className="user__setting">
+                            <div className="heading">
+                                <h1 className="heading__secondary u-margin-bottom-medium u-center-text">Recipes</h1>
+                            </div>
+                            <div id="test" className="user__content user__content--recipes">
+                                {this.renderContent("recipes")}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="user__settings--btn"><h3 className="btn__submit" onClick={() => this.props.updateUser(this.state)}>Update Settings</h3></div> 
+                </div>
+                :
+                <div>
+                    <h1 className="heading__primary">You must be logged in to change your settings.</h1>
+                </div>
+        }
+        
             </React.Fragment>
         )
     }

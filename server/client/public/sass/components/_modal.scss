@@ -7,7 +7,7 @@
     height: 100vh;
     margin: 0 auto;
     background: rgba($color-grey-2, .6);
-    z-index: 50;
+    z-index: 500000;
     display: block;
     color: $color-grey-2;
 
@@ -24,7 +24,7 @@
         background: $color-grey-2;
         border: 2px solid $color-tertiary-1;
         border-radius: 3px;
-        z-index: 100;    
+        z-index: 500001;
     }
 
     &__form{

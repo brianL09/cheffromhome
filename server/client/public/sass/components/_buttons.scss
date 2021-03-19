@@ -7,3 +7,112 @@
         background: $color-primary;
     }
 }
+
+.btn{
+    &__toggle{
+        height: 3rem;
+        width: 3rem;
+        border: 2px solid $color-grey-2;
+        background-color: $color-primary;
+        position: absolute;
+        visibility: hidden;
+        left: 25rem;
+        top: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5001;
+        &:hover{
+            cursor: pointer;
+        }
+
+        @include respond("tab-land"){
+            visibility: visible;
+            transition: height 3s, top .5s ease-in, width 3s;
+            left: 1rem;
+            top: 1rem;
+            border-radius: 3px;
+
+            &--close{
+                top: -5rem;
+                background-color: $color-button-decline;
+                border: 2px solid $color-grey-1;
+                
+                & > div{
+                    background-color: transparent;
+
+                    &::before{
+                        transform: rotate(45deg);
+                        top: 0;
+                        left: 0;
+                    }
+
+                    &::after{
+                        transform: rotate(-45deg);
+                        top: 0;
+                        left: 0;
+                    }
+
+                }
+            }
+        }
+    }
+
+    &__submit{
+        background: $color-button-accept;
+        color:$color-white;
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        cursor: pointer;
+        border-radius: 3px;
+        font-family: $font-text-primary;
+        font-size: 1.4rem;
+        font-weight: 300;
+        // border:2px solid transparent;
+    
+        &:hover{
+            background: $color-primary;
+            color:$color-tertiary-1;
+            // border:2px solid $color-tertiary-1;
+        }
+    }
+}
+
+.hamburger{
+    height: 2px;
+    width: 80%;
+    background: $color-white;
+    position: relative;
+    transition: transform .2s ease-in, background-color .3s;
+
+    &::before{
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: $color-white;
+        position: absolute;
+        bottom: 6px;
+        transform: rotate(0);
+        transition: inherit;
+    }
+
+    &::after{
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: $color-white;
+        position: absolute;
+        bottom: -6px;
+        transform: rotate(0);
+        transition: inherit;
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

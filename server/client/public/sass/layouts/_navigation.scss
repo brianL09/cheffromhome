@@ -3,6 +3,11 @@
     display: flex;
     justify-content: center;
     background: $background-gradient-1;
+
+    @include respond("phone"){
+        padding-top:6rem;
+    }
+
     &__container{
         flex: 0 0 95vw;
         // background: red;
@@ -73,9 +78,14 @@
         background-size: contain;
         background-repeat: no-repeat;
         padding: 1rem;
-        position: absolute;
+        position: fixed;
+        z-index:20000;
         top: -.25rem;
         left: 2vw;
+
+        @include respond("tab-land"){
+            position: absolute;
+        }
     }
 
 }

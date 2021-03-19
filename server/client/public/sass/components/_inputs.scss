@@ -1,8 +1,7 @@
 input:not([type=submit]):not([type=file]) {
     color: $color-grey-2;
-    font-family: $font-heading-primary;
-    font-weight: 600;
-    font-size: 2rem;
+    font-family: $font-text-primary;
+    font-weight: 300;
     padding: .5rem 1.8rem;
     border: none;
     border-bottom: 2px solid transparent;
@@ -10,9 +9,8 @@ input:not([type=submit]):not([type=file]) {
 
 input:not([type=submit]):not([type=file]):focus {
     outline: none;
-    border-bottom: 2px solid rgba($color-button-decline, 1);
+    border-bottom: 2px solid rgba($color-primary, 1);
 }
-
 
 input[type=file]{
     display: none;
@@ -31,8 +29,25 @@ input[type=file]{
     }
 
     &__edit{
-        padding-bottom: 2rem;
+        // padding-bottom: 2rem;
         display: flex;
+        max-width: 40rem;
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+
+        &:not(:last-of-type){
+            margin-bottom: 2rem;
+        }
+        &--column{
+            flex-direction: column;
+            // margin: 0 auto;
+        }
+
+        & > input {
+            width: 100% !important;
+            font-size: 1.5rem;
+        }
     }
 
     &__ingredient{ 
@@ -89,7 +104,6 @@ input[type=file]{
     &__container{
         &--header{
             color: $color-grey-2;
-            font-size: 2.5rem;
             letter-spacing: 2px;
             margin-bottom: 3rem;
         }

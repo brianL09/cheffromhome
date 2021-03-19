@@ -1,17 +1,14 @@
-// const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const mongoUtil = require('../utils/mongoUtil');
 const ObjectId = require('mongodb').ObjectID;
 
 
 module.exports = (app) => {
-    mongoUtil.connect((err, client) => {
-        if(err) console.log("BRIAN HI");
+    mongoUtil.connect((client) => {
         var db = mongoUtil.getDb();
         var userCollection = "users";
 
         app.post("/authentication/register", async (req, res) => {
-            console.log('register route');
             // Search DB for email match to see if user exsists
             let user = await db.collection(userCollection).findOne({email: req.body.email});
         
@@ -50,6 +47,14 @@ module.exports = (app) => {
         app.get("/authentication/user/:id", async (req, res) => {
             const response = await db.collection(userCollection).findOne({_id: ObjectId(req.params.id)});
             res.send(response);
+        });
+
+        app.get("/authentication/verify/password", async (req, res) => {
+            // console.log("veryify ID: ", req.query);
+            let user = await db.collection(userCollection).findOne({_id: ObjectId(req.query.userId)});
+            console.log(user);
+            const validPassword = await bcrypt.compare(req.query.password, user.password);
+            validPassword ? res.send(true) : res.send(); 
         });
 
         app.get("/authentication/clear", async (req, res) => {

@@ -6,6 +6,6 @@ import authReducer from './authReducer';
 
 
 export default combineReducers({
-    recipe: recipeReducer,
+    recipes: recipeReducer,
     auth: authReducer
 });

@@ -1,6 +1,6 @@
 @mixin respond($breakpoint){
     @if $breakpoint == phone{
-        @media(max-width: 37.5em){
+        @media(max-width: 36.5em){
             @content;
         }
     };
@@ -15,3 +15,11 @@
         }
     }
 }
+
+@mixin clearfix {
+    &::after{
+     content: "";
+     display: table;
+     clear: both;
+    }
+  }

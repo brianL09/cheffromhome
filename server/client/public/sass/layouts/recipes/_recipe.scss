@@ -1,0 +1,350 @@
+.recipe{
+    background: palegreen;
+    display: flex;
+    min-height: 93vh;
+    width: 95vw;
+    margin: 0 auto;
+    position: relative;
+
+    &__navigation{
+        background: $color-grey-2;
+        width: 30%;
+        max-width: 25rem;
+        position: relative;
+
+        &--links{
+            list-style: none;
+            font-family: $font-text-primary;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: $color-white;
+            position: fixed;
+            top: 8rem;
+            padding: 0 2rem;
+
+            &::before{
+                content:"Sections";
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                color: $color-tertiary-1;
+                left: 4rem;
+                margin-bottom: 3rem;
+                font-size: 2rem;
+            }
+
+            & > li {
+                position: relative;
+                transition: all .6s ease-in-out;
+                &::after{
+                    content:"";
+                    width: 0;
+                    height: 2px;
+                    background-color: $color-tertiary-1;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    transition: all 0.4s ease-in-out;
+                }
+
+                &:hover {
+                    color: $color-tertiary-1;
+                    cursor: pointer;
+                    &::after{
+                        width: 100%;
+                    }
+                }
+            }
+            & > li:not(:last-of-type){
+                margin-bottom: 3rem;
+            }
+        }
+
+        @include respond("tab-land"){
+            background: none;
+            &--mobile-background{
+                width: 3rem;
+                height: 3rem;
+                position: relative;
+                border-radius: 50%;
+                background: $background-gradient-1;
+                z-index: 2000;
+                transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1);
+
+                &-hidden{
+                    animation: fadeOut .8s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+                    transform: scale(1);
+                    top: 7.3rem;
+                    left: 2rem;
+
+                    & + .recipe__navigation--links{
+                        & > li::after{
+                            animation: shrinkX 1s forwards;
+                        }
+                    }
+                }
+
+                &-show{
+                    opacity: 1;
+                    transform: scale(90);
+
+                    & + .recipe__navigation--links{
+                        opacity: 1;
+                        left: 50%;
+                        top: 45%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+            }
+
+            &--hidden{
+                width: 6rem;
+                height: 6rem;
+                position: absolute;
+                transition: opacity 1s 4s;
+                opacity: 1;
+                z-index: 2000000;
+            }
+
+            &--full{
+                position: fixed;
+                width: 6rem;
+                height: 6rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                visibility: visible;
+                z-index:30000;
+            }
+
+            &--links{
+                position: fixed;
+                left: -50%;
+                top: -50%;
+                transform: translate(-50%, -50%);
+                transition: opacity 4s, left 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                opacity: 0;
+                z-index: 2001;
+                font-size: 2rem;
+                text-align: left;
+                &::before{
+                    font-size: 2.8rem;
+                    text-align: center;
+                }
+                & > li {
+                    color: $color-white;
+                    padding: 1rem 2rem 0.5rem 2rem;
+                    text-align: center;
+                    position: relative;
+
+                    &:not(:last-of-type){
+                        margin-bottom: 2rem;
+                    }
+                    &::after{
+                        content: "";
+                        width: 0%;
+                        height: 3px;
+                        background: $color-tertiary-1;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        animation: growX 1s 2.3s forwards;
+                    }
+                }
+            }
+        }
+    }
+
+    &__content{
+        background: $color-grey-1;
+        padding: 5rem 0;
+        flex: 1;
+        position: relative;
+        
+        & > * {
+            position: relative;
+            z-index: 20020;
+            color: $color-grey-2;
+        }
+
+        // &::after{
+        //     content: "";
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     z-index: 0;
+        //     background: $color-tertiary-1;
+        //     width: 100%;
+        //     height:45%;
+        //     clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+        // }
+
+    }
+}
+
+.section{
+    font-family: $font-text-primary;
+
+    &__heading{
+        position: relative;
+        width: 100%;
+
+        z-index: 20001;
+
+        &--sub-container{
+            display: flex;
+        }
+        @include respond("tab-land"){
+            width: 100%;
+        }
+    }
+
+    &__about{
+        &--text{
+            font-size: 1.4rem;
+            max-width: 70ch;
+        }
+
+        &--shopping{
+            width: 100%;
+            max-width: 120rem; 
+            background: $color-white;
+            margin-top: 15rem;
+        }
+
+        &--image{
+            width: 35rem;
+            float: left;
+            shape-outside: polygon(100% -4%, 100% 110%, -6px 110%, 0px -4%);
+            @include clearfix;
+            
+            & > img {
+                width: 90%; 
+                margin: 0 auto;
+            }
+
+            @include respond("tab-land"){
+                shape-outside: polygon(100.00% 0, 100% 85%, 2.62% 85%, 9px 0);
+                align-items: baseline;
+                min-height: 0;
+                margin:0 auto 4rem auto;
+            }
+            
+            @include respond("tab-port"){
+                display: flex;
+                justify-content: center;
+            }
+
+            @include respond("phone"){
+                float: unset;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@keyframes delayVisibility{
+    99%{
+        visibility: visible;
+    }
+    100%{
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeOut{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes growX{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes shrinkX{
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0;
+    }
+}
+
+
+.difficulty{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 50%;
+    top: 0;
+    right: 5rem;
+    height: 2rem;
+    width: 2rem;
+    background-color: $color-white;
+    @include respond("phone"){
+        right: 2rem;
+        top: -3.5rem;
+    }
+
+    & > h3{
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $color-white;
+    }
+    
+    & h4 {
+        font-size: 1.1rem;
+    }
+    
+    & > *{
+        color: $color-grey-2;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+}
+
+.easy{
+    box-shadow: 0 0 0 1.1rem lighten($color-green, 10%),
+                0 0 0 2.1rem $color-green,
+                3px 4px 1.5rem 2.6rem $color-white;
+    background: lighten($color-green, 20%);
+}
+.medium{
+    box-shadow: 0 0 0 1.1rem lighten($color-orange, 10%),
+                0 0 0 2.1rem $color-orange,
+                3px 4px 1.5rem 2.6rem $color-white;
+    background: lighten($color-orange, 20%);
+}
+.hard{
+    box-shadow: 0 0 0 1.1rem lighten($color-red, 7%),
+                0 0 0 2.8rem $color-red,
+                3px 4px 1.5rem 3rem $color-white;
+    background: lighten($color-red, 14%);
+}
+
+.clip-path{
+    &__about{
+        position: absolute;
+        top: -5rem;
+        left: 0;
+        z-index: -1;
+        background: $color-tertiary-1;
+        width: 100%;
+        height:45%;
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+    }
+}

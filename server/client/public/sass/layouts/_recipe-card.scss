@@ -1,28 +1,113 @@
 .recipe-card{
-background: white;
-border: 3px solid blue;
-display: flex;
-flex: 0 1 55rem;
+    display: flex;
+    flex: 0 1 45%;
+    background: $color-white;
+    border:3px solid lighten($color-primary, 10%);
+    min-width: 40rem;
+    text-decoration: none;
+    color: $color-grey-2;
+    margin-bottom: 2.5rem;
+    position: relative;
 
-margin-right: 5rem;
-margin-bottom: 2rem;
-
-@include respond("tab-port"){
-    // width: 2rem !important;
-    border: 3px solid red;
-    flex: 1 2 100%;
-}
-
-& > h3 {
-    background: white;
-    flex: 1;
-}
-    &__image{
-        width: 12rem;
-        padding:0.5rem 1rem;
-        background: green;
-        &--image{
-            width: 100%;
-        }
+    @include respond("tab-land"){
+        min-width: 52rem;
     }
+    @include respond("phone"){
+        min-width: 100%;
+        max-width: 39rem;
+    }
+
+&__content{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    @include respond("phone"){
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    &--heading{
+        font-size: 2.5rem;
+        padding: .5rem 1rem;
+        background: $color-primary;
+        font-family: $font-text-primary;
+        font-weight: 300;
+        width:100%;
+        // border-bottom: 1px solid $color-grey-2;
+        color: $color-tertiary-1;
+    }
+    &--content{
+        // background-color: hotpink;
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+        padding: 1.12rem 2.25rem;
+    }
+}
+
+&__links{
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s ease-in;
+    max-width: 14rem;
+
+    &--link{
+        background: $color-primary;
+        padding: .5rem .5rem .25rem .5rem;
+        margin-top: .5rem;
+        z-index: 50;
+        // border-radius: 50%;
+        & a > svg{
+            fill: $color-white;
+        }
+        &:hover a > svg{
+            // fill: $color-button-accept;
+            fill: $color-tertiary-1;
+            // stroke-width: 1px;
+        }
+        // margin: 0 .75rem;
+    }
+}
+&:hover > &__links{
+    visibility: visible;
+    opacity: 1;
+
+    &::after{
+        content: "";
+        background: lighten($color-primary, 10%);
+        border-left: 2px solid darken($color-primary, 5%); 
+        border-top: 2px solid darken($color-primary, 5%); 
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: .6;
+    }
+}
+
+
+&__image{
+    width: 20%;
+    min-width: 15rem;
+    padding:0.5rem 1rem;
+        // border-right: 4px solid $color-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include respond("phone"){
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 2rem;
+    }
+
+    &--image{
+        width: 100%;
+    }
+}
 }

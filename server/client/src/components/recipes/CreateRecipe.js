@@ -166,7 +166,6 @@ onPhotoInput = (e, section, key, index, attrb) => {
 }
 
 handleImageInput(file, section, key, index, attrb, photoObj, copyState) {
-    var reader = new FileReader();
     var filesSelected = file;
     if (filesSelected.length > 0) {
       var fileToLoad = filesSelected[0];

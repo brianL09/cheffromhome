@@ -3,7 +3,15 @@
 }
 
 .u-margin-bottom-medium{
+    margin-bottom: 2rem;
+}
+
+.u-margin-bottom-large{
     margin-bottom: 6rem;
+}
+
+.u-margin-top-medium{
+    margin-top: 2rem;
 }
 
 .u-absolute-center{
@@ -15,4 +23,41 @@
 
 .u-center-text{
     text-align: center;
+}
+
+.u-font-primary-bold-16{
+    color: $color-grey-2;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.u-flex-h-center{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    & > div {
+        width: 80%;
+        // background: green;
+
+        @include respond("tab-port"){
+            width: 90%;
+            // background: blue;
+        }
+    }
+}
+
+.u-font-white{
+    color:$color-white !important;
+}
+
+.u-font-primary{
+    color: $color-primary;
+}
+
+.u-font-normal-1-uppercase{
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }

@@ -1,10 +1,18 @@
-import {FETCH_RECIPES, FETCH_USER, SIGN_IN, SIGN_OUT, SIGN_IN_FAILURE, REGISTER_USER, SUBMIT_RECIPE, SUBMIT_FAILURE} from './types';
+import {FETCH_RECIPES, FETCH_RECIPE, FETCH_USER, SIGN_IN, SIGN_OUT, SIGN_IN_FAILURE, REGISTER_USER, SUBMIT_RECIPE, SUBMIT_FAILURE, UPDATE_USER} from './types';
 import {api} from '../apis/index.js';
 import {Cookie} from '../utils/cookie';
 import {validation} from  '../utils/validation';
 
+
 export const fetchRecipes = () => async (dispatch) => {
-    dispatch({type:FETCH_RECIPES, payload:{}});
+    const response = await api.recipes.get("/get");
+    console.log('fetch');
+    dispatch({type:FETCH_RECIPES, payload: response.data});
+}
+
+export const fetchRecipe = (id) => async (dispatch) => {
+    const response = await api.recipes.get(`/get/${id}`);
+    dispatch({type:FETCH_RECIPE, payload: response.data});
 }
 
 export const register = (email, password, username) => async(dispatch) => {
@@ -26,12 +34,24 @@ export const register = (email, password, username) => async(dispatch) => {
 //fetch user data
 export const fetchUser = (userId) => async (dispatch) => {
     const response = await api.auth.get(`/user/${userId}`);
+    // console.log('fetchUser', response.data);
     dispatch({type: FETCH_USER, payload: response.data})
+}
+
+export const updateUser = (user) => async (dispatch) => {
+    // console.log(user._id);
+    await api.auth.get(`/user/${user._id}`)
+        .then((res) => {
+            console.log(res.data);
+            dispatch({type:UPDATE_USER, payload: res.data});
+        });
+    // console.log(response.data);
 }
 
 export const signIn = (email, password) => async (dispatch) => {
     const response = await api.auth.post("/login", {email: email, password: password});
     if(typeof response.data === "object"){
+        console.log(response.data);
         Cookie.setUser(response.data, Cookie.getExpireStr(30));
         dispatch({type:SIGN_IN, payload:response.data}); 
     } else {
@@ -40,7 +60,7 @@ export const signIn = (email, password) => async (dispatch) => {
 }
 
 export const signOut = () => async (dispatch) => {
-    Cookie.clear("_id");
+    Cookie.clearAll();
     dispatch({type:SIGN_OUT, payload:{}});
 }
 

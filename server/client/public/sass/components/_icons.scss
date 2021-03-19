@@ -151,11 +151,24 @@
         }
 
         &--edit{
-            background: green;
+            // background: green;
             display: inline-block;
             cursor: pointer;
-            // margin-left: 1.5rem;
-            padding: .5rem;
+            padding: 0.25rem .5rem;
+            
+            &-full{
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                position:absolute;
+                display: flex;
+                justify-content: flex-end;
+            }
+            &-btn{
+                padding: 0.25rem .5rem;
+                position: absolute;
+                right: 0;
+            }
         }
     }
 
@@ -208,8 +221,17 @@
     }
 
     &__edit{
-        fill: blue;
+        fill: $color-tertiary-1;
         height: $icon-size-large;
         width: $icon-size-large;
+        // right: 0;
+        // position: absolute;
+    }
+
+    &__vegetable, &__meat, &__dairy, &__dry{
+        height:$icon-size-medium;
+        width: $icon-size-medium;
+        fill: $color-white;
+        margin-right: 1.5rem;
     }
 }

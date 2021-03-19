@@ -1,4 +1,4 @@
-import {SIGN_IN, SIGN_OUT, FETCH_USER, SIGN_IN_FAILURE, REGISTER_USER, SUBMIT_FAILURE} from '../actions/types';
+import {SIGN_IN, SIGN_OUT, FETCH_USER, SIGN_IN_FAILURE, REGISTER_USER, SUBMIT_FAILURE, UPDATE_USER} from '../actions/types';
 
 const INITIAL_STATE = {
 
@@ -18,6 +18,8 @@ export default function authReducer(state=INITIAL_STATE, action){
             return {user: action.payload};
         case SUBMIT_FAILURE:
             return {message: action.payload}
+        case UPDATE_USER:
+            return {user: action.payload};
         default:
             return state;
     }

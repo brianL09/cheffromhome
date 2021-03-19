@@ -1,56 +1,76 @@
 .user{
-    background: chartreuse;
+    background: $color-grey-1;
     display: flex;
+    flex-wrap: wrap;
 
     &__settings{
         flex: 1;
         min-width: 35rem;
+        min-height: 100vh;
         word-wrap: break-word;
-        background: grey;
 
         &--edit{
             font-size: 1.3rem;
             font-weight: 500;
             font-family: $font-text-primary;
+            color: $color-tertiary-1;
             background: $color-primary;
-            padding: 1rem;
+            width: 100%;
+            padding: .75rem;
+
             & > span {
                 text-transform: uppercase;
                 font-weight: 600;
                 // font-size: 1.6rem;
             }
         }
+
+        &--recipes{
+            background: red;
+        }
+
+        &--btn{
+            text-align: center;
+            flex-basis: 100%;
+            margin-bottom: 5rem;
+            // position: absolute;
+            // bottom: 0;
+            // left: 50%;
+        }
     }
 
     &__navigation{
-        background: red;
         flex: 0 1 25rem;
         // min-width: 25rem;
 
         @include respond("tab-port"){
-            background: blue;
             flex: 0 1 0;
             width: 0;
         }
     }
 
     &__content{
-        padding: 2rem 5rem 0 5rem;
-        background: yellow;
+        padding: 2rem 5rem;
+        background: $color-grey-1;
 
         @include respond("phone"){
             padding: 0 1.5rem;
         }
         &--recipes{
             display: flex;
+            justify-content: space-between;
             flex: 0 1 100%;
             flex-wrap: wrap;
-            justify-content: space-around;
+            max-width: 120rem;
+            margin: 0 auto;
 
+            @include respond("tab-land"){
+                justify-content: center;
+            }
         }
     }
 
     &__setting:not(:last-of-type){
-        margin-bottom: 2rem;
+        margin-bottom: 8rem;
     }
 }

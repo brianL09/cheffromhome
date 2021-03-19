@@ -39,7 +39,7 @@ class Nav extends React.Component{
                             <ul className="drop-down__drop-down">
                                 <NavLink target="/create/new" label="Create Recipe" icon="create"/>
                                 <NavLink target="/user/settings" label="Settings" icon="recipe"/>
-                                <LogOut loggedIn={this.props.isSignedIn} click={this.props.signOut}/>
+                                <LogOut loggedIn={this.props.isSignedIn} onClick={this.props.signOut}/>
                             </ul>
                         </div> : <LogInPopup signIn={this.props.signIn} register={this.props.register} name={Cookie.find("username")} error={this.props.auth.message} click={this.toggleUserStatus}/>}
                     </ul>

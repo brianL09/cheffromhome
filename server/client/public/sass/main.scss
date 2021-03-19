@@ -1,14 +1,16 @@
 //ABSTRACTS
 @import "abstracts/variables";
 @import "abstracts/mixins";
+@import "abstracts/flex";
 
 //BASE 
 @import "base/base";
 @import "base/utilities";
-// @import "base/typography";
+@import "base/typography";
 
 //COMPONENTS
 @import "components/buttons";
+@import "components/cards";
 @import "components/inputs";
 @import "components/icons";
 @import "components/drop-down";
@@ -17,6 +19,7 @@
 
 //LAYOUTS
 @import "layouts/createLesson";
+@import "layouts/recipes/recipe";
 @import "layouts/forms";
 @import "layouts/images";
 @import "layouts/navigation";
