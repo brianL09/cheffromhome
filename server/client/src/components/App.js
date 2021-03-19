@@ -22,6 +22,7 @@ class App extends React.Component{
         <Route exact path="/recipe" component={RecipeSearch}></Route>
         <Route exact path="/recipe/edit/:id" component={CreateRecipe}></Route>
         <Route exact path="/recipe/:id" component={Recipe}></Route>
+        <Route exact path="/test" component={Landing}></Route>
       </Router>
     )
   }
