@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {Router} from 'react-router';
+import { createBrowserHistory} from 'history';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 
@@ -13,10 +15,13 @@ const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(reduxThunk))
   )
+const customHistory = createBrowserHistory();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={customHistory}>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
