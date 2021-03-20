@@ -9,15 +9,18 @@ class RecipeSearch extends React.Component {
 
     render(){
         return(
-            <React.Fragment>
-            {this.props.recipes ?
-                <div className="search__results">
+            <h1>
+                RECIPE
+            </h1>
+            // <React.Fragment>
+            // {this.props.recipes ?
+            //     <div className="search__results">
                     
-                        <RecipeCard2 recipe={this.props.recipes[0]}></RecipeCard2>
+            //             <RecipeCard2 recipe={this.props.recipes[0]}></RecipeCard2>
                     
-                </div> :
-                <div>Loading...</div>}
-            </React.Fragment>
+            //     </div> :
+            //     <div>Loading...</div>}
+            // </React.Fragment>
         )
     }
 }
