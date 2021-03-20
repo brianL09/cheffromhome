@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import React from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
+// import {hashHistory as Router, Route} from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import Landing from './Landing';
 import CreateRecipe from './recipes/CreateRecipe';
