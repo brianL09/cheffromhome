@@ -20,7 +20,7 @@
         border-radius: 3px;
 
         @include respond(tab-land){
-            background: purple;
+            background: $color-white;
             margin: 0 1rem 4rem 1rem;
         }
         &::after{
@@ -104,7 +104,7 @@
         padding: 2rem 15%;
 
         @media(max-width: 100rem){
-            background: pink;
+            // background: pink;
             padding: 2rem 10rem;
             align-items: center;
         }

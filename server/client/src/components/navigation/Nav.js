@@ -51,6 +51,6 @@ class Nav extends React.Component{
     }
 }
 
-const mapStateToProps = (state) => {console.log(state); return{auth: state.auth, user: state.auth.user, recipes: state.recipes}};
+const mapStateToProps = (state) =>({auth: state.auth, user: state.auth.user, recipes: state.recipes});
 
 export default withRouter(connect(mapStateToProps, actions)(Nav));

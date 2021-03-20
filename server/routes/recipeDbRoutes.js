@@ -36,18 +36,24 @@ module.exports = (app) => {
 
         app.post("/recipes/get", async (req, res) => {
             try {
+                console.log('recipes');
                 const response = [];
-                // let obj = {
-                //     id: item._id,
-                //     title: item.basicInfo.title,
-                //     author: item.author.author,
-                //     description: item.about.paragraphs[0],
-                // };
                 // res.send("hello");
                 const recipes = await db.collection(recipesCollection).find({}).toArray();
                 let t = {id: 123, title:"italian dressing", author: "bman", description: "wow"};
-                response.push(t);
-                // console.log(response);
+                recipes.map((item) => {
+                    let x = item.author.author.length;
+                    let snip = {
+                        id: item._id,
+                        title:item.basicInfo.title,
+                        author: item.author.author,
+                        description: item.about.paragraphs[0].slice(0, 144)
+                    };
+                    response.push(snip);
+                });
+
+                // response.push(t);
+                console.log("RESPONSE: ", response);
                 res.send(response);
             } catch(err){
                 res.send();
