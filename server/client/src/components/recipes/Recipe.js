@@ -15,7 +15,7 @@ const Recipe = ({fetchRecipe, recipe}) => {
         fetchRecipe(id);
         
     }, [fetchRecipe]);
-
+    console.log(recipe);
     return(
         <React.Fragment>
             {recipe ?

@@ -6,12 +6,13 @@ import {validation} from  '../utils/validation';
 
 export const fetchRecipes = () => async (dispatch) => {
     const response = await api.recipes.get("/get");
-    console.log('fetch');
+    console.log('recipe fetch', response.data);
     dispatch({type:FETCH_RECIPES, payload: response.data});
 }
 
 export const fetchRecipe = (id) => async (dispatch) => {
     const response = await api.recipes.get(`/get/${id}`);
+    console.log(response.data);
     dispatch({type:FETCH_RECIPE, payload: response.data});
 }
 
@@ -34,7 +35,7 @@ export const register = (email, password, username) => async(dispatch) => {
 //fetch user data
 export const fetchUser = (userId) => async (dispatch) => {
     const response = await api.auth.get(`/user/${userId}`);
-    // console.log('fetchUser', response.data);
+    console.log('fetchUser', response.data);
     dispatch({type: FETCH_USER, payload: response.data})
 }
 
