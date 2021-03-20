@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
 import React from 'react';
-import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router,Link as Route} from 'react-router-dom';
 // import {Route} from 'react-router-dom';
-// import {hashHistory as Router} from 'react-router';
+// import {hashRouter as Router} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Landing from './Landing';
 import CreateRecipe from './recipes/CreateRecipe';
@@ -18,7 +18,6 @@ class App extends React.Component{
     return(
       <Router>
         <Nav />
-        <Switch>
           <Route exact path="/" component={Landing}></Route>
           <Route exact path="/create/new" component={CreateRecipe}></Route>
           <Route exact path="/user/settings" component={User}></Route>
@@ -26,7 +25,6 @@ class App extends React.Component{
           <Route exact path="/recipe/edit/:id" component={CreateRecipe}></Route>
           <Route exact path="/recipe/:id" component={Recipe}></Route>
           <Route exact path="/test" component={Landing}></Route>
-        </Switch>
       </Router>
     )
   }
