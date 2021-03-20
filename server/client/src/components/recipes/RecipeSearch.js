@@ -13,7 +13,6 @@ class RecipeSearch extends React.Component {
             <React.Fragment>
             {this.props.recipes ?
                 <div className="search__results">
-                    
                         <RecipeCard2 recipe={this.props.recipes[0]}></RecipeCard2>
                     
                 </div> :

@@ -35,6 +35,7 @@ class Nav extends React.Component{
                     <ul className="navigation__link--container">
                         <NavLink target="/" label="Home" icon="home"></NavLink>
                         <NavLink target="/recipe/123" label="About" icon="about"></NavLink>
+                        <NavLink target="/recipe" label="Recipe" icon="about"/>
                         { this.props.auth.user ? <div className="drop-down">
                             <NavLink activeLink={true} target="/create" label={this.props.auth.user.username} icon="user" dropdown={true}/>
                             <ul className="drop-down__drop-down">
