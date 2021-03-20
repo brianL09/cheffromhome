@@ -5,7 +5,7 @@ import {validation} from  '../utils/validation';
 
 
 export const fetchRecipes = () => async (dispatch) => {
-    const response = await api.recipes.get("/get");
+    const response = await api.recipes.post("/get");
     console.log('recipe fetch', response.data);
     dispatch({type:FETCH_RECIPES, payload: response.data});
 }
@@ -27,7 +27,7 @@ export const register = (email, password, username) => async(dispatch) => {
             Cookie.setUser(response.data, Cookie.getExpireStr(30));
             dispatch({type:REGISTER_USER, payload: response.data});
         } else{
-            dispatch({type:SIGN_IN_FAILURE, payload: "This email is already in use."})
+            dispatch({type:SIGN_IN_FAILURE, payload: "This email is already in use."});
         }
     }
 }

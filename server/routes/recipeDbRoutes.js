@@ -34,7 +34,7 @@ module.exports = (app) => {
             res.send();
         });
 
-        app.get("/recipes/get", async (req, res) => {
+        app.post("/recipes/get", async (req, res) => {
             try {
                 const response = [];
                 // let obj = {
@@ -46,9 +46,9 @@ module.exports = (app) => {
                 // res.send("hello");
                 const recipes = await db.collection(recipesCollection).find({}).toArray();
                 let t = {id: 123, title:"italian dressing", author: "bman", description: "wow"};
-                response.push({id: 123, title:"italian dressing", author: "bman", description: "wow"})
-                console.log(response);
-                res.send(t);
+                response.push(t);
+                // console.log(response);
+                res.send(response);
             } catch(err){
                 res.send();
             }
