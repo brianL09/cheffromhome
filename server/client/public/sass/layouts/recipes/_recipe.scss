@@ -203,8 +203,15 @@
 
     &__about{
         &--text{
-            font-size: 1.4rem;
-            max-width: 70ch;
+            font-size: 1.5rem;
+            max-width: 75%;
+            min-width: 50em;
+            letter-spacing: 1px;
+
+            @include respond("tab-port"){
+                max-width: 100%;
+                min-width: 30rem;
+            }
         }
 
         &--shopping{
@@ -215,7 +222,7 @@
         }
 
         &--image{
-            width: 35rem;
+            width: 50%;
             float: left;
             shape-outside: polygon(100% -4%, 100% 110%, -6px 110%, 0px -4%);
             @include clearfix;

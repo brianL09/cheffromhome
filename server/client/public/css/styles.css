@@ -74,6 +74,9 @@
 
 html {
   font-size: 62.5%;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .u-margin-bottom-small {
@@ -1076,8 +1079,16 @@ textarea:focus {
   }
 }
 .section__about--text {
-  font-size: 1.4rem;
-  max-width: 70ch;
+  font-size: 1.5rem;
+  max-width: 75%;
+  min-width: 50em;
+  letter-spacing: 1px;
+}
+@media (max-width: 56.5em) {
+  .section__about--text {
+    max-width: 100%;
+    min-width: 30rem;
+  }
 }
 .section__about--shopping {
   width: 100%;
@@ -1086,7 +1097,7 @@ textarea:focus {
   margin-top: 15rem;
 }
 .section__about--image {
-  width: 35rem;
+  width: 50%;
   float: left;
   shape-outside: polygon(100% -4%, 100% 110%, -6px 110%, 0px -4%);
 }
