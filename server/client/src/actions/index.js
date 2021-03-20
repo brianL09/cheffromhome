@@ -34,7 +34,7 @@ export const register = (email, password, username) => async(dispatch) => {
 
 //fetch user data
 export const fetchUser = (userId) => async (dispatch) => {
-    const response = await api.auth.get(`/user/${userId}`);
+    const response = await api.auth.post(`/user/${userId}`);
     console.log('fetchUser', response.data);
     dispatch({type: FETCH_USER, payload: response.data})
 }

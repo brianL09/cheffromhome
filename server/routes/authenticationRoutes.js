@@ -44,7 +44,7 @@ module.exports = (app) => {
             }
         });
 
-        app.get("/authentication/user/:id", async (req, res) => {
+        app.post("/authentication/user/:id", async (req, res) => {
             const response = await db.collection(userCollection).findOne({_id: ObjectId(req.params.id)});
             res.send(response);
         });
