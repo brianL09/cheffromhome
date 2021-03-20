@@ -11,7 +11,7 @@ export const fetchRecipes = () => async (dispatch) => {
 }
 
 export const fetchRecipe = (id) => async (dispatch) => {
-    const response = await api.recipes.get(`/get/${id}`);
+    const response = await api.recipes.post(`/get/${id}`);
     console.log(response.data);
     dispatch({type:FETCH_RECIPE, payload: response.data});
 }

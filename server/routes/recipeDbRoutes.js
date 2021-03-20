@@ -60,7 +60,7 @@ module.exports = (app) => {
             }
         });
 
-        app.get("/recipes/get/:id", async (req, res) => {
+        app.post("/recipes/get/:id", async (req, res) => {
             // console.log(req.params.id);
             try{
                 let recipe = await db.collection(recipesCollection).findOne({_id: ObjectId(req.params.id) });

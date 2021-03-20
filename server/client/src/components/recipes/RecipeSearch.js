@@ -3,7 +3,9 @@ import RecipeCard2 from './RecipeCard2';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
 class RecipeSearch extends React.Component {
-    
+    componentDidMount(){
+        this.props.fetchRecipes();
+    }
     render(){
         // console.log(this.props.recipes);
         return(

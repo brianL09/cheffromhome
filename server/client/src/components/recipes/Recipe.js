@@ -12,8 +12,7 @@ const Recipe = ({fetchRecipe, recipe}) => {
         let url = window.location.pathname.split("/");
         // recipe id is the last item in array
         let id = url[url.length - 1];
-        fetchRecipe(id);
-        
+        fetchRecipe(id);    
     }, [fetchRecipe]);
     console.log(recipe);
     return(
