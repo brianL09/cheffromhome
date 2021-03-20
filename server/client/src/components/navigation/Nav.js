@@ -17,7 +17,7 @@ class Nav extends React.Component{
         if(Cookie.find("_id")){
             this.props.fetchUser(Cookie.find("_id"));
         }
-        this.props.fetchRecipes();
+        // this.props.fetchRecipes();
     }
     
     componentDidUpdate(){

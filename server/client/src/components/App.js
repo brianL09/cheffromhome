@@ -14,6 +14,9 @@ import Recipe from './recipes/Recipe.js';
 import * as actions from '../actions';
 
 class App extends React.Component{
+  componentDidMount(){
+    this.props.fetchRecipes();
+  }
   render(){
     console.log(this.props.location);
     return(

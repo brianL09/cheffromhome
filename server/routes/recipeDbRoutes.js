@@ -45,9 +45,10 @@ module.exports = (app) => {
                 // };
                 // res.send("hello");
                 const recipes = await db.collection(recipesCollection).find({}).toArray();
+                let t = {id: 123, title:"italian dressing", author: "bman", description: "wow"};
                 response.push({id: 123, title:"italian dressing", author: "bman", description: "wow"})
                 console.log(response);
-                res.send(response);
+                res.send(t);
             } catch(err){
                 res.send();
             }
