@@ -17,7 +17,7 @@ class Nav extends React.Component{
         if(Cookie.find("_id")){
             this.props.fetchUser(Cookie.find("_id"));
         }
-        // this.props.fetchRecipes();
+        this.props.fetchRecipes();
     }
     
     componentDidUpdate(){
@@ -51,6 +51,6 @@ class Nav extends React.Component{
     }
 }
 
-const mapStateToProps = (state) => ({auth: state.auth, user: state.auth.user});
+const mapStateToProps = (state) => {console.log(state); return{auth: state.auth, user: state.auth.user, recipes: state.recipes}};
 
 export default withRouter(connect(mapStateToProps, actions)(Nav));
