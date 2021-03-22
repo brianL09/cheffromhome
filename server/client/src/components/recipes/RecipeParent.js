@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
 import RecipeNavigation from './RecipeNavigation';
-import RecipeSection from './sections/RecipeSection';
+import RecipeSection from './search/RecipeSection';
 
-const Recipe = ({fetchRecipe, recipe}) => {
+const RecipeParent = ({fetchRecipe, recipe}) => {
     const sections = ["about", "recipe", "tips", "discussion"];
     const [currentSection, setSection] = useState(sections[0]);
 
@@ -14,7 +14,7 @@ const Recipe = ({fetchRecipe, recipe}) => {
         let id = url[url.length - 1];
         fetchRecipe(id);    
     }, [fetchRecipe]);
-    console.log(recipe);
+
     return(
         <React.Fragment>
             {recipe ?
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => {
     return {recipe: state.recipes.recipe};
 }
 
-export default connect(mapStateToProps, actions)(Recipe);
+export default connect(mapStateToProps, actions)(RecipeParent);

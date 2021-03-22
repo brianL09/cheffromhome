@@ -1,0 +1,36 @@
+.section{
+    &__recipe{
+        background: $color-primary;
+        width: 100%;
+        color:$color-tertiary-1;
+
+       &--header{
+           background-color: $color-secondary-1;
+
+           & > h1{
+               font-size: 3.5rem;
+               font-weight: 500;
+           }
+       }
+
+       &--content{
+            gap: 1rem 0;
+            background:chocolate;
+            & > div,ul {
+                background: green;
+            }
+       }
+
+       &--yield{
+        & > input{
+            color: red !important;
+            height: 5rem;
+            width: 5rem;
+            padding: 0 !important;
+            border-radius: 50%;
+            text-align: center;
+        } 
+       }
+
+    }
+}

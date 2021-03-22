@@ -101,7 +101,7 @@
 
             &--hidden{
                 width: 6rem;
-                height: 6rem;
+                height: 100%;
                 position: absolute;
                 transition: opacity 1s 4s;
                 opacity: 1;
@@ -219,6 +219,7 @@
             max-width: 120rem; 
             background: $color-white;
             margin-top: 15rem;
+            gap: 4rem 2rem;
         }
 
         &--image{

@@ -1,8 +1,8 @@
 import React from "react";
-import About from './about/About';
-import Recipe from './Recipe';
-import Tips from './Tips';
-import Discussion from './Discussion';
+import About from '../sections/about/About';
+import Recipe from '../sections/recipe/Recipe';
+import Tips from '../sections/tips/Tips';
+import Discussion from '../sections/discussion/Discussion';
 
 const RecipeSection = props => {
     const renderRecipe = (section) => {

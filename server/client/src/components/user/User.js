@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import EditInput from '../forms/EditInput';
-import RecipeCard from '../recipes/RecipeCard';
+import RecipeCard from '../recipes/search/RecipeCard';
 
 class User extends React.Component{
     constructor(props){

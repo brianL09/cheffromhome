@@ -26,7 +26,7 @@ const ShoppingList = ({list}) => {
     }
 
     return(
-        <div className="section__about--shopping flex flex__justify--center">
+        <div className="section__about--shopping flex flex__justify--space-around">
             <div className="flex__heading recipe__heading--shopping col-12">
                 <h4 className="heading__tertiary">Heres what you'll need:</h4>
             </div>

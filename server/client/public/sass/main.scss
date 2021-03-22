@@ -1,10 +1,10 @@
 //ABSTRACTS
 @import "abstracts/variables";
 @import "abstracts/mixins";
-@import "abstracts/flex";
 
 //BASE 
 @import "base/base";
+@import "base/flex";
 @import "base/utilities";
 @import "base/typography";
 
@@ -20,6 +20,7 @@
 //LAYOUTS
 @import "layouts/createLesson";
 @import "layouts/recipes/recipe";
+@import "layouts/recipes/recipe_section_recipe";
 @import "layouts/forms";
 @import "layouts/images";
 @import "layouts/navigation";

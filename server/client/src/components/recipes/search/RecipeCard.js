@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import SVGIcon from '../icons/SvgIcon';
+import SVGIcon from '../../icons/SvgIcon';
 
 const RecipeCard = ({data}) => {
     // console.log(data);

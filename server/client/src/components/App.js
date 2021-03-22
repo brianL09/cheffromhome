@@ -6,10 +6,10 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Landing from './Landing';
 import CreateRecipe from './recipes/CreateRecipe';
-import RecipeSearch from './recipes/RecipeSearch';
+import RecipeSearch from './recipes/search/RecipeSearch';
 import User from './user/User';
 import Nav from './navigation/Nav';
-import Recipe from './recipes/Recipe.js';
+import RecipeParent from './recipes/RecipeParent.js';
 
 import * as actions from '../actions';
 
@@ -18,7 +18,6 @@ class App extends React.Component{
     this.props.fetchRecipes();
   }
   render(){
-    console.log(this.props.location);
     return(
         <React.Fragment>
           <Nav />
@@ -27,7 +26,7 @@ class App extends React.Component{
               <Route exact path="/user/settings" component={User}></Route>
               <Route exact path="/recipe" component={RecipeSearch}></Route>
               <Route exact path="/recipe/edit/:id" component={CreateRecipe}></Route>
-              <Route exact path="/recipe/:id" component={Recipe}></Route>
+              <Route exact path="/recipe/:id" component={RecipeParent}></Route>
               <Route exact path="/test" component={Landing}></Route>
         </React.Fragment>
       // <Router>

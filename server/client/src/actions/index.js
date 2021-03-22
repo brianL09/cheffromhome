@@ -6,13 +6,11 @@ import {validation} from  '../utils/validation';
 
 export const fetchRecipes = () => async (dispatch) => {
     const response = await api.recipes.post("/get");
-    console.log('recipe fetch', response.data);
     dispatch({type:FETCH_RECIPES, payload: response.data});
 }
 
 export const fetchRecipe = (id) => async (dispatch) => {
     const response = await api.recipes.post(`/get/${id}`);
-    console.log(response.data);
     dispatch({type:FETCH_RECIPE, payload: response.data});
 }
 
@@ -35,24 +33,19 @@ export const register = (email, password, username) => async(dispatch) => {
 //fetch user data
 export const fetchUser = (userId) => async (dispatch) => {
     const response = await api.auth.post(`/user/${userId}`);
-    console.log('fetchUser', response.data);
     dispatch({type: FETCH_USER, payload: response.data})
 }
 
 export const updateUser = (user) => async (dispatch) => {
-    // console.log(user._id);
     await api.auth.get(`/user/${user._id}`)
         .then((res) => {
-            console.log(res.data);
             dispatch({type:UPDATE_USER, payload: res.data});
         });
-    // console.log(response.data);
 }
 
 export const signIn = (email, password) => async (dispatch) => {
     const response = await api.auth.post("/login", {email: email, password: password});
     if(typeof response.data === "object"){
-        console.log(response.data);
         Cookie.setUser(response.data, Cookie.getExpireStr(30));
         dispatch({type:SIGN_IN, payload:response.data}); 
     } else {
@@ -70,7 +63,6 @@ export const submitRecipe = (recipe, user) => async (dispatch) => {
     if(user){
         let author = {author: user.username, userid: user._id}
         const response = await api.recipes.post("/new", {author, recipe});
-        console.log('here', user);
         dispatch({type:SUBMIT_RECIPE, payload: response.payload })
     } else {
         dispatch({type: SUBMIT_FAILURE, payload: "You must be logged in to submit a recipe."})

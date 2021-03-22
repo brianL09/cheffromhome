@@ -234,4 +234,11 @@
         fill: $color-white;
         margin-right: 1.5rem;
     }
+
+    &__stopwatch{
+        fill: $color-white;
+        height: $icon-size-small;
+        width: $icon-size-small;
+        margin-right: .5rem;
+    }
 }

@@ -36,13 +36,10 @@ module.exports = (app) => {
 
         app.post("/recipes/get", async (req, res) => {
             try {
-                console.log('recipes');
                 const response = [];
                 // res.send("hello");
                 const recipes = await db.collection(recipesCollection).find({}).toArray();
-                let t = {id: 123, title:"italian dressing", author: "bman", description: "wow"};
                 recipes.map((item) => {
-                    let x = item.author.author.length;
                     let snip = {
                         id: item._id,
                         title:item.basicInfo.title,
