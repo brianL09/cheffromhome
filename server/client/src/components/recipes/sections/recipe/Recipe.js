@@ -9,6 +9,7 @@ import RecipeDirections from './RecipeDirections';
 
 const Recipe = ({recipe}) => {
     const [recipeYield,setYield] = useState(parseInt(recipe.recipe.yield));
+    
     const renderIngredients = () => {
         let ingredients = recipe.recipe.ingredients;
         let result = [];
@@ -21,17 +22,33 @@ const Recipe = ({recipe}) => {
     }
 
     return(
-        <section className="flex flex__justify--center section__recipe">
-            <div className="section__recipe--content col-10 flex flex__justify--space-around">
-                <div className="section__recipe--header col-12">
+        <section className="flex flex__wrap section__recipe">
+                <div className="section__recipe--header col-12 ">
                     <h1>{recipe.basicInfo.title}</h1>
-                    <h2><SvgIcon icon="#icon-stopwatch"/>{recipe.basicInfo.cookTime}</h2>
+                    <div>
+                      <SvgIcon icon="#icon-stopwatch"/>
+                      <h2>{recipe.basicInfo.cookTime}</h2>
+                    </div>
                 </div>
-                <RecipeYield total={recipeYield} setYield={setYield}/>
-                <RecipeIngredients ingredients={recipe.recipe.ingredients} yieldRatio={recipeYield/recipe.recipe.yield}/>
-                <RecipeTips tips={recipe.recipe.tips}/>
-                <RecipeDirections directions={recipe.recipe.directions}/>
+            <div className="flex flex__justify--center col-12">
+                <div className="section__recipe--content col-10 flex flex__wrap">
+                    <h1 className="directions__heading u-center-text u-margin-bottom-large">Recipe</h1>
+                <div className="section__recipe--outcome u-center-text col-12 u-padding-small">
+                    <span className="u-margin-bottom-small">Outcome</span>
+                    <p className="u-left-text">
+                        Yields {recipeYield} "portion size" portions of {recipe.basicInfo.title}. This recipe will take approximately {recipe.basicInfo.cookTime}
+                    </p>
+                </div>
+                <div className="col-12 flex flex__wrap flex__justify--space-around u-margin-bottom-large">
+                    <RecipeIngredients recipeYield={recipeYield} setYield={setYield} ingredients={recipe.recipe.ingredients} originalYield={recipe.recipe.yield}/>
+                    <RecipeDirections directions={recipe.recipe.directions}/>
+                </div>
+                <div className="col-12 flex flex__justify--center">
+                    <RecipeTips tips={recipe.recipe.tips}/>
+                </div>
+                </div>
             </div>
+
         </section>
     )
 }

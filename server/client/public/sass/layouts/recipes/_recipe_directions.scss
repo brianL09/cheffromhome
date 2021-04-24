@@ -1,0 +1,30 @@
+.directions{
+    background: $color-white;
+    // padding: 
+    @include respond("phone"){
+        flex: 0 0 90%;
+    }
+    &__heading{
+        font-family: $font-text-primary;
+        background: #eee;
+        width: calc(100% - 2.2rem);
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin: 1rem 1.2rem 0 1.2rem;
+        padding: 1.5rem 0;
+        color: $color-primary;
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+
+    &__list{
+        padding: 2rem 5rem;
+    }
+    &__list-item{
+        font-family: $font-heading-primary;
+        font-size: 1.9rem;
+        color: $color-grey-2;
+        text-transform: capitalize;
+        padding: .35rem .75rem;
+    }
+}

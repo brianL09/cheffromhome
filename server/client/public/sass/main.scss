@@ -16,11 +16,16 @@
 @import "components/drop-down";
 @import "components/modal";
 @import "components/errors";
+@import "components/difficulty_badge";
 
 //LAYOUTS
 @import "layouts/createLesson";
 @import "layouts/recipes/recipe";
 @import "layouts/recipes/recipe_section_recipe";
+@import "layouts/recipes/recipe_tips";
+@import "layouts/recipes/recipe_directions";
+@import "layouts/recipes/recipe-discussion";
+@import "layouts/forum/forum";
 @import "layouts/forms";
 @import "layouts/images";
 @import "layouts/navigation";

@@ -13,9 +13,9 @@ const ShoppingList = ({list}) => {
         let result = [];
         result.push(<li className="list__heading list__heading--primary" key={`${heading}`}><SvgIcon icon={`#icon-${heading}`}/>{heading}</li>);
         for(let i = 0; i < list.length; i++){
-            result.push(<li className="list__item" key={`${heading}-${i}`}>{list[i]}</li>);
+            result.push(<li className="list__item u-font-grey-2" key={`${heading}-${i}`}>{list[i]}</li>);
         }
-        return <ul key={heading} className="shopping__list col-4">{result}</ul>
+        return <ul key={heading} className="list list__shopping col-4">{result}</ul>
     }
 
     const shopping = {
@@ -26,7 +26,7 @@ const ShoppingList = ({list}) => {
     }
 
     return(
-        <div className="section__about--shopping flex flex__justify--space-around">
+        <div className="section__about--shopping u-padding-bottom-medium flex flex__wrap flex__justify--space-around">
             <div className="flex__heading recipe__heading--shopping col-12">
                 <h4 className="heading__tertiary">Heres what you'll need:</h4>
             </div>

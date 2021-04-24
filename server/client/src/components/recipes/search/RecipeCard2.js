@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
 const RecipeCard2 = ({recipe}) => {
-    console.log(recipe);
     return(
         <div className="card card__recipe">
             <div className="card__recipe--image">

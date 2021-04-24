@@ -1,0 +1,281 @@
+.forum{
+    margin: 8rem auto 0 auto;
+    max-height: 70vh;
+    width: 80%;
+    min-width: 26rem;
+    background: #eee;
+    // border: 2px solid $color-grey-2;
+
+    &__heading{
+        padding: .75rem 0 4rem 0;
+        font-weight: 500;
+        background: $color-primary;
+        color: $color-grey-1;
+        & h1 {
+            font-weight: 500;
+            font-size: 2.2rem;
+        }
+        & h2 {
+            color: $color-tertiary-1;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+    }
+    // posts container
+    &__posts{
+        display: flex;
+        flex-wrap: wrap;
+        background: $color-primary;
+        padding: 2rem 1.5rem 0 1.5rem;
+        // flex-direction: column;
+    }
+    // individual post
+    &__post{
+        width: 100%;
+        // padding: 0 1.5rem;
+        // background: #eee;
+        &--title{
+            padding: .75rem 1.2rem;
+            font-size: 1.6rem;
+            font-family: $font-text-primary;
+            font-weight: 400;
+            border-radius: 2px 2px 0 0;
+            background: $color-tertiary-1;
+            color: $color-primary;
+            // border-top: 2px solid #eee;
+            // border-left: 2px solid #eee;
+            // border-right: 2px solid #eee;
+        }
+        &--info{
+            background: $color-grey-1;
+            color: $color-grey-2;
+            font-family: $font-heading-primary;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 0 0 2px 2px;
+            padding: .75rem 0 0.1rem 2.5rem;
+        }
+        &--actions{
+            align-items: center;
+            flex: 1;
+            padding: .75rem 2.5rem 0.1rem 0;
+            gap: 0 .5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            background: $color-grey-1;
+        }
+    }
+    
+    &__controls{
+        background: $color-primary; 
+        position: relative;
+        z-index: 2;
+    }
+
+    &__icon{
+        
+        & > svg {
+            height: 2rem;
+            width: 2rem;
+            fill: $color-primary;
+        }
+    }
+
+    &__question{
+        background-color: chartreuse;
+        position: absolute;
+        width: 100%;
+        top: 1.5rem;
+        z-index: 1;
+        // height: 0;
+        // max-height: 0;
+        // transition: all .8s ease;
+
+        &--initialLoad{
+            animation: fadeOut 0s ease forwards;
+        }
+        
+        &--show{
+            animation: fadeIn 1s ease forwards;
+            // max-height: 100vh;
+            // min-height: 10rem;
+            // height: auto;
+            // max-height: 100vh;
+            // visibility: visible;
+            & > * {
+                animation: fadeIn 1s ease forwards;
+            }
+        }
+        &--hide{
+            animation: fadeOut 5s ease forwards;
+            & > * {
+                animation: fadeOut 1s 4s ease forwards;
+            }
+        }
+    }
+
+    &__response{
+        background: $color-grey-2;
+
+        &--show {
+            max-height: 100vh;
+            transition: max-height 1.2s ease;
+            // visibility: visible;
+            opacity: 1;
+            & > * {
+                opacity: 1;
+                transition: opacity 1.3s ease;
+            }
+        }
+
+        &--hide{
+            max-height: 0;
+            transition: max-height 800ms 50ms ease-in, opacity 150ms ease-out;
+            position: relative;
+            // transform: scaleY(0);
+            // visibility: hidden;
+            opacity: 0;
+            & > * {
+                opacity: 0;
+                transition: opacity 0s;
+            } 
+        }
+
+        &--form{
+            background-color: chocolate;
+            width: 100%;
+            max-height: 0;
+
+            & > form {
+                opacity: 0;
+                min-height: 0;
+                
+                & > * {
+                    max-height: 0;
+                    opacity: 0;
+                }
+            }
+            
+            & > form textarea {
+                font-family: $font-heading-primary;
+                background: white;
+                width: 85%;
+                display: block;
+                margin: 0 auto;
+            }
+            & > p {
+                color: transparent;
+                transition: none;
+            }
+
+        }
+    }
+
+    &__submit{
+        text-align: center;
+        display: inline-block;
+        background: red;
+        padding: .75rem 1.5rem;
+        margin: 0 auto;
+    }
+}
+
+.show{
+    max-height: 100vh;
+    background: $color-button-accept;
+    visibility: visible;
+    
+    & > form {
+        visibility: visible;
+        opacity: 1;
+        max-height: 100vh;
+        // background: firebrick;
+
+        & > * {
+            // max-height: 100vh;
+            // opacity: 1;
+            // transition: opacity 2s ease, max-height 2s ease-in;
+            animation: fadeIn 2s ease forwards;
+        }
+        & > p {
+            color: transparent;
+            transition: none;
+        }
+    }
+}
+
+.hide{
+    min-height: 0rem;
+    visibility: hidden;
+    transition: all .8s .8s ease;
+    max-height: 0rem;
+
+    & > form {
+        animation: fadeOut 1.5s ease;
+        & > * {
+            animation: fadeOut 1.5s ease;
+        }
+        
+        & > p {
+            color: transparent;
+            transition: none;
+        }
+    }
+
+    & > form textarea {
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+    5%{
+        visibility: visible;
+    }
+    60%{
+        opacity: 1;
+    }
+    100%{
+        max-height: 100vh;
+    }
+
+}
+
+@keyframes fadeOut {
+    0%{
+        // visibility: visible;
+        background: firebrick;
+        opacity: 1;
+        max-height: 100vh;
+    }
+    99%{
+        visibility: hidden;
+    }
+    100%{
+        opacity: 0;
+        max-height: 0;
+    }
+}
+// @keyframes fadeOut {
+//     0%{
+//         visibility: visible;
+//         background: firebrick;
+//         opacity: 1;
+//         max-height: 100vh;
+//     }
+//     30%{
+//         opacity: 0;
+//         max-height: 100vh;
+//     } 
+//     99% {
+//         max-height: 0;
+//     }
+//     100%{
+//         visibility: hidden;
+//     }
+// }

@@ -1,15 +1,15 @@
-input:not([type=submit]):not([type=file]) {
-    color: $color-grey-2;
-    font-family: $font-text-primary;
-    font-weight: 300;
-    padding: .5rem 1.8rem;
-    border: none;
-    border-bottom: 2px solid transparent;
-}
+// input:not([type=submit]):not([type=file]) {
+//     // color: $color-grey-2;
+//     // font-family: $font-text-primary;
+//     // font-weight: 300;
+//     // padding: .5rem 1.8rem;
+//     border: none;
+//     // border-bottom: 2px solid transparent;
+// }
 
 input:not([type=submit]):not([type=file]):focus {
     outline: none;
-    border-bottom: 2px solid rgba($color-primary, 1);
+    // border-bottom: 2px solid rgba($color-primary, 1);
 }
 
 input[type=file]{
@@ -135,17 +135,17 @@ input[type=file]{
 }
 
 //TEXTAREA STYLING
-textarea{
-    color: green;
-    font-family: $font-heading-primary;
-    width: 80%;
-    min-width: 30rem;
-    min-height: 20rem;
-    outline: none;
-    border: none;
-    border-radius: 3px;
-    resize: vertical;
-}
+// textarea{
+//     color: green;
+//     font-family: $font-heading-primary;
+//     width: 80%;
+//     min-width: 30rem;
+//     min-height: 20rem;
+//     outline: none;
+//     border: none;
+//     border-radius: 3px;
+//     resize: vertical;
+// }
 
 textarea:focus{
     border: 2px solid $color-primary;

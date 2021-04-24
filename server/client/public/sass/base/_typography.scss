@@ -1,3 +1,6 @@
+.text{
+    font-family: $font-heading-primary;
+}
 .heading{
     font-family: $font-text-primary;
     
@@ -54,6 +57,8 @@
 }
 
 .list{
+    min-width: 26rem;
+
     &__heading{
         list-style: none;
         display: flex;
@@ -72,13 +77,22 @@
         list-style: none;
         font-size: 1.32rem;
         background: $color-tertiary-1;
-        color: $color-grey-2;
         font-weight: 500;
         text-transform: uppercase;
         padding: 1rem 2.5rem;
         // border-bottom: 2px solid $color-primary;
-        // &:not(:last-of-type){
-        //     margin-bottom: .2rem;
-        // }
+
+        }
+
+    &__shopping{
+
+        @include respond("phone"){
+            &:first-of-type{
+                margin-top: 1.2rem;
+            }            
+            &:not(:last-of-type){
+                margin-bottom: 1.2rem;
+            }
+        }
     }
-}
+    }

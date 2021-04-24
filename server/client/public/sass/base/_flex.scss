@@ -1,7 +1,13 @@
 .flex{
     display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 2rem;
+
+    &__inline{
+        display: inline-flex;
+    }
+    
+    &__column{
+        flex-direction: column;
+    }
 
     &__heading{
         font-size: 2rem;
@@ -17,6 +23,22 @@
         &--space-around{
             justify-content: space-around;
         }
+        &--end{
+            justify-content: flex-end;
+        }
+    }
+    &__grow{
+        flex: 1;
+    }
+    &__shrink{
+        flex: 0 1;
+    }
+
+    &__wrap{
+        flex-wrap: wrap;
+    }
+    &__no-wrap{
+        flex-wrap: nowrap;
     }
 }
 
@@ -24,8 +46,4 @@
     .col-#{$i} {
         flex: 0 0 (100% / (12 / $i) );
     }
-}
-
-.col-4{
-    min-width: 24rem;
 }

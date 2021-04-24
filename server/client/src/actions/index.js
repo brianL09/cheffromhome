@@ -1,4 +1,4 @@
-import {FETCH_RECIPES, FETCH_RECIPE, FETCH_USER, SIGN_IN, SIGN_OUT, SIGN_IN_FAILURE, REGISTER_USER, SUBMIT_RECIPE, SUBMIT_FAILURE, UPDATE_USER} from './types';
+import {FETCH_RECIPES, FETCH_RECIPE, FETCH_USER, SIGN_IN, SIGN_OUT, SIGN_IN_FAILURE, REGISTER_USER, SUBMIT_RECIPE,SUBMIT_QUESTION, SUBMIT_FAILURE, UPDATE_USER} from './types';
 import {api} from '../apis/index.js';
 import {Cookie} from '../utils/cookie';
 import {validation} from  '../utils/validation';
@@ -67,5 +67,25 @@ export const submitRecipe = (recipe, user) => async (dispatch) => {
     } else {
         dispatch({type: SUBMIT_FAILURE, payload: "You must be logged in to submit a recipe."})
     }
+
 }
 
+export const submitQuestion = (post) => async (dispatch) => {
+    console.log(post);
+    const response = await api.recipes.post("/new/comment", {post});
+    dispatch({type: SUBMIT_QUESTION, payload: response.data});
+    }
+
+export const submitResponse = (post, id, user) => async (dispatch) => {
+    if(!user){
+        return dispatch({type: SUBMIT_FAILURE, payload:"You must be logged in to respond to a question"})
+    }
+    const data = {
+        id,
+        user,
+        response: post
+    }
+    const response = await api.recipes.post("/new/response", {data});
+    console.log(response.data.value);
+    return dispatch({type: "SUBMIT_RESPONSE", payload: response.data});
+}

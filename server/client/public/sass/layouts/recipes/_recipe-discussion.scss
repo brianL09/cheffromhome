@@ -1,0 +1,22 @@
+.recipe__discussion{
+    width: 95%;
+    // background: teal;
+    margin: 0 auto;
+    height: 100vh;
+    // justify-content: flex-start;
+
+    &--heading {
+        & h1 {
+            font-size: 3rem;
+            padding: 2.5rem 0 .75rem 0;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        
+        & h2{
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+    }
+
+}

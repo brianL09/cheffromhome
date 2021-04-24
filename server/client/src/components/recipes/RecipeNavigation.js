@@ -2,7 +2,7 @@ import {useState} from 'react';
 
 const RecipeNavigation = ({setSection}) => {
     const [showNav, toggleNav] = useState(false);
-    
+
     return(
         <div className={`recipe__navigation ${showNav && window.innerWidth <= 1200 ? "recipe__navigation--full" : "recipe__navigation--hidden"}`}>
             <div className={`btn__toggle ${showNav ? "btn__toggle--close" : "btn__toggle--open"}`} onClick={() => toggleNav(!showNav)}>
@@ -12,7 +12,6 @@ const RecipeNavigation = ({setSection}) => {
             <ul className="recipe__navigation--links">
                 <li onClick={() => setSection("about")}>About</li>
                 <li onClick={() => setSection("recipe")}>Recipe</li>
-                <li onClick={() => setSection("tips")}>Tips</li>
                 <li onClick={() => setSection("discussion")}>Discussion</li>
             </ul>
         </div>

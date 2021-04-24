@@ -7,19 +7,19 @@ const INITIAL_STATE = {
 export default function authReducer(state=INITIAL_STATE, action){
     switch(action.type){
         case SIGN_IN:
-            return { isSignedIn:true, user:action.payload};
+            return { ...state, isSignedIn:true, user:action.payload};
         case SIGN_OUT:
             return action.payload;
         case FETCH_USER:
-            return {user:action.payload}
+            return {...state, user:action.payload}
         case SIGN_IN_FAILURE:
-            return {message:action.payload};
+            return {...state, message:action.payload};
         case REGISTER_USER:
-            return {user: action.payload};
+            return {...state, user: action.payload};
         case SUBMIT_FAILURE:
-            return {message: action.payload}
+            return {...state, message: action.payload}
         case UPDATE_USER:
-            return {user: action.payload};
+            return {...state, user: action.payload};
         default:
             return state;
     }

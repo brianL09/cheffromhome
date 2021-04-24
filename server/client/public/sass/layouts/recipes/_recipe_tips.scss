@@ -1,0 +1,43 @@
+.section__recipe--tips{
+    background: white;
+    position: relative;
+    // padding: 2.2rem 1.2rem 3rem 1.2rem;
+    @include respond("phone"){
+        flex: 0 0 90%;
+    }
+    & ul {
+      background: $color-primary;
+      border-radius: 0;
+      width: 75%;
+      margin: 0 auto 10rem auto;  
+      padding: .75rem 0 1.5rem 0;
+      text-transform: capitalize;
+    }
+
+    & li {
+        list-style: none;
+        font-family: $font-text-primary;
+        font-size: 1.6rem;
+        padding: .35rem 1rem;
+    }
+
+    & .btns{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        // background: red;
+        text-align: center;
+
+        & > div{
+            display: inline-block;
+            background: $color-green;
+            color: $color-grey-2;
+            cursor: pointer;
+            padding: .75rem 1.5rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border-radius: 15rem;
+            font-weight: 400;
+        }
+    }
+}

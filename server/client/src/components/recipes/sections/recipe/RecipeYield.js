@@ -13,11 +13,12 @@ const RecipeYield = ({total, setYield}) => {
        }
     }
     return(
-        <div className="col-12 flex">
-        <div className="section__recipe--yield">
+        <div className="section__recipe--yield col-12 flex flex__wrap flex__justify--center">
+        <div>
             <input type="text" value={total} onChange={e => updateYield(e.target.value)}/>
         </div>
-        {errorMsg ? <h1>{errorMsg}</h1> : ""}
+            <h1 className=" col-12 u-center-text section__recipe--msg">portions</h1>
+            {errorMsg ? <h1 className="error__card">{errorMsg}</h1> : ""}
     </div>
     )
 }

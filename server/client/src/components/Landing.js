@@ -8,18 +8,29 @@ import {api} from '../apis';
 import * as actions from '../actions/index.js';
 
 class Landing extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            msg: "hello",
+        }
+
+    }
     submit = async () => {
         // let res = await submitForm.post("");
 
         console.log('res');
     }
+
+    fun = () => {
+        this.setState({wow: "wowie"});
+    }
     render(){
         return(
-            <div onClick={() => api.auth.get(`/user/`)}>
-            
-                fff
-                {/* <div onClick={() => this.props.fetchRecipes()}>SUBMIT</div> */}
-                {/* <Nav></Nav> */}
+            <div onClick={() => console.log(this.state)}>
+                <h1 onClick={this.fun}>
+                {this.state.msg}
+                </h1>
+                {this.state.wow ? <h1>{this.state.wow}</h1> : <h2>No wow</h2>}
             </div>
         )
     }

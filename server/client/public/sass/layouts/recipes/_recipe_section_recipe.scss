@@ -1,35 +1,171 @@
 .section{
     &__recipe{
-        background: $color-primary;
-        width: 100%;
-        color:$color-tertiary-1;
+        background: $color-grey-1;
+        &--header{
+            border-top: 3px solid $color-tertiary-1;
+            background-color: $color-primary;
+            padding: 0 0 3rem 3rem;
+            // margin-bottom: 8rem;
 
-       &--header{
-           background-color: $color-secondary-1;
-
-           & > h1{
-               font-size: 3.5rem;
-               font-weight: 500;
+            & > h1{
+                padding-top: .75rem;
+                color:$color-tertiary-1;
+                font-size: 4rem;
+                font-weight: 600;
+                letter-spacing: 1px;
+            }
+            
+            & > div {
+                display: flex;
+                align-items: center;
+                padding-bottom: .6rem;
+                
+                & h2 {
+                font-family: $font-heading-primary;
+                font-size: 2rem;
+                color: $color-white;
+                font-weight: 400;
+                padding-top: .2rem;
+                }
            }
+       }
+
+       &--msg{
+           font-weight: 500;
+           text-transform: uppercase;
+           font-size: 1.6rem;
+           padding-top: 1.2rem;
+           color: $color-primary;
+       }
+
+       &--list{
+            padding: 0 1.2rem 2.2rem 1.2rem;
+            background: $color-white;
+
+        & > li {
+            list-style: none;
+            width: 100%;
+            background: $color-primary;
+            font-size: 1.8rem;
+            border-bottom:2px solid $color-tertiary-1;
+        }
+       }
+
+       &--item{
+            // display:inline-flex;
+            align-items: center;
+            color: $color-white;
+
+        &-name{
+            padding-left:.75rem;
+        }
+
+        & > svg {
+            fill: $color-white;
+            height: $icon-size-small;
+            width: $icon-size-small;
+            margin-right: 0;
+            box-sizing: initial;
+            padding: 0.5rem 1rem;
+        }
        }
 
        &--content{
             gap: 1rem 0;
-            background:chocolate;
-            & > div,ul {
-                background: green;
+            background: $color-tertiary-1;
+            max-width: 115rem;
+            padding-bottom: 2rem;
+
+            &-item{
+               border-radius: 3px;
+            }
+
+            & div > ul {
+                border-radius: 3px;
+                overflow: hidden;
+            }
+
+            @include respond("phone"){
+                flex: 1 0 100% !important;
+
+                &-item{
+                    min-width: 24rem;
+                    flex: 0 0 90%;
+                }
             }
        }
 
+       &--outcome{
+        
+        & span{
+            position: relative;
+            font-family: $font-heading-primary;
+            font-size: 2.3rem;
+            color: $color-grey-2;
+            // border-bottom: 2px solid $color-primary;
+            width: 110%;
+            
+            &::after{
+                content: "";
+                position: absolute;
+                // display: inline-block;
+                height: 2px;
+                width: 140%;
+                bottom: 0;
+                left: -20%;
+                background: $color-primary;
+            }
+        }
+
+        & p {
+            max-width: 50ch;
+            line-height: 2.5rem;
+            margin: 1.5rem auto 1rem auto;
+            font-size: 1.6rem;
+            font-family: $font-text-primary;
+            color: $color-grey-2;
+        }
+       }
+
        &--yield{
-        & > input{
-            color: red !important;
-            height: 5rem;
-            width: 5rem;
-            padding: 0 !important;
+        position:relative;
+        padding: 2.4rem 0;
+        background: $color-white;
+
+        & div::after{
+            content: "Click to change the yield";
+            position: absolute;
+            // width: calc(100% + 2.4rem);
+            width: 100%;
+            text-align: center;
+            top: 0;
+            left: 0;
+            background: rgba($color-grey-2, .85);
+            padding: 1rem .75rem;
+            font-family: $font-heading-primary;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: $color-white;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        & div:hover::after{
+            opacity: 1;
+        }
+        & div > input{
+            cursor: pointer;
+            color: $color-tertiary-1;
+            font-family: $font-heading-primary;
+            height: 8rem;
+            width: 8rem;
+            font-weight: 400;
+            font-size: 3.5rem;
+            border: 2px solid $color-tertiary-1;
+            background-color: $color-primary;
             border-radius: 50%;
             text-align: center;
-        } 
+        }
+
        }
 
     }

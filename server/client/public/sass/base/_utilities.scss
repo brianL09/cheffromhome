@@ -1,36 +1,63 @@
+.u-padding-small{
+    padding: 1.5rem;
+}
+
+.u-padding-medium{
+    padding: 3rem;
+}
+.u-padding-top-small{
+    padding-top: 1.25rem;
+}
+.u-padding-bottom-small{
+    padding-bottom: 1.25rem;
+}
+.u-padding-bottom-medium{
+    padding-bottom: 2.5rem
+}
 .u-margin-bottom-small{
     margin-bottom: 1rem;
 }
 
 .u-margin-bottom-medium{
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
 }
 
 .u-margin-bottom-large{
     margin-bottom: 6rem;
 }
-
+.u-margin-top-small{
+    margin-top: 1rem;
+}
 .u-margin-top-medium{
     margin-top: 2rem;
 }
-
 .u-absolute-center{
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
-
 .u-center-text{
     text-align: center;
 }
+.u-right-text{
+    text-align: right;
+}
+.u-left-text{
+    text-align: left;
+}
+.u-overflow-visible{
+    overflow: visible !important;
+}
 
+.u-list-style-number{
+    list-style: decimal !important;
+}
 .u-font-primary-bold-16{
     color: $color-grey-2;
     font-size: 1.2rem;
     font-weight: 300;
 }
-
 .u-flex-h-center{
     display: flex;
     width: 100%;
@@ -46,18 +73,25 @@
         }
     }
 }
-
 .u-font-white{
     color:$color-white !important;
 }
-
 .u-font-primary{
     color: $color-primary;
 }
-
+.u-font-grey-2{
+    color: $color-grey-2;
+}
 .u-font-normal-1-uppercase{
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+.u-font-size-16{
+    font-size:1.6rem;
+}
+
+.u-min-width-phone{
+    min-width: 26rem;
 }

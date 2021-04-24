@@ -13,8 +13,12 @@ html {
 
 .flex {
   display: flex;
-  flex-wrap: wrap;
-  padding-bottom: 2rem;
+}
+.flex__inline {
+  display: inline-flex;
+}
+.flex__column {
+  flex-direction: column;
 }
 .flex__heading {
   font-size: 2rem;
@@ -27,6 +31,21 @@ html {
 }
 .flex__justify--space-around {
   justify-content: space-around;
+}
+.flex__justify--end {
+  justify-content: flex-end;
+}
+.flex__grow {
+  flex: 1;
+}
+.flex__shrink {
+  flex: 0 1;
+}
+.flex__wrap {
+  flex-wrap: wrap;
+}
+.flex__no-wrap {
+  flex-wrap: nowrap;
 }
 
 .col-1 {
@@ -77,8 +96,24 @@ html {
   flex: 0 0 100%;
 }
 
-.col-4 {
-  min-width: 24rem;
+.u-padding-small {
+  padding: 1.5rem;
+}
+
+.u-padding-medium {
+  padding: 3rem;
+}
+
+.u-padding-top-small {
+  padding-top: 1.25rem;
+}
+
+.u-padding-bottom-small {
+  padding-bottom: 1.25rem;
+}
+
+.u-padding-bottom-medium {
+  padding-bottom: 2.5rem;
 }
 
 .u-margin-bottom-small {
@@ -86,11 +121,15 @@ html {
 }
 
 .u-margin-bottom-medium {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem !important;
 }
 
 .u-margin-bottom-large {
   margin-bottom: 6rem;
+}
+
+.u-margin-top-small {
+  margin-top: 1rem;
 }
 
 .u-margin-top-medium {
@@ -106,6 +145,22 @@ html {
 
 .u-center-text {
   text-align: center;
+}
+
+.u-right-text {
+  text-align: right;
+}
+
+.u-left-text {
+  text-align: left;
+}
+
+.u-overflow-visible {
+  overflow: visible !important;
+}
+
+.u-list-style-number {
+  list-style: decimal !important;
 }
 
 .u-font-primary-bold-16 {
@@ -136,11 +191,27 @@ html {
   color: #845ec2;
 }
 
+.u-font-grey-2 {
+  color: #303030;
+}
+
 .u-font-normal-1-uppercase {
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.u-font-size-16 {
+  font-size: 1.6rem;
+}
+
+.u-min-width-phone {
+  min-width: 26rem;
+}
+
+.text {
+  font-family: "Titillium Web", sans-serif;
 }
 
 .heading {
@@ -185,6 +256,9 @@ html {
   color: white;
 }
 
+.list {
+  min-width: 26rem;
+}
 .list__heading {
   list-style: none;
   display: flex;
@@ -202,10 +276,17 @@ html {
   list-style: none;
   font-size: 1.32rem;
   background: #FAE64D;
-  color: #303030;
   font-weight: 500;
   text-transform: uppercase;
   padding: 1rem 2.5rem;
+}
+@media (max-width: 36.5em) {
+  .list__shopping:first-of-type {
+    margin-top: 1.2rem;
+  }
+  .list__shopping:not(:last-of-type) {
+    margin-bottom: 1.2rem;
+  }
 }
 
 .button__submit {
@@ -245,7 +326,7 @@ html {
   .btn__toggle--close {
     top: -5rem;
     background-color: #C23931;
-    border: 2px solid #F2F2F2;
+    border: 2px solid #E3DEDE;
     position: absolute;
   }
   .btn__toggle--close > div {
@@ -276,6 +357,18 @@ html {
 .btn__submit:hover {
   background: #845ec2;
   color: #FAE64D;
+}
+.btn__discussion {
+  background: #14d269;
+  display: inline-block;
+  border-radius: 50rem;
+  padding: 0.75rem 1.2rem;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 2;
 }
 
 .hamburger {
@@ -404,7 +497,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background: #F2F2F2;
+  background: #E3DEDE;
   border: 2px solid teal;
   width: 95%;
   margin: 0 auto;
@@ -417,18 +510,8 @@ html {
   }
 }
 
-input:not([type=submit]):not([type=file]) {
-  color: #303030;
-  font-family: "Proza Libre", sans-serif;
-  font-weight: 300;
-  padding: 0.5rem 1.8rem;
-  border: none;
-  border-bottom: 2px solid transparent;
-}
-
 input:not([type=submit]):not([type=file]):focus {
   outline: none;
-  border-bottom: 2px solid #845ec2;
 }
 
 input[type=file] {
@@ -475,7 +558,7 @@ input[type=file] {
 }
 .input__ingredient--container > input {
   border: none;
-  border-right: 1px solid #F2F2F2;
+  border-right: 1px solid #E3DEDE;
   margin-bottom: 0.5rem;
 }
 .input__ingredient--name {
@@ -524,18 +607,6 @@ input[type=file] {
 
 .images__input {
   max-width: 100% !important;
-}
-
-textarea {
-  color: green;
-  font-family: "Courier New", Courier, monospace;
-  width: 80%;
-  min-width: 30rem;
-  min-height: 20rem;
-  outline: none;
-  border: none;
-  border-radius: 3px;
-  resize: vertical;
 }
 
 textarea:focus {
@@ -703,7 +774,7 @@ textarea:focus {
   transition: fill 0.8s ease-in;
 }
 .icon__home, .icon__recipe, .icon__create, .icon__about, .icon__user, .icon__user_add, .icon__logout {
-  fill: #f2f2f2;
+  fill: #e3dede;
   height: 2em;
   width: 2em;
   transition: 0.5s ease-out;
@@ -738,8 +809,8 @@ textarea:focus {
 }
 .icon__stopwatch {
   fill: white;
-  height: 1.5em;
-  width: 1.5em;
+  height: 2.5em;
+  width: 2.5em;
   margin-right: 0.5rem;
 }
 
@@ -755,9 +826,9 @@ textarea:focus {
 .drop-down__drop-down {
   min-width: 14.5rem;
   position: absolute;
-  border-right: 2px solid #F2F2F2;
-  border-left: 2px solid #F2F2F2;
-  border-bottom: 2px solid #F2F2F2;
+  border-right: 2px solid #E3DEDE;
+  border-left: 2px solid #E3DEDE;
+  border-bottom: 2px solid #E3DEDE;
   right: 0;
   z-index: 4;
   padding: 0.8rem 0;
@@ -884,12 +955,75 @@ textarea:focus {
 }
 
 .error {
-  background: white;
-  width: 80%;
-  margin: 2rem auto 0 auto;
-  padding: 2rem 0;
-  color: #C23931;
-  text-transform: none;
+  position: absolute;
+  background: rgba(48, 48, 48, 0.4);
+  bottom: 0.35rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+  color: white;
+}
+.error__card {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  background: rgba(48, 48, 48, 0.85);
+  padding: 1rem 0.75rem;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.difficulty {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 50%;
+  top: 2rem;
+  right: 5rem;
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+}
+@media (max-width: 36.5em) {
+  .difficulty {
+    right: 2rem;
+    top: 1rem;
+  }
+}
+.difficulty > h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+.difficulty h4 {
+  font-size: 1.1rem;
+}
+.difficulty > * {
+  color: #303030;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.easy {
+  box-shadow: 0 0 0 1.1rem #2eeb83, 0 0 0 2.1rem #14d269, 3px 4px 1.5rem 2.6rem white;
+  background: #5cf09e;
+}
+
+.medium {
+  box-shadow: 0 0 0 1.1rem #ffb03b, 0 0 0 2.1rem #ff9c08, 3px 4px 1.5rem 2.6rem white;
+  background: #ffc56e;
+}
+
+.hard {
+  box-shadow: 0 0 0 1.1rem rgba(255, 68, 36, 0.9647058824), 0 0 0 2.8rem #ff2600f6, 3px 4px 1.5rem 3rem white;
+  background: rgba(255, 99, 71, 0.9647058824);
 }
 
 .createLesson {
@@ -917,7 +1051,6 @@ textarea:focus {
   }
 }
 .recipe {
-  background: palegreen;
   display: flex;
   min-height: 93vh;
   width: 95vw;
@@ -942,7 +1075,7 @@ textarea:focus {
   padding: 0 2rem;
 }
 .recipe__navigation--links::before {
-  content: "Sections";
+  content: "Chefy";
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -1061,15 +1194,14 @@ textarea:focus {
   }
 }
 .recipe__content {
-  background: #F2F2F2;
-  padding: 5rem 0;
-  flex: 1;
+  background: #E3DEDE;
+  padding-bottom: 5rem;
+  flex: 1 0 70%;
   position: relative;
 }
 .recipe__content > * {
   position: relative;
   z-index: 20020;
-  color: #303030;
 }
 
 .section {
@@ -1104,8 +1236,16 @@ textarea:focus {
   width: 100%;
   max-width: 120rem;
   background: white;
+  border-radius: 2px;
+  overflow: hidden;
   margin-top: 15rem;
   gap: 4rem 2rem;
+}
+@media (max-width: 36.5em) {
+  .section__about--shopping {
+    gap: 0;
+    padding: 0;
+  }
 }
 .section__about--image {
   width: 50%;
@@ -1174,94 +1314,460 @@ textarea:focus {
     width: 0;
   }
 }
-.difficulty {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 50%;
-  top: 0;
-  right: 5rem;
-  height: 2rem;
-  width: 2rem;
-  background-color: white;
-}
-@media (max-width: 36.5em) {
-  .difficulty {
-    right: 2rem;
-    top: -3.5rem;
-  }
-}
-.difficulty > h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: white;
-}
-.difficulty h4 {
-  font-size: 1.1rem;
-}
-.difficulty > * {
-  color: #303030;
-  text-align: center;
-  letter-spacing: 2px;
-}
-
-.easy {
-  box-shadow: 0 0 0 1.1rem #2eeb83, 0 0 0 2.1rem #14d269, 3px 4px 1.5rem 2.6rem white;
-  background: #5cf09e;
-}
-
-.medium {
-  box-shadow: 0 0 0 1.1rem #ffb03b, 0 0 0 2.1rem #ff9c08, 3px 4px 1.5rem 2.6rem white;
-  background: #ffc56e;
-}
-
-.hard {
-  box-shadow: 0 0 0 1.1rem rgba(255, 68, 36, 0.9647058824), 0 0 0 2.8rem #ff2600f6, 3px 4px 1.5rem 3rem white;
-  background: rgba(255, 99, 71, 0.9647058824);
-}
-
 .clip-path__about {
   position: absolute;
-  top: -5rem;
+  padding-top: 5rem;
+  top: 0;
   left: 0;
   z-index: -1;
   background: #FAE64D;
   width: 100%;
-  height: 45%;
+  height: calc(45% + 5rem);
   clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
 }
 
 .section__recipe {
-  background: #845ec2;
-  width: 100%;
-  color: #FAE64D;
+  background: #E3DEDE;
 }
 .section__recipe--header {
-  background-color: #2c73d2;
+  border-top: 3px solid #FAE64D;
+  background-color: #845ec2;
+  padding: 0 0 3rem 3rem;
 }
 .section__recipe--header > h1 {
-  font-size: 3.5rem;
+  padding-top: 0.75rem;
+  color: #FAE64D;
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.section__recipe--header > div {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.6rem;
+}
+.section__recipe--header > div h2 {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 2rem;
+  color: white;
+  font-weight: 400;
+  padding-top: 0.2rem;
+}
+.section__recipe--msg {
   font-weight: 500;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  padding-top: 1.2rem;
+  color: #845ec2;
+}
+.section__recipe--list {
+  padding: 0 1.2rem 2.2rem 1.2rem;
+  background: white;
+}
+.section__recipe--list > li {
+  list-style: none;
+  width: 100%;
+  background: #845ec2;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #FAE64D;
+}
+.section__recipe--item {
+  align-items: center;
+  color: white;
+}
+.section__recipe--item-name {
+  padding-left: 0.75rem;
+}
+.section__recipe--item > svg {
+  fill: white;
+  height: 1.5em;
+  width: 1.5em;
+  margin-right: 0;
+  box-sizing: initial;
+  padding: 0.5rem 1rem;
 }
 .section__recipe--content {
   gap: 1rem 0;
-  background: chocolate;
+  background: #FAE64D;
+  max-width: 115rem;
+  padding-bottom: 2rem;
 }
-.section__recipe--content > div, .section__recipe--content ul {
-  background: green;
+.section__recipe--content-item {
+  border-radius: 3px;
 }
-.section__recipe--yield > input {
-  color: red !important;
-  height: 5rem;
-  width: 5rem;
-  padding: 0 !important;
+.section__recipe--content div > ul {
+  border-radius: 3px;
+  overflow: hidden;
+}
+@media (max-width: 36.5em) {
+  .section__recipe--content {
+    flex: 1 0 100% !important;
+  }
+  .section__recipe--content-item {
+    min-width: 24rem;
+    flex: 0 0 90%;
+  }
+}
+.section__recipe--outcome span {
+  position: relative;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 2.3rem;
+  color: #303030;
+  width: 110%;
+}
+.section__recipe--outcome span::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 140%;
+  bottom: 0;
+  left: -20%;
+  background: #845ec2;
+}
+.section__recipe--outcome p {
+  max-width: 50ch;
+  line-height: 2.5rem;
+  margin: 1.5rem auto 1rem auto;
+  font-size: 1.6rem;
+  font-family: "Proza Libre", sans-serif;
+  color: #303030;
+}
+.section__recipe--yield {
+  position: relative;
+  padding: 2.4rem 0;
+  background: white;
+}
+.section__recipe--yield div::after {
+  content: "Click to change the yield";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(48, 48, 48, 0.85);
+  padding: 1rem 0.75rem;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: white;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.section__recipe--yield div:hover::after {
+  opacity: 1;
+}
+.section__recipe--yield div > input {
+  cursor: pointer;
+  color: #FAE64D;
+  font-family: "Titillium Web", sans-serif;
+  height: 8rem;
+  width: 8rem;
+  font-weight: 400;
+  font-size: 3.5rem;
+  border: 2px solid #FAE64D;
+  background-color: #845ec2;
   border-radius: 50%;
   text-align: center;
 }
 
+.section__recipe--tips {
+  background: white;
+  position: relative;
+}
+@media (max-width: 36.5em) {
+  .section__recipe--tips {
+    flex: 0 0 90%;
+  }
+}
+.section__recipe--tips ul {
+  background: #845ec2;
+  border-radius: 0;
+  width: 75%;
+  margin: 0 auto 10rem auto;
+  padding: 0.75rem 0 1.5rem 0;
+  text-transform: capitalize;
+}
+.section__recipe--tips li {
+  list-style: none;
+  font-family: "Proza Libre", sans-serif;
+  font-size: 1.6rem;
+  padding: 0.35rem 1rem;
+}
+.section__recipe--tips .btns {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+}
+.section__recipe--tips .btns > div {
+  display: inline-block;
+  background: #14d269;
+  color: #303030;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-radius: 15rem;
+  font-weight: 400;
+}
+
+.directions {
+  background: white;
+}
+@media (max-width: 36.5em) {
+  .directions {
+    flex: 0 0 90%;
+  }
+}
+.directions__heading {
+  font-family: "Proza Libre", sans-serif;
+  background: #eee;
+  width: calc(100% - 2.2rem);
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 1rem 1.2rem 0 1.2rem;
+  padding: 1.5rem 0;
+  color: #845ec2;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+.directions__list {
+  padding: 2rem 5rem;
+}
+.directions__list-item {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.9rem;
+  color: #303030;
+  text-transform: capitalize;
+  padding: 0.35rem 0.75rem;
+}
+
+.recipe__discussion {
+  width: 95%;
+  margin: 0 auto;
+  height: 100vh;
+}
+.recipe__discussion--heading h1 {
+  font-size: 3rem;
+  padding: 2.5rem 0 0.75rem 0;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.recipe__discussion--heading h2 {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.forum {
+  margin: 8rem auto 0 auto;
+  max-height: 70vh;
+  width: 80%;
+  min-width: 26rem;
+  background: #eee;
+}
+.forum__heading {
+  padding: 0.75rem 0 4rem 0;
+  font-weight: 500;
+  background: #845ec2;
+  color: #E3DEDE;
+}
+.forum__heading h1 {
+  font-weight: 500;
+  font-size: 2.2rem;
+}
+.forum__heading h2 {
+  color: #FAE64D;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.forum__posts {
+  display: flex;
+  flex-wrap: wrap;
+  background: #845ec2;
+  padding: 2rem 1.5rem 0 1.5rem;
+}
+.forum__post {
+  width: 100%;
+}
+.forum__post--title {
+  padding: 0.75rem 1.2rem;
+  font-size: 1.6rem;
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
+  border-radius: 2px 2px 0 0;
+  background: #FAE64D;
+  color: #845ec2;
+}
+.forum__post--info {
+  background: #E3DEDE;
+  color: #303030;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 0 0 2px 2px;
+  padding: 0.75rem 0 0.1rem 2.5rem;
+}
+.forum__post--actions {
+  align-items: center;
+  flex: 1;
+  padding: 0.75rem 2.5rem 0.1rem 0;
+  gap: 0 0.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  background: #E3DEDE;
+}
+.forum__controls {
+  background: #845ec2;
+  position: relative;
+  z-index: 2;
+}
+.forum__icon > svg {
+  height: 2rem;
+  width: 2rem;
+  fill: #845ec2;
+}
+.forum__question {
+  background-color: chartreuse;
+  position: absolute;
+  width: 100%;
+  top: 1.5rem;
+  z-index: 1;
+}
+.forum__question--initialLoad {
+  animation: fadeOut 0s ease forwards;
+}
+.forum__question--show {
+  animation: fadeIn 1s ease forwards;
+}
+.forum__question--show > * {
+  animation: fadeIn 1s ease forwards;
+}
+.forum__question--hide {
+  animation: fadeOut 5s ease forwards;
+}
+.forum__question--hide > * {
+  animation: fadeOut 1s 4s ease forwards;
+}
+.forum__response {
+  background: #303030;
+}
+.forum__response--show {
+  max-height: 100vh;
+  transition: max-height 1.2s ease;
+  opacity: 1;
+}
+.forum__response--show > * {
+  opacity: 1;
+  transition: opacity 1.3s ease;
+}
+.forum__response--hide {
+  max-height: 0;
+  transition: max-height 800ms 50ms ease-in, opacity 150ms ease-out;
+  position: relative;
+  opacity: 0;
+}
+.forum__response--hide > * {
+  opacity: 0;
+  transition: opacity 0s;
+}
+.forum__response--form {
+  background-color: chocolate;
+  width: 100%;
+  max-height: 0;
+}
+.forum__response--form > form {
+  opacity: 0;
+  min-height: 0;
+}
+.forum__response--form > form > * {
+  max-height: 0;
+  opacity: 0;
+}
+.forum__response--form > form textarea {
+  font-family: "Titillium Web", sans-serif;
+  background: white;
+  width: 85%;
+  display: block;
+  margin: 0 auto;
+}
+.forum__response--form > p {
+  color: transparent;
+  transition: none;
+}
+.forum__submit {
+  text-align: center;
+  display: inline-block;
+  background: red;
+  padding: 0.75rem 1.5rem;
+  margin: 0 auto;
+}
+
+.show {
+  max-height: 100vh;
+  background: #4CAF50;
+  visibility: visible;
+}
+.show > form {
+  visibility: visible;
+  opacity: 1;
+  max-height: 100vh;
+}
+.show > form > * {
+  animation: fadeIn 2s ease forwards;
+}
+.show > form > p {
+  color: transparent;
+  transition: none;
+}
+
+.hide {
+  min-height: 0rem;
+  visibility: hidden;
+  transition: all 0.8s 0.8s ease;
+  max-height: 0rem;
+}
+.hide > form {
+  animation: fadeOut 1.5s ease;
+}
+.hide > form > * {
+  animation: fadeOut 1.5s ease;
+}
+.hide > form > p {
+  color: transparent;
+  transition: none;
+}
+@keyframes fadeIn {
+  0% {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  5% {
+    visibility: visible;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    max-height: 100vh;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    background: firebrick;
+    opacity: 1;
+    max-height: 100vh;
+  }
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+  }
+}
 .form {
   position: relative;
   border: 0.5rem solid silver;
@@ -1272,7 +1778,7 @@ textarea:focus {
   z-index: 3;
 }
 .form__header {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Titillium Web", sans-serif;
   flex-basis: 100%;
   text-align: center;
 }
@@ -1285,7 +1791,7 @@ textarea:focus {
   font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 1rem;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Titillium Web", sans-serif;
 }
 .form__heading--secondary {
   font-size: 1.8rem;
@@ -1308,6 +1814,10 @@ textarea:focus {
   border: 0.2rem solid #C3C3C3;
   border-radius: 3px;
 }
+.shopping__list {
+  margin-bottom: 2rem;
+}
+
 .images-form {
   display: flex;
   flex-wrap: wrap;
@@ -1422,7 +1932,7 @@ textarea:focus {
 }
 
 .user {
-  background: #F2F2F2;
+  background: #E3DEDE;
   display: flex;
   flex-wrap: wrap;
 }
@@ -1464,7 +1974,7 @@ textarea:focus {
 }
 .user__content {
   padding: 2rem 5rem;
-  background: #F2F2F2;
+  background: #E3DEDE;
 }
 @media (max-width: 36.5em) {
   .user__content {
