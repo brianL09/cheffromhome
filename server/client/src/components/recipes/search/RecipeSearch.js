@@ -13,7 +13,9 @@ class RecipeSearch extends React.Component {
             <React.Fragment>
             {this.props.recipes ?
                 <div className="search__results">
-                        <RecipeCard2 recipe={this.props.recipes[0]}></RecipeCard2>
+                    {this.props.recipes.map((recipe, index) => {
+                        return <RecipeCard2 key={index} recipe={recipe}></RecipeCard2>
+                    })}
                 </div> :
                 <div>Loading...</div>}
             </React.Fragment>

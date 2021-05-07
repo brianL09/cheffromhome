@@ -71,10 +71,13 @@ export const submitRecipe = (recipe, user) => async (dispatch) => {
 }
 
 export const submitQuestion = (post) => async (dispatch) => {
-    console.log(post);
     const response = await api.recipes.post("/new/comment", {post});
     dispatch({type: SUBMIT_QUESTION, payload: response.data});
     }
+
+export const editQuestion = () => async (dispatch) => {
+
+}
 
 export const submitResponse = (post, id, user) => async (dispatch) => {
     if(!user){
@@ -86,6 +89,17 @@ export const submitResponse = (post, id, user) => async (dispatch) => {
         response: post
     }
     const response = await api.recipes.post("/new/response", {data});
-    console.log(response.data.value);
+    return dispatch({type: "SUBMIT_RESPONSE", payload: response.data});
+}
+
+export const editResponse = (commentId, responseId, updatedStr) => async (dispatch) => {
+    // if(!user) return dispatch({type:SUBMIT_FAILURE, payload: "You must be logged in to edit your post."});
+    const data = {
+        commentId,
+        responseId,
+        response: updatedStr,
+    }
+    const response = await api.recipes.post("/edit/response", {data});
+    
     return dispatch({type: "SUBMIT_RESPONSE", payload: response.data});
 }

@@ -14,11 +14,20 @@ const photo = new Schema({
 });
 
 const comment = new Schema({
-    username: String,
-    userid: String,
+    id: String,
+    author: String,
+    question: String,
     posted: String,
-    edited: {type: String, default: "n/a"}
-});
+    responses: [
+        {
+            user: Object,
+            response: String,
+            posted: String,
+        }
+            ]
+    });
+
+
 
 const recipeSchema = new Schema({
     author: {
@@ -55,9 +64,7 @@ const recipeSchema = new Schema({
         paragraphs: Array,
         photos: [photo],
     },
-    comments:{
-        comments : [comment],
-    }
+    comments: [comment]
 });
 
 module.exports = mongoose.model('Recipe', recipeSchema, "recipes");

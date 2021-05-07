@@ -5,6 +5,9 @@
     margin: 0 auto;
     position: relative;
 
+    @include respond("phone"){
+        width: 100%;
+    }
     &__navigation{
         background: $color-grey-2;
         width: 30%;
@@ -161,10 +164,11 @@
         padding-bottom: 5rem;
         flex: 1 0 70%;
         position: relative;
-
+        min-height: 100vh;
+        
         & > * {
             position: relative;
-            z-index: 20020;
+            // z-index: 30;
         }
     }
 }

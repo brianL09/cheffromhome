@@ -6,14 +6,14 @@ import RecipeSection from './search/RecipeSection';
 
 const RecipeParent = ({fetchRecipe, recipe}) => {
     const sections = ["about", "recipe", "discussion"];
-    const [currentSection, setSection] = useState(sections[2]);
+    const [currentSection, setSection] = useState(sections[0]);
 
     useEffect(() => {
         let url = window.location.pathname.split("/");
         // recipe id is the last item in array
         let id = url[url.length - 1];
         fetchRecipe(id);    
-    }, [fetchRecipe]);
+    }, []);
 
     return(
         <React.Fragment>

@@ -1,10 +1,15 @@
 .forum{
-    margin: 8rem auto 0 auto;
-    max-height: 70vh;
+    margin: 0 auto;
+    // max-height: 70vh;
     width: 80%;
     min-width: 26rem;
     background: #eee;
+    position: relative;
     // border: 2px solid $color-grey-2;
+
+    @include respond("phone"){
+        width: 100%;
+    }
 
     &__heading{
         padding: .75rem 0 4rem 0;
@@ -26,7 +31,7 @@
         display: flex;
         flex-wrap: wrap;
         background: $color-primary;
-        padding: 2rem 1.5rem 0 1.5rem;
+        padding: 2rem 1.5rem;
         // flex-direction: column;
     }
     // individual post
@@ -40,8 +45,8 @@
             font-family: $font-text-primary;
             font-weight: 400;
             border-radius: 2px 2px 0 0;
-            background: $color-tertiary-1;
-            color: $color-primary;
+            background: $color-grey-2;
+            color: $color-tertiary-1;
             // border-top: 2px solid #eee;
             // border-left: 2px solid #eee;
             // border-right: 2px solid #eee;
@@ -66,12 +71,28 @@
             font-size: 1.1rem;
             background: $color-grey-1;
         }
+        &--controls{
+            flex: 1;
+            justify-content: flex-end;
+            cursor: pointer;
+
+            & > * {
+                visibility: hidden;
+            }
+        }
+
+        &--controls:hover > *{
+            visibility: visible;
+        }
     }
     
     &__controls{
-        background: $color-primary; 
-        position: relative;
-        z-index: 2;
+        background: $color-primary;
+        border-radius: 0 0 2.5px 2.5px; 
+
+        & > input {
+            font-size: 4rem;
+        }
     }
 
     &__icon{
@@ -84,11 +105,17 @@
     }
 
     &__question{
-        background-color: chartreuse;
-        position: absolute;
-        width: 100%;
-        top: 1.5rem;
-        z-index: 1;
+        // position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        & > input {
+            width: 60%;
+            min-height: 8rem;
+        }
+        // min-width: 90rem;
+        // z-index: 1;
         // height: 0;
         // max-height: 0;
         // transition: all .8s ease;
@@ -98,6 +125,7 @@
         }
         
         &--show{
+            // opacity: 1;
             animation: fadeIn 1s ease forwards;
             // max-height: 100vh;
             // min-height: 10rem;
@@ -105,56 +133,41 @@
             // max-height: 100vh;
             // visibility: visible;
             & > * {
-                animation: fadeIn 1s ease forwards;
+                opacity: 1;
+                // animation: fadeIn 1s ease forwards;
             }
         }
         &--hide{
-            animation: fadeOut 5s ease forwards;
+            animation: fadeOut 2s ease forwards;
             & > * {
-                animation: fadeOut 1s 4s ease forwards;
+                animation: fadeOut 1s 2s ease forwards;
             }
         }
     }
 
     &__response{
-        background: $color-grey-2;
+        background: $color-grey-1;
+        border-bottom: 1px solid $color-grey-2;
+        width: 95%;
+        margin: 0 auto;
+        padding: .25rem .75rem;
 
-        &--show {
-            max-height: 100vh;
-            transition: max-height 1.2s ease;
-            // visibility: visible;
-            opacity: 1;
-            & > * {
-                opacity: 1;
-                transition: opacity 1.3s ease;
-            }
-        }
-
-        &--hide{
-            max-height: 0;
-            transition: max-height 800ms 50ms ease-in, opacity 150ms ease-out;
-            position: relative;
-            // transform: scaleY(0);
-            // visibility: hidden;
-            opacity: 0;
-            & > * {
-                opacity: 0;
-                transition: opacity 0s;
-            } 
+        &--post{
+            font-size: 1.6rem;
+            color: $color-grey-2;
         }
 
         &--form{
-            background-color: chocolate;
+            background: $color-primary;
             width: 100%;
             max-height: 0;
-
             & > form {
-                opacity: 0;
+                opacity: 1;
                 min-height: 0;
                 
                 & > * {
-                    max-height: 0;
-                    opacity: 0;
+                    max-height: 100vh;
+                    opacity: 1;
                 }
             }
             
@@ -169,7 +182,40 @@
                 color: transparent;
                 transition: none;
             }
+        }
+        &--show {
+            // max-height: 100vh;
+            // transition: max-height 1.2s ease forwards;
+            background: $color-grey-2;
+            animation: fadeIn 2s ease;
+            // visibility: visible;
+            // opacity: 1;
+            & > * {
+                opacity: 1;
+                transition: opacity .5s 2s ease forwards;
+            }
 
+            & h1 {
+                color: $color-grey-2;
+                font-size: 3rem;
+                font-family: $font-heading-primary;
+                font-weight: 500;
+                text-align: center;
+                flex: 1 0 100%;
+            }
+        }
+
+        &--hide{
+            // transition: max-height 800ms 50ms ease-in, opacity 150ms ease-out;
+            animation: fadeOut 1s ease-out forwards;
+            position: relative;
+            // transform: scaleY(0);
+            // visibility: hidden;
+            opacity: 0;
+            & > * {
+                opacity: 0;
+                transition: opacity 0s;
+            } 
         }
     }
 
@@ -184,7 +230,6 @@
 
 .show{
     max-height: 100vh;
-    background: $color-button-accept;
     visibility: visible;
     
     & > form {
@@ -215,7 +260,9 @@
     & > form {
         animation: fadeOut 1.5s ease;
         & > * {
-            animation: fadeOut 1.5s ease;
+            visibility: hidden;
+            // max-height: 0;
+            animation: fadeOut 1.3s ease;
         }
         
         & > p {
@@ -241,6 +288,7 @@
         opacity: 1;
     }
     100%{
+        opacity: 1;
         max-height: 100vh;
     }
 
@@ -249,33 +297,12 @@
 @keyframes fadeOut {
     0%{
         // visibility: visible;
-        background: firebrick;
         opacity: 1;
         max-height: 100vh;
     }
-    99%{
-        visibility: hidden;
-    }
     100%{
+        visibility: hidden;
         opacity: 0;
         max-height: 0;
     }
 }
-// @keyframes fadeOut {
-//     0%{
-//         visibility: visible;
-//         background: firebrick;
-//         opacity: 1;
-//         max-height: 100vh;
-//     }
-//     30%{
-//         opacity: 0;
-//         max-height: 100vh;
-//     } 
-//     99% {
-//         max-height: 0;
-//     }
-//     100%{
-//         visibility: hidden;
-//     }
-// }

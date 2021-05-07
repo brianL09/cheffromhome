@@ -1,9 +1,11 @@
 .recipe__discussion{
     width: 95%;
-    // background: teal;
     margin: 0 auto;
-    height: 100vh;
-    // justify-content: flex-start;
+
+    @include respond("phone"){
+        width: 100%;
+        margin: 0;
+    }
 
     &--heading {
         & h1 {
